@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)http://localhost:8080/zhihu/index.html -->
+<html lang="zh" data-reactroot="" data-reactid="1" data-react-checksum="111978008" data-focus-method="pointer"><head data-reactid="2"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<title data-reactid="4">文章 </title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" data-reactid="5">
+		<meta name="renderer" content="webkit" data-reactid="6">
+		<meta name="force-rendering" content="webkit" data-reactid="7">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" data-reactid="8">
+		<meta name="google-site-verification" content="FTeR0c8arOPKh8c5DYh_9uu98_zJbaWw53J-Sch9MTg" data-reactid="9">
+		<script type="text/javascript" src="./js/jquery-3.2.1.js"></script>
+		<link href="./css/style_m.css" rel="stylesheet" data-reactid="16">
+		<script>
+		$(function(){
+			$.getJSON("./GetHead",function(data){
+				var headimg="";
+				$.each(data,function(index,value){
+					if(index=="headimg")headimg=value;
+				});
+				$("#header").attr('src',headimg);
+			});
+			$.getJSON("./Article",function(data){
+				var title="";
+				var username="";
+				var pid="";
+				var touxiang="";
+				for(i=0;i<data.length;i++){
+					$.each(data[i],function(index,value){
+						if(index=="title")title=value;
+						if(index=="pid")pid=value;
+						if(index=="username")username=value;
+						if(index=="touxiang")touxiang=value;
+					});
+					
+					$("#mainframe").append("<div class=\"Card TopstoryItem\" width=100% id=content"+i+"></div><p>");
+					$("#content"+i).append("<div class=\"Feed-title\" width=500><div class=\"Feed-meta\">"+
+						"</div></div>");
+					$("#content"+i).append("<div class=\"AuthorInfo Feed-meta-author AuthorInfo--plain\" id=nameframe"+i+"><span class=\"UserLink AuthorInfo-avatarWrapper\"><div class=\"Popover\">"+
+							"<div aria-haspopup=true aria-expanded=false aria-owns=Popover-43344-36794-content>"+
+								"<a class=\"UserLink-link\" href=\"test.html\">"+
+								"	<img class=\"Avatar AuthorInfo-avatar\" width=24 height=24 src=\""+touxiang+"\">"+
+								"	</a></div></div></span>");
+					
+					$("#nameframe"+i).append("<div class=\"AuthorInfo-content\">"+
+						"<div class=\"AuthorInfo-head\">"+
+						"<span class=\"UserLink AuthorInfo-name\"><div class=\"Popover\">"+
+							"<div aria-haspopup=\"true\" aria-expanded=\"false\" aria-owns=\"Popover-43356-88207-content\">"+
+								" <a class=\"UserLink-link\" href=\"test.html\">"+username+"</a>"+
+						"</div></div></span></div>");
+					$("#content"+i).append("<div class=\"ContentItem AnswerItem\" margin-top=14px id=answer"+i+"><h2 class=\"ContentItem-title\">"+
+							"<div><a href=\"javascript:void(0);\" onclick=wenzhang(this) data-pid="+pid+">"+title+"</a>"+
+							"</div></h2>");
+				}
+			});
+
+		});
+		function wenzhang(btn){
+			var aid4=$(btn).data('pid');
+			//$(btn).attr("href","http://localhost:8080/zhihu/wenti.html?="+aid2);
+			//$(btn).attr("target", "_blank");
+			window.location.href="./article.html?pid="+aid4;
+		}
+		function toSearch(){
+			var string = $("input#Popover-6866-70423-toggle").val();
+			var result = encodeURI(encodeURI(string));
+			window.location.href="search.html?content="+result;
+		}
+		</script>
+
+		<style type="text/css">
+			.CloseIcon-icon-2xww {
+				transition: opacity .3s ease-out
+			}
+			
+			.CloseIcon-icon-2xww:hover {
+				opacity: .8
+			}
+		</style>
+		<style type="text/css">
+			.animations-fadeIn-1aFv {
+				animation: animations-fadeIn-1aFv .3s ease-out both
+			}
+			
+			@keyframes animations-fadeIn-1aFv {
+				0% {
+					opacity: 0
+				}
+				to {
+					opacity: 1
+				}
+			}
+			
+			.animations-fadeOut-3XSQ {
+				animation: animations-fadeOut-3XSQ .3s ease-out both
+			}
+			
+			@keyframes animations-fadeOut-3XSQ {
+				0% {
+					opacity: 1
+				}
+				to {
+					opacity: 0
+				}
+			}
+			
+			.animations-fadeInUp-3KKK {
+				animation: animations-fadeInUp-3KKK .3s cubic-bezier(.25, .1, .35, 1) both
+			}
+			
+			@keyframes animations-fadeInUp-3KKK {
+				0% {
+					opacity: 0;
+					transform: translateY(20px)
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0)
+				}
+			}
+			
+			.animations-fadeOutDown-r_A_ {
+				animation: animations-fadeOutDown-r_A_ .3s cubic-bezier(.25, .1, .35, 1) both
+			}
+			
+			@keyframes animations-fadeOutDown-r_A_ {
+				0% {
+					transform: translateY(0)
+				}
+				to {
+					opacity: 0;
+					transform: translateY(20px)
+				}
+			}
+		</style>
+		<style type="text/css">
+			.Modal-backdrop-2ksh {
+				background-color: rgba(0, 0, 0, .65)
+			}
+			
+			.Modal-backdrop-2ksh,
+			.Modal-modalWrapper-56Mq {
+				position: fixed;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				z-index: 10010
+			}
+			
+			.Modal-modalWrapper-56Mq {
+				display: -ms-flexbox;
+				display: flex;
+				-ms-flex-align: center;
+				align-items: center;
+				-ms-flex-pack: center;
+				justify-content: center
+			}
+			
+			.Modal-modal-wf58 {
+				position: relative;
+				z-index: 10011;
+				background: #fff;
+				border-radius: 2px
+			}
+			
+			.Modal-content-3JxL {
+				width: 588px;
+				max-height: calc(100vh - 24px * 2);
+				overflow-x: hidden;
+				overflow-y: auto;
+				-webkit-overflow-scrolling: touch
+			}
+			
+			.Modal-closeButton-3JkR {
+				position: absolute;
+				top: 4px;
+				right: -44px;
+				padding: 12px;
+				width: 40px;
+				height: 40px;
+				cursor: pointer;
+				box-sizing: border-box;
+				background: none;
+				outline: none;
+				border: none
+			}
+		</style>
+		<style type="text/css">
+			.FeedbackButton-button-3waL {
+				position: fixed;
+				z-index: 10000;
+				bottom: 40px;
+				right: 40px;
+				width: 40px;
+				height: 40px;
+				cursor: pointer;
+				border-radius: 50%;
+				background-color: #fff;
+				border: none;
+				outline: none;
+				box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+				font-weight: 700;
+				line-height: normal
+			}
+			
+			.FeedbackButton-icon-1Rgw {
+				display: inline-block;
+				vertical-align: middle;
+				width: 18px;
+				height: 18px;
+				background-image: 
+				background-repeat: no-repeat;
+				background-size: contain
+			}
+			
+			.FeedbackButton-button-3waL:hover .FeedbackButton-icon-1Rgw {
+				background-image: 
+			}
+		</style>
+		<style type="text/css">
+			.DrawingExample-svg-30WA {
+				position: absolute;
+				top: 30px;
+				right: 0;
+				left: 0;
+				margin: auto;
+				transform: rotate(-44deg)
+			}
+			
+			.DrawingExample-ellipse-26bv {
+				stroke-dasharray: 520;
+				transform-origin: center;
+				animation: DrawingExample-drawingExample-3Bm3 .6s linear both
+			}
+			
+			@keyframes DrawingExample-drawingExample-3Bm3 {
+				0% {
+					stroke-dashoffset: 520
+				}
+				50% {
+					stroke-dashoffset: 1000;
+					opacity: 1
+				}
+				to {
+					stroke-dashoffset: 1000;
+					opacity: 0
+				}
+			}
+		</style>
+		<style type="text/css">
+			.Spinner-spinner-2PGn {
+				position: absolute;
+				width: 30px;
+				height: 30px;
+				top: 50%;
+				left: 50%;
+				margin: -15px 0 0 -15px;
+				animation: Spinner-rotate-RMMJ .8s linear infinite
+			}
+			
+			.Spinner-spinner-2PGn .Spinner-circle-teFy {
+				stroke: #4197ff;
+				stroke-dasharray: 187;
+				stroke-dashoffset: 46.75;
+				transform-origin: center
+			}
+			
+			@keyframes Spinner-rotate-RMMJ {
+				0% {
+					transform: rotate(0deg)
+				}
+				to {
+					transform: rotate(1turn)
+				}
+			}
+		</style>
+		<style type="text/css">
+			.FeedbackForm-form-1uUg {
+				padding: 40px 24px 32px;
+				width: 100%;
+				font-size: 14px;
+				line-height: 1.5;
+				font-family: HelveticaNeue-Light, Helvetica, PingFangSC-Light, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+				color: #404040;
+				box-sizing: border-box
+			}
+			
+			.FeedbackForm-header-3hQI {
+				margin-bottom: 26px;
+				text-align: center
+			}
+			
+			.FeedbackForm-title-2uCC {
+				font-size: 24px;
+				font-weight: 500;
+				line-height: 33px;
+				font-family: Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif
+			}
+			
+			.FeedbackForm-inputBox-15yJ {
+				display: block;
+				padding: 12px;
+				width: 100%;
+				height: auto;
+				font-size: 15px;
+				border: 1px solid #e7eaf1;
+				border-radius: 3px;
+				box-sizing: border-box;
+				resize: none;
+				outline: none;
+				color: inherit;
+				transition: box-shadow .15s ease-out;
+				overflow: auto
+			}
+			
+			.FeedbackForm-inputBox-15yJ::-webkit-input-placeholder {
+				color: #9aaabf;
+				transition: color .15s ease-out
+			}
+			
+			.FeedbackForm-inputBox-15yJ::-moz-placeholder {
+				color: #9aaabf;
+				transition: color .15s ease-out
+			}
+			
+			.FeedbackForm-inputBox-15yJ:-ms-input-placeholder {
+				color: #9aaabf;
+				transition: color .15s ease-out
+			}
+			
+			.FeedbackForm-inputBox-15yJ::placeholder {
+				color: #9aaabf;
+				transition: color .15s ease-out
+			}
+			
+			.FeedbackForm-inputBox-15yJ:hover::-webkit-input-placeholder {
+				color: rgba(154, 170, 191, .8)
+			}
+			
+			.FeedbackForm-inputBox-15yJ:hover::-moz-placeholder {
+				color: rgba(154, 170, 191, .8)
+			}
+			
+			.FeedbackForm-inputBox-15yJ:hover:-ms-input-placeholder {
+				color: rgba(154, 170, 191, .8)
+			}
+			
+			.FeedbackForm-inputBox-15yJ:hover::placeholder {
+				color: rgba(154, 170, 191, .8)
+			}
+			
+			.FeedbackForm-inputBox-15yJ:focus {
+				box-shadow: 0 0 5px #e7eaf1
+			}
+			
+			.FeedbackForm-inputBox-15yJ:focus::-webkit-input-placeholder {
+				color: rgba(154, 170, 191, .8)
+			}
+			
+			.FeedbackForm-inputBox-15yJ:focus::-moz-placeholder {
+				color: rgba(154, 170, 191, .8)
+			}
+			
+			.FeedbackForm-inputBox-15yJ:focus:-ms-input-placeholder {
+				color: rgba(154, 170, 191, .8)
+			}
+			
+			.FeedbackForm-inputBox-15yJ:focus::placeholder {
+				color: rgba(154, 170, 191, .8)
+			}
+			
+			.FeedbackForm-inputBox-15yJ.FeedbackForm-isWarning-2ds- {
+				border-color: #f75659
+			}
+			
+			.FeedbackForm-inputBox-15yJ.FeedbackForm-isWarning-2ds-::-webkit-input-placeholder {
+				color: #f75659
+			}
+			
+			.FeedbackForm-inputBox-15yJ.FeedbackForm-isWarning-2ds-::-moz-placeholder {
+				color: #f75659
+			}
+			
+			.FeedbackForm-inputBox-15yJ.FeedbackForm-isWarning-2ds-:-ms-input-placeholder {
+				color: #f75659
+			}
+			
+			.FeedbackForm-inputBox-15yJ.FeedbackForm-isWarning-2ds-::placeholder {
+				color: #f75659
+			}
+			
+			.FeedbackForm-inputBox-15yJ.FeedbackForm-isWarning-2ds-:focus {
+				box-shadow: none
+			}
+			
+			.FeedbackForm-screenShot--Gsn {
+				overflow: hidden;
+				box-sizing: border-box;
+				transition: max-height .3s ease, opacity .3s ease
+			}
+			
+			.FeedbackForm-screenShotLabel-2Sgh {
+				padding-top: 22px;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none
+			}
+			
+			.FeedbackForm-canvasContainer-mrde {
+				margin-top: 8px;
+				position: relative;
+				background-color: #f6f7f9
+			}
+			
+			.FeedbackForm-canvas-tSGI {
+				display: block;
+				max-width: 100%;
+				cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAABGdBTUEAALGPC/xhBQAAARpJREFUOBGdkr1KA0EUhTcxEkSQQIpAihQWPoedD2BnIVsZQiBVEkiR7SwtBDsJqXwBLQwEgoWNjY2FjYUQ38Ei5Oc7sBeGLTKze+Djzsyecxh2N4ryq0zkHpYQQ2H1SW5TNsxukaZzQsewACvTvIBg3eFUaABHMEv3OruBIN3icm8wZl+FZ3iBQ/AqweGW2FrlKlChV0McFsxOvaegm/T2lLzzTC/dqzaO7A1s/8GzE28Dhhj0f1jQnZ+c18CrKxxrcMO2/uK87m3AcAkrsKA7vzlvQJAmuNywrX84bwY1YBrBATyCFWj+QguCJKNCU1DZQ7r/Y55CsK5x2i2eWFcggTPIJd3Eiv5Zd3KlU3OJOQd9lVd4A5Xl1g4YG2GGhwRfegAAAABJRU5ErkJggg==) 0 17, default;
+				cursor: -webkit-image-set(url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAABGdBTUEAALGPC/xhBQAAARpJREFUOBGdkr1KA0EUhTcxEkSQQIpAihQWPoedD2BnIVsZQiBVEkiR7SwtBDsJqXwBLQwEgoWNjY2FjYUQ38Ei5Oc7sBeGLTKze+Djzsyecxh2N4ryq0zkHpYQQ2H1SW5TNsxukaZzQsewACvTvIBg3eFUaABHMEv3OruBIN3icm8wZl+FZ3iBQ/AqweGW2FrlKlChV0McFsxOvaegm/T2lLzzTC/dqzaO7A1s/8GzE28Dhhj0f1jQnZ+c18CrKxxrcMO2/uK87m3AcAkrsKA7vzlvQJAmuNywrX84bwY1YBrBATyCFWj+QguCJKNCU1DZQ7r/Y55CsK5x2i2eWFcggTPIJd3Eiv5Zd3KlU3OJOQd9lVd4A5Xl1g4YG2GGhwRfegAAAABJRU5ErkJggg==) 1x, url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAABGdBTUEAALGPC/xhBQAAAn9JREFUWAnFlz1IV2EUxs2+ixCCrCCrIaiGGnLIRdBacqkhtCEbqqVaoqmacpIma6rFHHITh1pKMKFaInATkb4hKChKIwj7rt8D74XDy3tfKM69Hng4zz3nvc9zfH3/93//DQ31xWqsBsEnMAU6wILFSpwnwB+Db/BDoPZYjuMYsMMU/Af1nron2o7hh5KBNNhP0AtqjV24vQPFzsT5F70jVU7UiPhNcNyY7IC/AfEwxfUsvcVmvRtdhNIQkNFvcAoUsQ3yGhRDxLmpWOiZryUMzxqDrfCXiTXjZo0bvZIwKnbhvHHZBH9q1s7Am03fhV42BsUQcb5knDbAp8EzsNHUXWgfKrF52XW/cVwH1265xgXUyszL6gOuExixc/8xjIZ8C9YbHRd6GpWyHcjV33PfTpcJjMgJuJ4xOeNU7yP37DY6LvQoKnrUpwxzNb12tLpMYES64foyzBmnep+5p83ouNCDqHwHKcNc7Qv3tLtMYEQOwPVClTNO9ea5Z7/RcaH7UJFwyjBX0x/Q5TKBEdFWa8tzxqme3gTdX0/3IqrDmDLM1XTodfhdYw9qcyBnnOrpcdDrOglienDpAZYyzNX0oDwJ3GMUxZxxWe+M+yRBcBX53j8OpS9Z9ziM4tKguoJ8B5Tthq1fDPe4p+co3gbLgrLyLWDNY94X1rqnFmN8F64dUiwBIyAeRNd6Za0sjqFsTXWGdJYU+q00DGz/qhpVxg3EraH4Q7AmmDaSB4Hq10Ot0vQimMVDPaLeFJz1A1DvQsqVxmbU40Hs9ST9tZVOYMT1r+gw1zF9ReEx2BI3qrrWp6jTiH+FPwD6pI2BJ6DW0HkYBzNAQ9wH82DB4i/kUnkzGX+skQAAAABJRU5ErkJggg==) 2x) 0 17, default
+			}
+			
+			.FeedbackForm-canvas-tSGI.FeedbackForm-isCapturing-3UFp {
+				display: none
+			}
+			
+			.FeedbackForm-checkLabelWrapper-3B7w {
+				margin-top: 12px
+			}
+			
+			.FeedbackForm-checkLabel-2VTb {
+				cursor: pointer;
+				color: #9aaabf;
+				transition: color .15s ease-out;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none
+			}
+			
+			.FeedbackForm-checkLabel-2VTb:hover {
+				color: rgba(154, 170, 191, .8)
+			}
+			
+			.FeedbackForm-checkLabel-2VTb input {
+				margin-right: .5em;
+				vertical-align: 1px
+			}
+			
+			.FeedbackForm-actions-dJ87 {
+				margin-top: 40px;
+				text-align: center
+			}
+			
+			.FeedbackForm-submitButton-1oKQ {
+				display: inline-block;
+				min-width: 220px;
+				padding: 8px 1em;
+				background-color: #0f88eb;
+				border: 1px solid #0f88eb;
+				border-radius: 3px;
+				font: inherit;
+				color: #fff;
+				transition: background-color .15s ease-out, opacity .15s ease-out;
+				cursor: pointer;
+				outline: none
+			}
+			
+			.FeedbackForm-submitButton-1oKQ[disabled] {
+				opacity: .8;
+				cursor: default
+			}
+			
+			.FeedbackForm-submitButton-1oKQ:hover {
+				background-color: #0d79d1
+			}
+			
+			.FeedbackForm-submitButton-1oKQ:active {
+				opacity: .8
+			}
+			
+			.FeedbackForm-successMask-34go {
+				display: -ms-flexbox;
+				display: flex;
+				-ms-flex-pack: center;
+				justify-content: center;
+				-ms-flex-align: center;
+				align-items: center;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: #fff
+			}
+			
+			.FeedbackForm-successTitle-1Y6p {
+				font-size: 24px;
+				font-weight: 500;
+				line-height: 33px;
+				font-family: Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+				text-align: center
+			}
+			
+			.FeedbackForm-successSubtitle-A_aP {
+				margin-top: 10px;
+				font-size: 18px;
+				line-height: 33px;
+				text-align: center
+			}
+		</style>
+	</head>
+
+	<body class="Entry-body" data-reactid="17">
+		<div id="root" data-reactid="18">
+			<div data-reactroot="">
+				<div class="LoadingBar"></div>
+				<div>
+					<header class="Sticky AppHeader is-fixed" role="banner" style="width: 100%; top: 0px; left: 0px;" data-za-module="TopNavBar">
+						<!-- react-empty: 694 -->
+						<div class="AppHeader-inner">
+							<a aria-label="知乎" href="http://localhost:8080/zhihu/index.html">
+								<img src="pic/logo.png">
+							</a>
+							<nav class="AppHeader-nav" role="navigation">
+								<a class="AppHeader-navItem" href="index.html">首页</a>
+								<a class="AppHeader-navItem" href="faxian.html">发现</a>
+								<a class="AppHeader-navItem" href="topicChoose.html">话题</a>
+								<a class="AppHeader-navItem" href="index-article.html"><b>文章</b></a>
+							</nav>
+							<div class="SearchBar" role="search">
+								<div class="SearchBar-toolWrapper">
+									<form class="SearchBar-tool">
+										<div>
+											<div class="Popover">
+												<div class="SearchBar-input Input-wrapper Input-wrapper--grey"><input class="Input" id="Popover-6866-70423-toggle" role="combobox" aria-expanded="false" aria-haspopup="true" aria-activedescendant="AutoComplete-6863-32955--1" aria-owns="Popover-6866-70423-content" aria-autocomplete="list" type="text" maxlength="100" placeholder="搜索你感兴趣的内容…" value="" autocomplete="off">
+													<div class="Input-after"><button class="Button SearchBar-searchIcon Button--primary" aria-label="搜索" type="button"><svg xmlns="http://www.w3.org/2000/svg" class="Icon Icon--search" aria-hidden="true" style="height: 16px; width: 16px;" viewBox="0 0 16 16" width="16" height="16"><title /><g><path d="M 12.054 10.864 c 0.887 -1.14 1.42 -2.57 1.42 -4.127 C 13.474 3.017 10.457 0 6.737 0 S 0 3.016 0 6.737 c 0 3.72 3.016 6.737 6.737 6.737 c 1.556 0 2.985 -0.533 4.127 -1.42 l 3.103 3.104 c 0.765 0.46 1.705 -0.37 1.19 -1.19 l -3.103 -3.104 Z m -5.317 0.925 c -2.786 0 -5.053 -2.267 -5.053 -5.053 S 3.95 1.684 6.737 1.684 S 11.79 3.95 11.79 6.737 S 9.522 11.79 6.736 11.79 Z" /></g></svg></button></div>
+												</div>
+												<!-- react-empty: 29 -->
+											</div>
+										</div>
+									</form>
+								</div><button onclick="toSearch()" class="Button QuestionAskButton SearchBar-askButton Button--primary Button--blue" style="margin-top:14px;" type="button"><!-- react-text: 31 -->搜索<!-- /react-text --><!-- react-empty: 32 --></button></div>
+							<div class="AppHeader-userInfo">
+								<!-- react-empty: 42 -->
+								<div class="AppHeader-profile">
+									<div class="Popover AppHeader-menu">
+									
+									<a href="g_dongtai.html">
+									<button class="Button AppHeader-profileEntry Button--plain" type="button" id="Popover-7340-29363-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover-7340-29363-content">
+									<img class="Avatar AppHeader-profileAvatar" width="30" height="30" id="header"></button></a>
+										<!-- react-empty: 713 -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</header>
+					<div class="Sticky--holder" style="position: relative; top: 0px; right: 0px; bottom: 0px; left: 0px; display: block; float: none; margin: 0px; height: 53px;"></div>
+				</div>
+				<!-- react-empty: 46 -->
+				<main role="main" class="App-main">
+					<div class="Topstory">
+						<!-- react-empty: 49 -->
+						<!-- react-empty: 50 -->
+						<div class="Topstory-container">
+							<div class="Topstory-mainColumn">
+								<div class="Card TopstoryHeader">
+									<div class="TopstoryHeader-nav"><a href="tiwen.html"><button class="Button QuestionAskButton TopstoryHeader-navItem Button--plain" type="button"><svg xmlns="http://www.w3.org/2000/svg" class="Icon Icon--question" aria-hidden="true" style="height: 16px; width: 16px;" viewBox="0 0 17 17" width="16" height="16"><title /><g><g fill="#8590a6" fill-rule="evenodd" transform="translate(-3 -3)">     <path d="M 3.833 6.356 c 0 -1.66 1.334 -3.007 2.993 -3.007 h 9.348 c 1.653 0 2.993 1.338 2.993 3.006 v 8.498 c 0 1.66 -1.266 3.467 -2.812 4.03 l -1.09 0.396 c -2.08 0.757 -5.447 0.76 -7.53 0 l -1.09 -0.396 c -1.553 -0.565 -2.812 -2.363 -2.812 -4.03 V 6.356 Z m 1.643 0.67 v 7.492 c 0 1.1 0.84 2.314 1.873 2.697 l 2.277 0.844 c 1.035 0.383 2.712 0.383 3.746 0 l 2.278 -0.845 c 1.036 -0.384 1.874 -1.59 1.874 -2.697 V 7.026 c 0 -1.1 -0.897 -2.003 -2.003 -2.003 H 7.48 c -1.118 0 -2.004 0.897 -2.004 2.003 Z" />     <path d="M 13.012 11.46 l -0.422 0.29 c -0.232 0.177 -0.433 0.53 -0.433 0.53 s -0.08 0.134 -0.11 0.398 v 0.16 h -1.63 v -0.24 c 0.02 -0.555 0.11 -0.86 0.343 -1.13 c 0.364 -0.422 1.168 -0.935 1.202 -0.956 c 0.114 -0.086 0.212 -0.184 0.284 -0.288 c 0.17 -0.23 0.244 -0.412 0.244 -0.59 c 0 -0.25 -0.074 -0.478 -0.22 -0.682 c -0.143 -0.197 -0.41 -0.296 -0.798 -0.296 c -0.385 0 -0.648 0.12 -0.806 0.368 c -0.162 0.254 -0.243 0.523 -0.243 0.796 l -0.005 0.23 l -1.656 -0.003 l 0.003 -0.23 c 0.043 -1.007 0.406 -1.732 1.078 -2.155 c 0.424 -0.27 1.113 -0.396 1.657 -0.406 c 0.873 0.01 1.39 0.193 1.923 0.575 c 0.54 0.387 0.815 0.965 0.815 1.72 c 0 0.422 -0.135 0.82 -0.4 1.18 c -0.14 0.193 -0.442 0.434 -0.826 0.73 Z" />     <ellipse cx="11.226" cy="14.791" rx="1.095" ry="1.116" />   </g></g></svg><!-- react-text: 59 -->提问<!-- /react-text --><!-- react-empty: 60 --></button></a>
+										<a title="写文章" class="TopstoryHeader-navItem" href="wenzhang.html" target="_blank">
+											<svg xmlns="http://www.w3.org/2000/svg" class="Icon Icon--write" aria-hidden="true" style="height: 16px; width: 16px;" viewBox="0 0 18 18" width="16" height="16">
+												<title />
+												<g>
+													<g fill="none" fill-rule="evenodd">
+														<path fill="#8590a6" d="M 9.595 2.023 H 4.842 c -2.22 0 -4.01 1.793 -4.01 4.005 v 7.62 c 0 2.21 1.796 4.003 4.01 4.003 h 7.316 c 2.22 0 4.01 -1.792 4.01 -4.003 v -7.11 v 0.51 L 14.523 8.72 v 4.253 c 0 1.66 -1.336 3.004 -3.01 3.004 h -6.03 c -1.66 0 -3.008 -1.338 -3.008 -3.004 V 6.7 c 0 -1.657 1.336 -3.002 3.01 -3.002 h 2.467 L 9.595 2.03 v -0.007 Z" />
+														<path stroke="#8590a6" stroke-width="1.5" d="M 6.372 11.08 c -0.185 -0.915 0.2 -2.238 0.85 -2.888 l 6.616 -6.616 c 0.565 -0.565 1.472 -0.567 2.038 0 c 0.56 0.56 0.56 1.477 0 2.038 L 9.258 10.23 c -0.652 0.65 -1.975 1.034 -2.888 0.85 Z" />
+														<path fill="#8590a6" d="M 13.04 2.088 l 2.324 2.324 l -0.987 0.986 l -2.323 -2.324 Z" />
+													</g>
+												</g>
+											</svg>
+											<!-- react-text: 70 -->写文章
+											<!-- /react-text -->
+										</a>
+									</div>
+								</div>
+								
+								<!--问题框-->
+								<div class="TopstoryMain" id="mainframe">
+									
+								</div>
+							</div>
+							<div class="TopstorySideBar" data-za-module="RightSideBar" data-za-module-info="{}">
+								<div>
+									<div class="Sticky">
+										<div class="Card">
+											<ul class="TopstorySideBar-categoryList">
+												<li class="TopstorySideBar-categoryItem TopstorySideBar-liveItem">
+													<a class="Button Button--plain" href="https://www.zhihu.com/lives" target="_blank" title="Live" type="button"><span class="TopstorySideBar-categoryIcon"><svg width="17" height="23" viewBox="46 20 19 25" version="1.1" xmlns="http://www.w3.org/2000/svg" class="Icon Icon--live" aria-hidden="true" style="height: 23px; width: 17px;"><title></title><g><path d="M56.8810215,30.7568815 L58.7723286,21.7731732 C58.9982334,20.7001257 58.5864825,20.4834196 57.8486846,21.3080173 L47.2229603,33.183826 C46.4842592,34.0094332 46.7865222,34.6768922 47.8960663,34.6768923 L54.1189785,34.6768926 L52.2276714,43.6606009 C52.0017666,44.7336483 52.4135175,44.9503545 53.1513154,44.1257568 L63.7770397,32.2499481 C64.5157408,31.4243409 64.2134778,30.7568819 63.1039337,30.7568818 L56.8810215,30.7568815 Z" stroke="none" fill-rule="evenodd"></path></g></svg></span><span class="TopstorySideBar-categoryLabel">Live</span></a>
+												</li>
+												<li class="TopstorySideBar-categoryItem TopstorySideBar-pubItem">
+													<a class="Button Button--plain" href="https://www.zhihu.com/pub/" target="_blank" title="书店" type="button"><span class="TopstorySideBar-categoryIcon"><svg width="16" height="19" viewBox="1027 99 15 19" version="1.1" xmlns="http://www.w3.org/2000/svg" class="Icon Icon--pub" aria-hidden="true" style="height: 19px; width: 16px;"><title></title><g><path d="M1027.80947,117.581364 C1028.14017,117.825892 1028.54916,117.970588 1028.99188,117.970588 L1040.00812,117.970588 C1041.1066,117.970588 1042,117.078791 1042,115.978704 L1042,104.962472 C1042,103.940693 1041.2284,103.096361 1040.23529,102.983423 L1040.23529,114.083493 C1040.23529,115.186197 1039.33998,116.199626 1038.25494,116.344462 L1030.30389,117.405804 C1030.06799,117.437292 1029.84173,117.425823 1029.63192,117.37748 L1036.12083,115.345921 C1037.18227,115.013604 1038.02941,113.853108 1038.02941,112.748737 L1038.02941,101.209023 C1038.02941,100.111989 1037.17491,99.4769116 1036.12083,99.8069259 L1028.90859,102.064949 C1027.84715,102.397266 1027,103.557762 1027,104.662133 L1027,116.201847 C1027,116.872978 1027.31981,117.371216 1027.80947,117.581364 Z" stroke="none" fill-rule="evenodd"></path></g></svg></span><span class="TopstorySideBar-categoryLabel">书店</span></a>
+												</li>
+												<li class="TopstorySideBar-categoryItem TopstorySideBar-orgItem">
+													<a class="Button Button--plain" href="https://www.zhihu.com/roundtable" target="_blank" title="圆桌" type="button"><span class="TopstorySideBar-categoryIcon"><svg viewBox="0 0 20 19" class="Icon Icon--org" width="19" height="18" aria-hidden="true" style="height: 18px; width: 19px;"><title></title><g><path d="M12.207 12.373c-.758-.434-1.425-.975-1.99-1.615-.045.123-.085.247-.124.37-.17.65-.332 1.706-.095 2.977.293 1.443 1.077 2.738 2.206 3.64.467.277 1.084.446 1.696.446.69 0 1.337-.2 1.873-.58 1.362-.98 1.742-2.82.917-4.26-1.53.138-3.11-.2-4.483-.963zm-1.16-3.817c.134-.027.266-.057.39-.085.98-.26 1.863-.73 2.622-1.41 1.1-.98 1.83-2.31 2.06-3.74.02-1.25-.76-2.51-1.89-3.02-.43-.2-.88-.3-1.34-.3-1.18 0-2.24.62-2.82 1.63.89 1.29 1.38 2.84 1.38 4.4 0 .866-.14 1.73-.41 2.533zm-2.33.402l-.26-.29C7.98 8.17 7.15 7.486 5.937 7.09c-.648-.216-1.322-.325-2.002-.325-.78 0-1.545.142-2.267.423-1.085.616-1.77 1.898-1.656 3.167.18 1.665 1.576 2.924 3.245 2.926.676-1.44 1.737-2.61 3.08-3.4.747-.44 1.545-.75 2.38-.92zM3.983 5.463c1.31 0 2.635.344 3.826.994.76.438 1.44.977 1.98 1.585.03-.112.07-.226.09-.34.25-1.028.274-2.026.077-2.97-.28-1.392-1.067-2.69-2.21-3.652C7.29.815 6.662.65 6.05.65c-.687 0-1.33.2-1.854.58-1.38.994-1.75 2.83-.897 4.264.22-.02.45-.03.68-.03zm12.78.113c-.68 1.45-1.752 2.624-3.11 3.403-.742.44-1.54.75-2.376.92l.24.27c.507.5 1.353 1.18 2.54 1.57.653.22 1.334.32 2.025.32h.002c.77 0 1.526-.14 2.247-.4 1.12-.64 1.79-1.89 1.65-3.16-.15-1.65-1.57-2.938-3.21-2.938zm-7.817 4.672c-.13.027-.26.055-.39.086-.657.196-1.67.614-2.626 1.442-1.098.976-1.83 2.308-2.055 3.745.003 1.26.772 2.49 1.914 3.02.42.2.87.29 1.34.29 1.17 0 2.23-.61 2.82-1.63-.9-1.28-1.38-2.8-1.41-4.41 0-.87.14-1.73.4-2.53z" fill-rule="evenodd"></path></g></svg></span><span class="TopstorySideBar-categoryLabel">圆桌</span></a>
+												</li>
+												<li class="TopstorySideBar-categoryItem TopstorySideBar-editItem">
+													<a class="Button Button--plain" href="https://zhuanlan.zhihu.com/" target="_blank" title="专栏" type="button"><span class="TopstorySideBar-categoryIcon"><svg width="18" height="18" viewBox="137 93 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" class="Icon Icon--edit" aria-hidden="true" style="height: 18px; width: 18px;"><title></title><g><path d="M138.075539,106.965579 C138.274765,106.301475 138.635899,105.697055 139.126601,105.206448 L147.69431,96.6372993 C147.792523,96.5390716 147.925848,96.483871 148.064884,96.483871 C148.20392,96.483871 148.337246,96.5390716 148.435458,96.6372993 L151.362638,99.5639294 C151.567293,99.7686586 151.567293,100.100102 151.362638,100.304831 L142.795296,108.873561 C142.304393,109.364431 141.699005,109.725891 141.033521,109.925468 L137.506087,110.98345 C137.36755,111.024921 137.217388,110.987119 137.115128,110.88503 C137.012868,110.782941 136.975027,110.633054 137.016606,110.494788 L138.075539,106.965579 Z M154.557712,94.8309894 C155.147429,95.4210944 155.147429,96.3765796 154.557712,96.9666846 L152.865169,98.658988 C152.770858,98.7533952 152.642809,98.8064516 152.509273,98.8064516 C152.375738,98.8064516 152.247689,98.7533952 152.153377,98.658988 L149.341054,95.8466644 C149.14438,95.6499126 149.14438,95.331282 149.341054,95.1345303 L151.033647,93.4422269 C151.316628,93.1590691 151.700783,92.9999621 152.101377,93 C152.501972,93.0000379 152.886096,93.1592176 153.169024,93.4424289 L154.557712,94.8309894 Z" stroke="none" fill-rule="nonzero"></path></g></svg></span><span class="TopstorySideBar-categoryLabel">专栏</span></a>
+												</li>
+											</ul>
+										</div>
+										<!-- react-empty: 644 -->
+										<div class="Card">
+											<ul class="TopstorySideBar-navList">
+												<li class="TopstorySideBar-navItem TopstorySideBar-starItem">
+													<a class="Button Button--plain" href="https://www.zhihu.com/collections" target="_blank" type="button">
+														<svg viewBox="0 0 20 20" class="Icon TopstorySideBar-navIcon Icon--star" width="15" height="15" aria-hidden="true" style="height: 15px; width: 15px;">
+															<title></title>
+															<g>
+																<path d="M3.515 17.64l.918-5.355-3.89-3.792c-.926-.902-.64-1.784.64-1.97L6.56 5.74 8.964.87c.572-1.16 1.5-1.16 2.072 0l2.404 4.87 5.377.783c1.28.186 1.566 1.068.64 1.97l-3.89 3.793.918 5.354c.22 1.274-.532 1.82-1.676 1.218L10 16.33l-4.808 2.528c-1.145.602-1.896.056-1.677-1.218z"></path>
+															</g>
+														</svg><button class="TopstorySideBar-navLink" target="_blank">我的收藏</button></a>
+												</li>
+												<li class="TopstorySideBar-navItem TopstorySideBar-questionListItem">
+													<a class="Button Button--plain" href="https://www.zhihu.com/people/yu-wen-wen-91-23/following/questions" target="_blank" type="button">
+														<svg width="15" height="15" viewBox="0 0 16 17" class="Icon TopstorySideBar-navIcon Icon--questionList" aria-hidden="true" style="height: 15px; width: 15px;">
+															<title></title>
+															<g>
+																<path d="M1.74 0h12.52C15.22 0 16 .775 16 1.73v10.54c0 .954-.78 1.73-1.74 1.73h-3.825l-1.658 2.043c-.044.054-.093.103-.147.146-.43.34-1.06.28-1.407-.15L5.565 14H1.74C.777 14 0 13.223 0 12.27V1.73C0 .776.778 0 1.74 0zM8 12c.273 0 .508-.096.705-.287.197-.19.295-.428.295-.712s-.098-.52-.295-.71C8.508 10.1 8.273 10 8 10c-.273 0-.508.098-.705.295C7.098 10.49 7 10.727 7 11c0 .284.098.522.295.713.197.192.432.287.705.287zm1.278-4.924c.492-.457.833-.782 1.023-.975.19-.19.36-.42.5-.68.14-.26.21-.57.21-.93 0-.45-.12-.86-.36-1.24s-.58-.68-1.03-.9c-.45-.23-.96-.34-1.54-.34-.62 0-1.17.135-1.64.4-.46.266-.82.6-1.06 1.006-.244.405-.366.804-.366 1.2 0 .19.08.368.23.53.158.166.347.247.57.247.38 0 .64-.23.775-.7.143-.45.32-.79.527-1.02.21-.23.534-.34.974-.34.375 0 .68.116.92.34.24.23.357.51.357.84 0 .17-.04.33-.115.477-.075.146-.17.28-.285.396-.116.118-.3.294-.557.526-.29.263-.523.492-.695.685-.17.194-.31.42-.41.673-.103.257-.155.56-.155.907 0 .28.07.49.214.63.14.14.316.215.524.215.4 0 .64-.217.715-.65.045-.203.08-.345.1-.426.02-.08.053-.163.093-.244.04-.08.1-.17.18-.27.085-.1.194-.21.33-.34z" fill-rule="evenodd"></path>
+															</g>
+														</svg><button class="TopstorySideBar-navLink" target="_blank">我关注的问题</button><span class="TopstorySideBar-navNumber">17</span></a>
+												</li>
+												<li class="TopstorySideBar-navItem TopstorySideBar-inviteItem">
+													<a class="Button Button--plain" href="https://www.zhihu.com/question/invited" target="_blank" type="button">
+														<svg width="15" height="15" viewBox="906 312 17 16" version="1.1" xmlns="http://www.w3.org/2000/svg" class="Icon TopstorySideBar-navIcon Icon--invite" aria-hidden="true" style="height: 15px; width: 15px;">
+															<title></title>
+															<g>
+																<path d="M918.9997,327.8433 C916.790561,327.8433 914.9997,326.052439 914.9997,323.8433 C914.9997,321.634161 916.790561,319.8433 918.9997,319.8433 C921.208839,319.8433 922.9997,321.634161 922.9997,323.8433 C922.9997,326.052439 921.208839,327.8433 918.9997,327.8433 Z M919.496718,323.340174 C919.496718,323.340174 919.492733,321.543896 919.496718,321.340174 C919.484248,320.677675 918.485145,320.677675 918.497615,321.340174 C918.485145,321.977663 918.497615,323.340174 918.497615,323.340174 C918.497615,323.340174 916.536622,323.339999 916.49941,323.340174 C915.83313,323.3433 915.83313,324.3433 916.49941,324.3433 C917.165689,324.3433 918.497615,324.340174 918.497615,324.340174 L918.497615,326.340174 C918.497615,327.013298 919.499836,327.013298 919.496718,326.340174 C919.4936,325.66705 919.496718,324.340174 919.496718,324.340174 C919.496718,324.340174 920.828644,324.3433 921.498041,324.3433 C922.167438,324.3433 922.167438,323.3433 921.494924,323.340174 L919.496718,323.340174 Z M914.327,320.6348 C913.511,321.5248 913,322.6998 913,324.0008 C913,325.0128 913.306,325.9518 913.825,326.7398 L910.839,326.7398 C906.8,326.7398 906.078,326.6038 906,325.3578 C906,323.2008 908.166,320.5988 910.839,320.5988 L913.961,320.5988 C914.086,320.5988 914.204,320.6258 914.327,320.6348 Z M912.2432,319.37 C910.1742,319.37 908.4972,317.72 908.4972,315.685 C908.4972,313.65 910.1752,312 912.2432,312 C914.3122,312 915.9892,313.65 915.9892,315.685 C915.9892,317.72 914.3122,319.37 912.2432,319.37 Z" stroke="none" fill-rule="evenodd"></path>
+															</g>
+														</svg><button class="TopstorySideBar-navLink" target="_blank">我的邀请</button></a>
+												</li>
+											</ul>
+										</div>
+
+										<!-- react-empty: 687 -->
+										<!-- react-empty: 688 -->
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</main>
+				<!-- react-empty: 690 -->
+				<!-- react-empty: 691 -->
+				<!-- react-empty: 692 -->
+				<div class="CornerButtons">
+					<div class="CornerAnimayedFlex"><button class="Button CornerButton Button--plain" data-tooltip="建议反馈" data-tooltip-position="left" aria-label="建议反馈" type="button"><svg width="18" height="16" viewBox="0 0 18 16" xmlns="http://www.w3.org/2000/svg" class="Icon Icon--feedback" aria-hidden="true" style="height: 16px; width: 18px;"><title>建议反馈</title><g><path d="M1.01 2.99L3 1s1-1 2-1h8c1 0 2 1 2 1l2 2s1 1 1 2v9s0 2-2.002 2H2c-2 0-2-2-2-2V5c0-1 1.01-2.01 1.01-2.01zM4.5 1.5h9L16 4H2l2.5-2.5zm2 5.5h5s.5 0 .5.5-.5.5-.5.5h-5S6 8 6 7.5s.5-.5.5-.5z" fill-rule="evenodd"></path></g></svg></button></div>
+					<div class="CornerAnimayedFlex CornerAnimayedFlex--hidden"><button class="Button CornerButton Button--plain" data-tooltip="回到顶部" data-tooltip-position="left" aria-label="回到顶部" type="button"><svg width="16" height="16" viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg" class="Icon Icon--backToTopArrow" aria-hidden="true" style="height: 16px; width: 16px;"><title>回到顶部</title><g><path d="M12.036 15.59c0 .55-.453.995-.997.995H5.032c-.55 0-.997-.445-.997-.996V8.584H1.03c-1.1 0-1.36-.633-.578-1.416L7.33.29c.39-.39 1.026-.385 1.412 0l6.878 6.88c.782.78.523 1.415-.58 1.415h-3.004v7.004z" fill-rule="evenodd"></path></g></svg></button></div>
+				</div>
+			</div>
+		</div>
+		<div>
+		</div><span><div></div></span>
+
+	</body></html>

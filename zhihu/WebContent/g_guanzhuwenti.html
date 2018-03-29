@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<!-- saved from url=(0065)https://www.zhihu.com/people/yu-wen-wen-91-23/following/questions -->
+<html lang="zh" data-reactroot="" data-reactid="1" data-react-checksum="-1776835499" data-focus-method="pointer">
+
+	<head data-reactid="2">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title data-reactid="4">问题</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" data-reactid="5">
+		<meta name="renderer" content="webkit" data-reactid="6">
+		<meta name="force-rendering" content="webkit" data-reactid="7">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" data-reactid="8">
+		<script type="text/javascript" src="./js/jquery-3.2.1.js"></script>
+		<link href="css/style_m.css" rel="stylesheet" data-reactid="17">
+		<meta name="apple-itunes-app" content="app-id=432274380,
+              app-argument=zhihu://people/yu-wen-wen-91-23" data-react-helmet="true">
+        <script>
+        function toSearch(){
+			var string = $("input#Popover-6866-70423-toggle").val();
+			var result = encodeURI(encodeURI(string));
+			window.location.href="search.html?content="+result;
+		}
+        $(function(){
+          $.getJSON("./GetHead",function(data){
+				var headimg="";
+				$.each(data,function(index,value){
+					if(index=="headimg")headimg=value;
+				});
+				$("#header").attr('src',headimg);
+				$("#header1").attr('src',headimg);
+			});
+			$.getJSON("./GetUsernameServlet",function(data){
+				var selfusername="";
+				var selftouxiang="";
+				for(i=0;i<data.length;i++){
+					$.each(data[i],function(index,value){
+						if(index=="username")selfusername=value;
+						if(index=="touxiang")selftouxiang=value;
+					});				
+				}
+				$("#MySelfUsername").append("<h1 class=\"ProfileHeader-title\"><span class=\"ProfileHeader-name\">"+selfusername+"</span><span class=\"RichText ProfileHeader-headline\"></span></h1>");
+			});
+		});
+        </script>
+        <script>
+        $(function(){
+			$.getJSON("./GetGuanZhuRenServlet",function(data){
+				var userID="";
+				var username="";
+				var touxiang="";
+				var numberofG = data.length;
+				$("#numberofG").append("<p>"+numberofG+"</p>");
+			});
+		});
+        </script>
+        <script>
+        $(function(){
+			$.getJSON("./GetBeiGuanZhuServlet",function(data){
+				var userID="";
+				var username="";
+				var touxiang="";
+				var numberofBG = data.length;
+				$("#numberofBG").append("<p>"+numberofBG+"</p>");
+			});
+		});
+        </script>
+        <script>
+        $(function(){
+			$.getJSON("./GetSelfQServlet",function(data){
+				var q_pID="";
+				var userID="";
+				var title="";
+				var content="";
+				var topicID="";
+				var date="";
+				for(i=0;i<data.length;i++){
+					$.each(data[i],function(index,value){
+						if(index=="q_pID")q_pID=value;
+						if(index=="userID")userID=value;
+						if(index=="title")title=value;
+						if(index=="content")content=value;
+						if(index=="topicID")topicID=value;
+						if(index=="date")date=value;
+					});
+					$("#MyItems").append("<div class=\"List-item\" id=\"content"+i+"\"></div><p>");
+					$("#content"+i).append("<div class=\"ContentItem\" data-za-module=\"QuestionItem\" data-za-module-info=\"{&quot;card&quot;:{&quot;content&quot;:{&quot;type&quot;:&quot;Question&quot;,&quot;token&quot;:&quot;29200876&quot;,&quot;item_num&quot;:27,&quot;comment_num&quot;:0,&quot;follower_num&quot;:432,&quot;publish_timestamp&quot;:1427810031000,&quot;author_member_hash_id&quot;:&quot;14a37a262796ecaa4549eca167b31189&quot;}}}\"><h2 class=\"ContentItem-title\"><div class=\"QuestionItem-title\"><a href=\"https://www.zhihu.com/question/29200876\" target=\"_blank\">"+title+"</a></div></h2><div class=\"ContentItem-status\"><span class=\"ContentItem-statusItem\">"+date+"</span><span class=\"ContentItem-statusItem\"></span><span class=\"ContentItem-statusItem\"></span></div></div>");				
+				}
+			});
+		});
+        </script>    
+		<style type="text/css">
+			.CloseIcon-icon-2xww {
+				transition: opacity .3s ease-out
+			}
+			
+			.CloseIcon-icon-2xww:hover {
+				opacity: .8
+			}
+		</style>
+		<style type="text/css">
+			.animations-fadeIn-1aFv {
+				animation: animations-fadeIn-1aFv .3s ease-out both
+			}
+			
+			@keyframes animations-fadeIn-1aFv {
+				0% {
+					opacity: 0
+				}
+				to {
+					opacity: 1
+				}
+			}
+			
+			.animations-fadeOut-3XSQ {
+				animation: animations-fadeOut-3XSQ .3s ease-out both
+			}
+			
+			@keyframes animations-fadeOut-3XSQ {
+				0% {
+					opacity: 1
+				}
+				to {
+					opacity: 0
+				}
+			}
+			
+			.animations-fadeInUp-3KKK {
+				animation: animations-fadeInUp-3KKK .3s cubic-bezier(.25, .1, .35, 1) both
+			}
+			
+			@keyframes animations-fadeInUp-3KKK {
+				0% {
+					opacity: 0;
+					transform: translateY(20px)
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0)
+				}
+			}
+			
+			.animations-fadeOutDown-r_A_ {
+				animation: animations-fadeOutDown-r_A_ .3s cubic-bezier(.25, .1, .35, 1) both
+			}
+			
+			@keyframes animations-fadeOutDown-r_A_ {
+				0% {
+					transform: translateY(0)
+				}
+				to {
+					opacity: 0;
+					transform: translateY(20px)
+				}
+			}
+		</style>
+		<style type="text/css">
+			.Modal-backdrop-2ksh {
+				background-color: rgba(0, 0, 0, .65)
+			}
+			
+			.Modal-backdrop-2ksh,
+			.Modal-modalWrapper-56Mq {
+				position: fixed;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				z-index: 10010
+			}
+			
+			.Modal-modalWrapper-56Mq {
+				display: -ms-flexbox;
+				display: flex;
+				-ms-flex-align: center;
+				align-items: center;
+				-ms-flex-pack: center;
+				justify-content: center
+			}
+			
+			.Modal-modal-wf58 {
+				position: relative;
+				z-index: 10011;
+				background: #fff;
+				border-radius: 2px
+			}
+			
+			.Modal-content-3JxL {
+				width: 588px;
+				max-height: calc(100vh - 24px * 2);
+				overflow-x: hidden;
+				overflow-y: auto;
+				-webkit-overflow-scrolling: touch
+			}
+			
+			.Modal-closeButton-3JkR {
+				position: absolute;
+				top: 4px;
+				right: -44px;
+				padding: 12px;
+				width: 40px;
+				height: 40px;
+				cursor: pointer;
+				box-sizing: border-box;
+				background: none;
+				outline: none;
+				border: none
+			}
+		</style>
+		<style type="text/css">
+			.FeedbackButton-button-3waL {
+				position: fixed;
+				z-index: 10000;
+				bottom: 40px;
+				right: 40px;
+				width: 40px;
+				height: 40px;
+				cursor: pointer;
+				border-radius: 50%;
+				background-color: #fff;
+				border: none;
+				outline: none;
+				box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+				font-weight: 700;
+				line-height: normal
+			}
+			
+			.FeedbackButton-icon-1Rgw {
+				display: inline-block;
+				vertical-align: middle;
+				width: 18px;
+				height: 18px;
+				background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzUiIGhlaWdodD0iMzYiIHZpZXdCb3g9IjAgMCAzNSAzNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+R3JvdXAgNjwvdGl0bGU+PGcgZmlsbD0iIzAwOEZFQiIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTMgMTguM2MwLS40IDAtLjcuNC0xIC4yLS4yLjUtLjMuOC0uMy40IDAgLjcgMCAxIC40LjIuMi4zLjUuMyAxIDAgLjIgMCAuNS0uNC43IDAgLjQtLjQuNS0uOC41LS4zIDAtLjYgMC0uOC0uNC0uMyAwLS40LS40LS40LS43ek0xMCAxMC43di0xYy40LTEgMS41LTIuNyA0LjItMi43IDIgMCAzLjggMS40IDMuOCAzcy0xLjQgMi43LTIgMy4zYy0uOC42LTEgMS0xLjIgMS43LS4yLjYtLjYgMS0xLjMgMS0uMy0uMi0uNi0uMy0uNy0uNXYtLjhjMC0uMiAwLS43LjMtMS4ybDEuNC0xLjVjMS40LTEuMiAxLjYtMiAuOC0yLjgtLjUtLjQtMS42LS41LTIuMiAwLS44LjQtMSAxLTEuMiAxLjMtLjIuNS0uMyAxLTEuMyAxLS4zLS4yLS40LS40LS41LS44eiIvPjxwYXRoIGQ9Ik0yOS44IDEwLjJ2M2MxLjQgMS44IDIuMyA0IDIuMyA2LjMgMCAzLjgtMi4yIDctNS41IDl2My44bC0zLjctMi41LTMgLjNjLTIuOCAwLTQuMy0uOC02LjQtMi4yaC0zLjFDMTMgMzAuNCAxNS42IDMyIDIwIDMyYy44IDAgMS43IDAgMi42LS4ybDYgNHYtNi40YzMuNS0yLjQgNS43LTYgNS43LTEwIDAtMy42LTEuNy03LTQuNS05LjJ6TTE0LjQgMjUuNmM4IDAgMTMuMi02IDEzLjItMTNTMjEgMCAxNC40IDBDNi40IDAgMCA1LjcgMCAxMi43YzAgNCAxLjUgNy41IDQuNCAxMFYyOWw2LjMtMy42IDMuNy4yek0xNC4yIDJjNi41IDAgMTEuNSA1LjMgMTEuNSAxMUMyNS43IDE5IDIxIDI0IDE0LjQgMjRjLTEgMC0zLjYtLjMtNC41LS41TDYgMjUuN3YtNGMtMi43LTIuMi00LTUtNC04LjZDMiA3IDcgMiAxNCAyeiIvPjwvZz48L3N2Zz4=);
+				background-repeat: no-repeat;
+				background-size: contain
+			}
+			
+			.FeedbackButton-button-3waL:hover .FeedbackButton-icon-1Rgw {
+				background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzUiIGhlaWdodD0iMzYiIHZpZXdCb3g9IjAgMCAzNSAzNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+R3JvdXAgMTE8L3RpdGxlPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHBhdGggZD0iTTI5LjQgMTNjMCAyLS4zIDguMi01IDExLjQtNC4zIDMtOSAzLjMtMTEuMyAzLjNoLTNjMi44IDIuNyA2LjYgNC44IDEyLjIgNCAxIDAgNi4zIDQgNi4zIDRWMjljMy41LTIuMyA1LjMtNS4yIDUuNi05LjUuMy0zLjctMS42LTctNC41LTkuNXYzem0tMTUgMTIuNmM4IDAgMTMuMi02IDEzLjItMTNTMjEgMCAxNC40IDBDNi40IDAgMCA1LjcgMCAxMi43YzAgNCAxLjUgNy41IDQuNCAxMFYyOWw2LjMtMy42IDMuNy4zeiIgZmlsbD0iIzAwOEZFQiIvPjxwYXRoIGQ9Ik0xMyAxOC4zYzAtLjQgMC0uNy40LTFzLjUtLjMuOC0uM2MuNCAwIC43IDAgMSAuNC4yLjIuMy41LjMgMSAwIC4yIDAgLjUtLjQuNyAwIC40LS40LjUtLjguNS0uMyAwLS42IDAtLjgtLjQtLjMgMC0uNC0uNC0uNC0uN3ptLTMtNy42di0xYy40LTEgMS40LTIuNyA0LjItMi43IDIgMCAzLjggMS40IDMuOCAzcy0xLjQgMi43LTIgMy4zYy0uOC42LTEgMS0xLjIgMS43LS4yLjYtLjYgMS0xLjMgMS0uMy0uMi0uNi0uMy0uNy0uNXYtLjhjMC0uMiAwLS43LjMtMS4ybDEuNC0xLjVjMS40LTEuMiAxLjYtMiAuOC0yLjgtLjUtLjQtMS42LS41LTIuMiAwLS44LjQtMSAxLTEuMiAxLjMtLjIuNS0uMyAxLTEuMyAxLS4zLS4yLS40LS40LS41LS44eiIgZmlsbD0iI0ZGRiIvPjwvZz48L3N2Zz4=)
+			}
+		</style>
+		<style type="text/css">
+			.DrawingExample-svg-30WA {
+				position: absolute;
+				top: 30px;
+				right: 0;
+				left: 0;
+				margin: auto;
+				transform: rotate(-44deg)
+			}
+			
+			.DrawingExample-ellipse-26bv {
+				stroke-dasharray: 520;
+				transform-origin: center;
+				animation: DrawingExample-drawingExample-3Bm3 .6s linear both
+			}
+			
+			@keyframes DrawingExample-drawingExample-3Bm3 {
+				0% {
+					stroke-dashoffset: 520
+				}
+				50% {
+					stroke-dashoffset: 1000;
+					opacity: 1
+				}
+				to {
+					stroke-dashoffset: 1000;
+					opacity: 0
+				}
+			}
+		</style>
+		<style type="text/css">
+			.Spinner-spinner-2PGn {
+				position: absolute;
+				width: 30px;
+				height: 30px;
+				top: 50%;
+				left: 50%;
+				margin: -15px 0 0 -15px;
+				animation: Spinner-rotate-RMMJ .8s linear infinite
+			}
+			
+			.Spinner-spinner-2PGn .Spinner-circle-teFy {
+				stroke: #4197ff;
+				stroke-dasharray: 187;
+				stroke-dashoffset: 46.75;
+				transform-origin: center
+			}
+			
+			@keyframes Spinner-rotate-RMMJ {
+				0% {
+					transform: rotate(0deg)
+				}
+				to {
+					transform: rotate(1turn)
+				}
+			}
+		</style>
+		<style type="text/css">
+			.FeedbackForm-form-1uUg {
+				padding: 40px 24px 32px;
+				width: 100%;
+				font-size: 14px;
+				line-height: 1.5;
+				font-family: HelveticaNeue-Light, Helvetica, PingFangSC-Light, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+				color: #404040;
+				box-sizing: border-box
+			}
+			
+			.FeedbackForm-header-3hQI {
+				margin-bottom: 26px;
+				text-align: center
+			}
+			
+			.FeedbackForm-title-2uCC {
+				font-size: 24px;
+				font-weight: 500;
+				line-height: 33px;
+				font-family: Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif
+			}
+			
+			.FeedbackForm-inputBox-15yJ {
+				display: block;
+				padding: 12px;
+				width: 100%;
+				height: auto;
+				font-size: 15px;
+				border: 1px solid #e7eaf1;
+				border-radius: 3px;
+				box-sizing: border-box;
+				resize: none;
+				outline: none;
+				color: inherit;
+				transition: box-shadow .15s ease-out;
+				overflow: auto
+			}
+			
+			.FeedbackForm-inputBox-15yJ::-webkit-input-placeholder {
+				color: #9aaabf;
+				transition: color .15s ease-out
+			}
+			
+			.FeedbackForm-inputBox-15yJ::-moz-placeholder {
+				color: #9aaabf;
+				transition: color .15s ease-out
+			}
+			
+			.FeedbackForm-inputBox-15yJ:-ms-input-placeholder {
+				color: #9aaabf;
+				transition: color .15s ease-out
+			}
+			
+			.FeedbackForm-inputBox-15yJ::placeholder {
+				color: #9aaabf;
+				transition: color .15s ease-out
+			}
+			
+			.FeedbackForm-inputBox-15yJ:hover::-webkit-input-placeholder {
+				color: rgba(154, 170, 191, .8)
+			}
+			
+			.FeedbackForm-inputBox-15yJ:hover::-moz-placeholder {
+				color: rgba(154, 170, 191, .8)
+			}
+			
+			.FeedbackForm-inputBox-15yJ:hover:-ms-input-placeholder {
+				color: rgba(154, 170, 191, .8)
+			}
+			
+			.FeedbackForm-inputBox-15yJ:hover::placeholder {
+				color: rgba(154, 170, 191, .8)
+			}
+			
+			.FeedbackForm-inputBox-15yJ:focus {
+				box-shadow: 0 0 5px #e7eaf1
+			}
+			
+			.FeedbackForm-inputBox-15yJ:focus::-webkit-input-placeholder {
+				color: rgba(154, 170, 191, .8)
+			}
+			
+			.FeedbackForm-inputBox-15yJ:focus::-moz-placeholder {
+				color: rgba(154, 170, 191, .8)
+			}
+			
+			.FeedbackForm-inputBox-15yJ:focus:-ms-input-placeholder {
+				color: rgba(154, 170, 191, .8)
+			}
+			
+			.FeedbackForm-inputBox-15yJ:focus::placeholder {
+				color: rgba(154, 170, 191, .8)
+			}
+			
+			.FeedbackForm-inputBox-15yJ.FeedbackForm-isWarning-2ds- {
+				border-color: #f75659
+			}
+			
+			.FeedbackForm-inputBox-15yJ.FeedbackForm-isWarning-2ds-::-webkit-input-placeholder {
+				color: #f75659
+			}
+			
+			.FeedbackForm-inputBox-15yJ.FeedbackForm-isWarning-2ds-::-moz-placeholder {
+				color: #f75659
+			}
+			
+			.FeedbackForm-inputBox-15yJ.FeedbackForm-isWarning-2ds-:-ms-input-placeholder {
+				color: #f75659
+			}
+			
+			.FeedbackForm-inputBox-15yJ.FeedbackForm-isWarning-2ds-::placeholder {
+				color: #f75659
+			}
+			
+			.FeedbackForm-inputBox-15yJ.FeedbackForm-isWarning-2ds-:focus {
+				box-shadow: none
+			}
+			
+			.FeedbackForm-screenShot--Gsn {
+				overflow: hidden;
+				box-sizing: border-box;
+				transition: max-height .3s ease, opacity .3s ease
+			}
+			
+			.FeedbackForm-screenShotLabel-2Sgh {
+				padding-top: 22px;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none
+			}
+			
+			.FeedbackForm-canvasContainer-mrde {
+				margin-top: 8px;
+				position: relative;
+				background-color: #f6f7f9
+			}
+			
+			.FeedbackForm-canvas-tSGI {
+				display: block;
+				max-width: 100%;
+				cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAABGdBTUEAALGPC/xhBQAAARpJREFUOBGdkr1KA0EUhTcxEkSQQIpAihQWPoedD2BnIVsZQiBVEkiR7SwtBDsJqXwBLQwEgoWNjY2FjYUQ38Ei5Oc7sBeGLTKze+Djzsyecxh2N4ryq0zkHpYQQ2H1SW5TNsxukaZzQsewACvTvIBg3eFUaABHMEv3OruBIN3icm8wZl+FZ3iBQ/AqweGW2FrlKlChV0McFsxOvaegm/T2lLzzTC/dqzaO7A1s/8GzE28Dhhj0f1jQnZ+c18CrKxxrcMO2/uK87m3AcAkrsKA7vzlvQJAmuNywrX84bwY1YBrBATyCFWj+QguCJKNCU1DZQ7r/Y55CsK5x2i2eWFcggTPIJd3Eiv5Zd3KlU3OJOQd9lVd4A5Xl1g4YG2GGhwRfegAAAABJRU5ErkJggg==) 0 17, default;
+				cursor: -webkit-image-set(url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAABGdBTUEAALGPC/xhBQAAARpJREFUOBGdkr1KA0EUhTcxEkSQQIpAihQWPoedD2BnIVsZQiBVEkiR7SwtBDsJqXwBLQwEgoWNjY2FjYUQ38Ei5Oc7sBeGLTKze+Djzsyecxh2N4ryq0zkHpYQQ2H1SW5TNsxukaZzQsewACvTvIBg3eFUaABHMEv3OruBIN3icm8wZl+FZ3iBQ/AqweGW2FrlKlChV0McFsxOvaegm/T2lLzzTC/dqzaO7A1s/8GzE28Dhhj0f1jQnZ+c18CrKxxrcMO2/uK87m3AcAkrsKA7vzlvQJAmuNywrX84bwY1YBrBATyCFWj+QguCJKNCU1DZQ7r/Y55CsK5x2i2eWFcggTPIJd3Eiv5Zd3KlU3OJOQd9lVd4A5Xl1g4YG2GGhwRfegAAAABJRU5ErkJggg==) 1x, url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAABGdBTUEAALGPC/xhBQAAAn9JREFUWAnFlz1IV2EUxs2+ixCCrCCrIaiGGnLIRdBacqkhtCEbqqVaoqmacpIma6rFHHITh1pKMKFaInATkb4hKChKIwj7rt8D74XDy3tfKM69Hng4zz3nvc9zfH3/93//DQ31xWqsBsEnMAU6wILFSpwnwB+Db/BDoPZYjuMYsMMU/Af1nron2o7hh5KBNNhP0AtqjV24vQPFzsT5F70jVU7UiPhNcNyY7IC/AfEwxfUsvcVmvRtdhNIQkNFvcAoUsQ3yGhRDxLmpWOiZryUMzxqDrfCXiTXjZo0bvZIwKnbhvHHZBH9q1s7Am03fhV42BsUQcb5knDbAp8EzsNHUXWgfKrF52XW/cVwH1265xgXUyszL6gOuExixc/8xjIZ8C9YbHRd6GpWyHcjV33PfTpcJjMgJuJ4xOeNU7yP37DY6LvQoKnrUpwxzNb12tLpMYES64foyzBmnep+5p83ouNCDqHwHKcNc7Qv3tLtMYEQOwPVClTNO9ea5Z7/RcaH7UJFwyjBX0x/Q5TKBEdFWa8tzxqme3gTdX0/3IqrDmDLM1XTodfhdYw9qcyBnnOrpcdDrOglienDpAZYyzNX0oDwJ3GMUxZxxWe+M+yRBcBX53j8OpS9Z9ziM4tKguoJ8B5Tthq1fDPe4p+co3gbLgrLyLWDNY94X1rqnFmN8F64dUiwBIyAeRNd6Za0sjqFsTXWGdJYU+q00DGz/qhpVxg3EraH4Q7AmmDaSB4Hq10Ot0vQimMVDPaLeFJz1A1DvQsqVxmbU40Hs9ST9tZVOYMT1r+gw1zF9ReEx2BI3qrrWp6jTiH+FPwD6pI2BJ6DW0HkYBzNAQ9wH82DB4i/kUnkzGX+skQAAAABJRU5ErkJggg==) 2x) 0 17, default
+			}
+			
+			.FeedbackForm-canvas-tSGI.FeedbackForm-isCapturing-3UFp {
+				display: none
+			}
+			
+			.FeedbackForm-checkLabelWrapper-3B7w {
+				margin-top: 12px
+			}
+			
+			.FeedbackForm-checkLabel-2VTb {
+				cursor: pointer;
+				color: #9aaabf;
+				transition: color .15s ease-out;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none
+			}
+			
+			.FeedbackForm-checkLabel-2VTb:hover {
+				color: rgba(154, 170, 191, .8)
+			}
+			
+			.FeedbackForm-checkLabel-2VTb input {
+				margin-right: .5em;
+				vertical-align: 1px
+			}
+			
+			.FeedbackForm-actions-dJ87 {
+				margin-top: 40px;
+				text-align: center
+			}
+			
+			.FeedbackForm-submitButton-1oKQ {
+				display: inline-block;
+				min-width: 220px;
+				padding: 8px 1em;
+				background-color: #0f88eb;
+				border: 1px solid #0f88eb;
+				border-radius: 3px;
+				font: inherit;
+				color: #fff;
+				transition: background-color .15s ease-out, opacity .15s ease-out;
+				cursor: pointer;
+				outline: none
+			}
+			
+			.FeedbackForm-submitButton-1oKQ[disabled] {
+				opacity: .8;
+				cursor: default
+			}
+			
+			.FeedbackForm-submitButton-1oKQ:hover {
+				background-color: #0d79d1
+			}
+			
+			.FeedbackForm-submitButton-1oKQ:active {
+				opacity: .8
+			}
+			
+			.FeedbackForm-successMask-34go {
+				display: -ms-flexbox;
+				display: flex;
+				-ms-flex-pack: center;
+				justify-content: center;
+				-ms-flex-align: center;
+				align-items: center;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: #fff
+			}
+			
+			.FeedbackForm-successTitle-1Y6p {
+				font-size: 24px;
+				font-weight: 500;
+				line-height: 33px;
+				font-family: Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+				text-align: center
+			}
+			
+			.FeedbackForm-successSubtitle-A_aP {
+				margin-top: 10px;
+				font-size: 18px;
+				line-height: 33px;
+				text-align: center
+			}
+		</style>
+	</head>
+
+	<body class="Entry-body" data-reactid="18">
+		<div id="root" data-reactid="19">
+			<div data-reactroot="">
+				<!-- react-empty: 2 -->
+				<div class="LoadingBar"></div>
+				<!-- react-empty: 4 -->
+				<div>
+					<header role="banner" class="Sticky AppHeader is-fixed" data-za-module="TopNavBar" style="width: 100%; top: 0px; left: 0px;">
+						<!-- react-empty: 292 -->
+						<div class="AppHeader-inner">
+							<a href="https://www.zhihu.com/" aria-label="知乎">
+								<img src="pic/logo.png">
+							</a>
+							<nav class="AppHeader-nav" role="navigation">
+								<a class="AppHeader-navItem" href="index.html"><b>首页</b></a>
+								<a class="AppHeader-navItem" href="faxian.html">发现</a>
+								<a class="AppHeader-navItem" href="topicChoose.html">话题</a>
+								<a class="AppHeader-navItem" href="index-article.html">文章</a>
+							</nav>
+							<div class="SearchBar" role="search">
+								<div class="SearchBar-toolWrapper">
+									<form class="SearchBar-tool">
+										<div>
+											<div class="Popover">
+												<div class="SearchBar-input Input-wrapper Input-wrapper--grey"><input id="Popover-6866-70423-toggle"  type="text" maxlength="100" value="" autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-activedescendant="AutoComplete-50244-25604--1" id="Popover-50253-38080-toggle" aria-haspopup="true" aria-owns="Popover-50253-38080-content" class="Input" placeholder="搜索你感兴趣的内容…">
+													<div class="Input-after"><button class="Button SearchBar-searchIcon Button--primary" aria-label="搜索" type="button"><svg viewBox="0 0 16 16" class="Icon Icon--search" width="16" height="16" aria-hidden="true" style="height: 16px; width: 16px;"><title></title><g><path d="M12.054 10.864c.887-1.14 1.42-2.57 1.42-4.127C13.474 3.017 10.457 0 6.737 0S0 3.016 0 6.737c0 3.72 3.016 6.737 6.737 6.737 1.556 0 2.985-.533 4.127-1.42l3.103 3.104c.765.46 1.705-.37 1.19-1.19l-3.103-3.104zm-5.317.925c-2.786 0-5.053-2.267-5.053-5.053S3.95 1.684 6.737 1.684 11.79 3.95 11.79 6.737 9.522 11.79 6.736 11.79z"></path></g></svg></button></div>
+												</div>
+												<!-- react-empty: 29 -->
+											</div>
+										</div>
+									</form>
+								</div><button onclick="toSearch()" class="Button QuestionAskButton SearchBar-askButton Button--primary Button--blue" type="button"><!-- react-text: 31 -->搜索<!-- /react-text --><!-- react-empty: 32 --></button></div>
+							<div class="AppHeader-userInfo">
+								<!-- react-empty: 42 -->
+								<div class="AppHeader-profile">
+									<div class="Popover AppHeader-menu"><button class="Button AppHeader-profileEntry Button--plain" type="button" id="Popover-50769-8098-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover-50769-8098-content"><img id="header" class="Avatar AppHeader-profileAvatar" width="30" height="30" ></button>
+										<!-- react-empty: 311 -->
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="PageHeader">
+							<div data-reactroot="" class="ProfileMain-header">
+								<div class="ProfileMain-avatar"><img class="Avatar" width="38" height="38"></div>
+								<ul role="tablist" class="Tabs ProfileMain-tabs">
+									<li role="tab" class="Tabs-item Tabs-item--noMeta" aria-controls="Profile-activities">
+										<a class="Tabs-link" href="https://www.zhihu.com/people/yu-wen-wen-91-23/activities">动态</a>
+									</li>
+									<li role="tab" class="Tabs-item" aria-controls="Profile-answers">
+										<a class="Tabs-link" href="https://www.zhihu.com/people/yu-wen-wen-91-23/answers">
+											<!-- react-text: 9 -->回答
+											<!-- /react-text --><span class="Tabs-meta">1</span></a>
+									</li>
+									<li role="tab" class="Tabs-item" aria-controls="Profile-asks">
+										<a class="Tabs-link" href="https://www.zhihu.com/people/yu-wen-wen-91-23/asks">
+											<!-- react-text: 13 -->提问
+											<!-- /react-text --><span class="Tabs-meta">0</span></a>
+									</li>
+									<li role="tab" class="Tabs-item" aria-controls="Profile-columns">
+										<a class="Tabs-link" href="https://www.zhihu.com/people/yu-wen-wen-91-23/columns">
+											<!-- react-text: 17 -->专栏
+											<!-- /react-text --><span class="Tabs-meta">0</span></a>
+									</li>
+									<li role="tab" class="Tabs-item" aria-controls="Profile-collections">
+										<a class="Tabs-link" href="https://www.zhihu.com/people/yu-wen-wen-91-23/collections">
+											<!-- react-text: 21 -->收藏
+											<!-- /react-text --><span class="Tabs-meta">10</span></a>
+									</li>
+									<li role="tab" class="Tabs-item Tabs-item--noMeta">
+										<div class="Popover Tabs-link is-active"><button class="Button ProfileMain-menuToggler Button--plain" type="button" id="Popover-50695-96926-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover-50695-96926-content"><!-- react-text: 26 -->更多<!-- /react-text --><svg viewBox="0 0 10 6" class="Icon ProfileMain-tabIcon Icon--arrow" width="10" height="16" aria-hidden="true" style="height: 16px; width: 10px;"><title></title><g><path d="M8.716.217L5.002 4 1.285.218C.99-.072.514-.072.22.218c-.294.29-.294.76 0 1.052l4.25 4.512c.292.29.77.29 1.063 0L9.78 1.27c.293-.29.293-.76 0-1.052-.295-.29-.77-.29-1.063 0z"></path></g></svg></button>
+											<!-- react-empty: 30 -->
+										</div>
+									</li>
+								</ul>
+								<div class="ProfileButtonGroup ProfileMain-buttons"><button class="Button Button--blue" type="button"><!-- react-text: 33 -->编辑<!-- /react-text --><!-- react-text: 34 -->个人<!-- /react-text --><!-- react-text: 35 -->资料<!-- /react-text --></button></div>
+							</div>
+						</div>
+					</header>
+					<div class="Sticky--holder" style="position: relative; top: 0px; right: 0px; bottom: 0px; left: 0px; display: block; float: none; margin: 0px; height: 53px;"></div>
+				</div>
+				<!-- react-empty: 46 -->
+				<main role="main" class="App-main">
+					<div>
+						<!-- react-empty: 49 -->
+						<div itemprop="people" itemtype="http://schema.org/Person" itemscope="">
+							<meta itemprop="url" content="https://www.zhihu.com/people/yu-wen-wen-91-23">
+							<meta itemprop="gender" content="Female">
+							<meta itemprop="image" content="https://pic1.zhimg.com/v2-f17c58601ad60e155630fcc9a7ec06f8_is.jpg">
+							<meta itemprop="zhihu:voteupCount" content="0">
+							<meta itemprop="zhihu:thankedCount" content="0">
+							<meta itemprop="zhihu:followerCount" content="0">
+							<meta itemprop="zhihu:answerCount" content="1">
+							<meta itemprop="zhihu:articlesCount" content="0">
+							<!-- react-empty: 59 -->
+							<div id="ProfileHeader" class="ProfileHeader" data-za-module="Unknown" data-za-module-info="{&quot;card&quot;:{&quot;content&quot;:{&quot;type&quot;:&quot;User&quot;,&quot;token&quot;:&quot;yu-wen-wen-91-23&quot;}}}">
+								<div class="Card">
+									<div class="ProfileHeader-userCover">
+										<div class="UserCoverEditor">
+											<div class="UserCoverGuide">
+												<div class="UserCoverGuide-inner">
+													<div class="UserCoverGuide-buttonContainer"></div>
+													<div class="UserCoverGuide-dialog">
+														<h4 class="UserCoverGuide-dialogHead">上传一张图片，展示在这里</h4>
+														<div class="UserCoverGuide-dialogContent">
+															<p class="UserCoverGuide-dialogDescription">你可以使用自己的摄影作品、你喜欢的照片，或是任何能展现你特质的图片。</p>
+															<a href="https://www.zhihu.com/question/21757507" target="_blank">哪里能找到可免费使用的优质图片？</a>
+														</div>
+													</div>
+												</div>
+												<ul class="UserCoverGuide-items">
+													<li class="UserCoverGuide-item" style="background-image: url(&quot;https://static.zhihu.com/heifetz/guide-cover-1.4423ce0fcec2132f058c.jpg&quot;);"></li>
+													<li class="UserCoverGuide-item" style="background-image: url(&quot;https://static.zhihu.com/heifetz/guide-cover-2.4c5018526e42872a056b.jpg&quot;);"></li>
+													<li class="UserCoverGuide-item" style="background-image: url(&quot;https://static.zhihu.com/heifetz/guide-cover-3.d59ac68c89726deb3a26.jpg&quot;);"></li>
+													<li class="UserCoverGuide-item" style="background-image: url(&quot;https://static.zhihu.com/heifetz/guide-cover-4.5518ba1a1aeb013b4c5c.jpg&quot;);"></li>
+													<li class="UserCoverGuide-item" style="background-image: url(&quot;https://static.zhihu.com/heifetz/guide-cover-5.2b2adaebc37bf48bacae.jpg&quot;);"></li>
+												</ul>
+											</div>
+											<div class="UserCover UserCover--colorBlock">
+												<!-- react-text: 365 -->
+												<!-- /react-text -->
+											</div><input type="file" accept="image/png,image/jpeg" style="display: none;"></div>
+									</div>
+									<div class="ProfileHeader-wrapper">
+										<div class="ProfileHeader-main">
+											<div class="UserAvatarEditor ProfileHeader-avatar" style="top: -57px;">
+												<div class="UserAvatar"><img id="header1" class="Avatar Avatar--large UserAvatar-inner" width="160" height="160"></div>
+												<div class="Mask UserAvatarEditor-mask Mask-hidden">
+													<div class="Mask-mask Mask-mask--black UserAvatarEditor-maskInner"></div>
+													<div class="Mask-content">
+														<svg viewBox="0 0 20 16" class="Icon UserAvatarEditor-cameraIcon Icon--camera" width="30" height="27" aria-hidden="true" style="height: 27px; width: 30px;">
+															<title></title>
+															<g>
+																<path d="M18.094 2H15s-1-2-2-2H7C6 0 5 2 5 2H2C0 2 0 3.967 0 3.967V14c0 2 2.036 2 2.036 2H17c3 0 3-1.983 3-1.983V4c0-2-1.906-2-1.906-2zM10 12c-1.933 0-3.5-1.567-3.5-3.5S8.067 5 10 5s3.5 1.567 3.5 3.5S11.933 12 10 12zm0 1.5c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm7.5-8c-.552 0-1-.448-1-1s.448-1 1-1 1 .448 1 1-.448 1-1 1z" fill-rule="evenodd"></path>
+															</g>
+														</svg>
+														<div class="UserAvatarEditor-maskInnerText">修改我的头像</div>
+													</div>
+												</div><input type="file" accept="image/png,image/jpeg" style="display: none;"></div>
+											<div class="ProfileHeader-content">
+												<div class="ProfileHeader-contentHead" id="MySelfUsername">
+												</div>
+												<div class="ProfileHeader-contentBody" style="height: 20px;"><span><div class="ProfileHeader-info"><div class="ProfileHeader-infoItem"><div class="ProfileHeader-iconWrapper"></div></div></div></span></div>
+												<div class="ProfileHeader-contentFooter">
+													<div class="ProfileButtonGroup ProfileHeader-buttons"><a href="touxiangChoose.html"><button class="Button Button--blue" type="button"><!-- react-text: 402 -->更换<!-- /react-text --><!-- react-text: 403 -->个人<!-- /react-text --><!-- react-text: 404 -->头像<!-- /react-text --></button></a></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="Profile-main">
+								<div class="Profile-mainColumn">
+									<div class="Card ProfileMain" id="ProfileMain">
+										<div class="ProfileMain-header">
+											<ul role="tablist" class="Tabs ProfileMain-tabs">
+												<li role="tab" class="Tabs-item Tabs-item--noMeta" aria-controls="Profile-activities">
+													<a class="Tabs-link" href="./g_dongtai.html">动态</a>
+												</li>
+												<li role="tab" class="Tabs-item" aria-controls="Profile-asks">
+													<a class="Tabs-link" href="./g_guanzhuwenti.html">
+														<!-- react-text: 137 --><b>问题</b></a>
+												</li>
+												<li role="tab" class="Tabs-item" aria-controls="Profile-columns">
+													<a class="Tabs-link" href="./g_guanzhuhuati.html">
+														<!-- react-text: 141 -->话题</a>
+												</li>
+												<li role="tab" class="Tabs-item" aria-controls="Profile-collections">
+													<a class="Tabs-link" href="./g_guanzhushoucang.html">
+														<!-- react-text: 145 -->收藏</a>
+												</li>
+												<li role="tab" class="Tabs-item" aria-controls="Profile-collections">
+													<a class="Tabs-link" href="./g_guanzhuzhe.html">
+														<!-- react-text: 145 -->我关注的人</a>
+												</li>
+												<li role="tab" class="Tabs-item" aria-controls="Profile-collections">
+													<a class="Tabs-link" href="./g_guanzhuren.html">
+														<!-- react-text: 145 -->关注我的人</a>
+												</li>
+											</ul>
+										</div>
+										<div>
+											<div>
+												<div class="Sticky"></div>
+											</div>
+										</div>
+										<div class="List" id="Profile-following">
+											<div id="MyItems">
+												
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="Profile-sideColumn" data-za-module="RightSideBar">
+									<!-- react-empty: 259 -->
+									<div class="Card FollowshipCard">
+										<div class="NumberBoard FollowshipCard-counts">
+											<a class="Button NumberBoard-item Button--plain" type="button" href="https://www.zhihu.com/people/yu-wen-wen-91-23/following">
+												<div class="NumberBoard-name">关注了</div>
+												<div class="NumberBoard-value" id="numberofG"></div>
+											</a>
+											<div class="NumberBoard-divider"></div>
+											<a class="Button NumberBoard-item Button--plain" type="button" href="https://www.zhihu.com/people/yu-wen-wen-91-23/followers">
+												<div class="NumberBoard-name">关注者</div>
+												<div class="NumberBoard-value" id="numberofBG"></div>
+											</a>
+										</div>
+									</div>
+									<div class="Profile-lightList">
+										<a class="Profile-lightItem" href="./g_guanzhuwenti.html"><span class="Profile-lightItemName">关注的问题</span><span class="Profile-lightItemValue"></span></a>
+										<a class="Profile-lightItem" href="./g_guanzhuhuati.html"><span class="Profile-lightItemName">关注的话题</span><span class="Profile-lightItemValue"></span></a>
+										<a class="Profile-lightItem" href="./g_guanzhushoucang.html"><span class="Profile-lightItemName">关注的文章</span><span class="Profile-lightItemValue"></span></a></div>
+									<div class="Profile-footerOperations">
+										
+									</div>
+									<footer class="Footer">
+										
+								</div>
+							</div>
+						</div>
+					</div>
+				</main>
+				<!-- react-empty: 288 -->
+				<!-- react-empty: 289 -->
+				<!-- react-empty: 290 -->
+				<div class="CornerButtons">
+					<div class="CornerAnimayedFlex"><button class="Button CornerButton Button--plain" data-tooltip="建议反馈" data-tooltip-position="left" aria-label="建议反馈" type="button"><svg width="18" height="16" viewBox="0 0 18 16" xmlns="http://www.w3.org/2000/svg" class="Icon Icon--feedback" aria-hidden="true" style="height: 16px; width: 18px;"><title>建议反馈</title><g><path d="M1.01 2.99L3 1s1-1 2-1h8c1 0 2 1 2 1l2 2s1 1 1 2v9s0 2-2.002 2H2c-2 0-2-2-2-2V5c0-1 1.01-2.01 1.01-2.01zM4.5 1.5h9L16 4H2l2.5-2.5zm2 5.5h5s.5 0 .5.5-.5.5-.5.5h-5S6 8 6 7.5s.5-.5.5-.5z" fill-rule="evenodd"></path></g></svg></button></div>
+					<div class="CornerAnimayedFlex CornerAnimayedFlex--hidden"><button class="Button CornerButton Button--plain" data-tooltip="回到顶部" data-tooltip-position="left" aria-label="回到顶部" type="button"><svg width="16" height="16" viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg" class="Icon Icon--backToTopArrow" aria-hidden="true" style="height: 16px; width: 16px;"><title>回到顶部</title><g><path d="M12.036 15.59c0 .55-.453.995-.997.995H5.032c-.55 0-.997-.445-.997-.996V8.584H1.03c-1.1 0-1.36-.633-.578-1.416L7.33.29c.39-.39 1.026-.385 1.412 0l6.878 6.88c.782.78.523 1.415-.58 1.415h-3.004v7.004z" fill-rule="evenodd"></path></g></svg></button></div>
+				</div>
+			</div>
+		</div>
+		<div>
+			<div data-reactroot="" style="display: none;">想来知乎工作？请发送邮件到 jobs@zhihu.com</div>
+		</div><span><div></div></span></body>
+
+</html>

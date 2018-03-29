@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html data-reactroot="" data-reactid="1" data-react-checksum="1868561952" data-focus-method="pointer" lang="zh"><head data-reactid="2">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title data-reactid="4">问题</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" data-reactid="5">
+		<meta name="renderer" content="webkit" data-reactid="6">
+		<meta name="force-rendering" content="webkit" data-reactid="7">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" data-reactid="8">
+		<meta name="google-site-verification" content="FTeR0c8arOPKh8c5DYh_9uu98_zJbaWw53J-Sch9MTg" data-reactid="9">
+		
+		<link href="css/style_m.css" rel="stylesheet" data-reactid="17">
+		<script type="text/javascript" src="./js/jquery-3.2.1.js"></script>
+		<script>
+		function getQueryString(name) {
+			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+			var r = window.location.search.substr(1).match(reg);
+			if (r != null) return unescape(r[2]); return null;
+		} 
+			$(function(){
+				var questionID=getQueryString("questionID");
+				$.getJSON("./GetHead",function(data){
+					var headimg="";
+					$.each(data,function(index,value){
+						if(index=="headimg")headimg=value;
+					});
+					$("#header").attr('src',headimg);
+				});
+				$.getJSON("./QuestionHeader?questionID="+questionID,function(data){
+					var topic="";
+					var title="";
+					var content="";
+					var countAnsw=0;
+					var follower=0;
+					var check=0;
+					$.each(data,function(index,value){
+						if(index=="topic")topic=value;
+						if(index=="title")title=value;
+						if(index=="countAnsw")countAnsw=value;
+						if(index=="content")content=value;
+						if(index=="follow")follower=value;
+						if(index=="check")check=value;
+						});
+					
+					$("#question-tag").html(topic);
+					$("#question-title").html(title);
+					$("#question-detail").html(content);
+					$("#follow").html(follower);
+					$("#countAnsw").html(countAnsw+"个回答");
+					if(check==0){
+						$("#guanzhu").attr("class","Button Button--primary Button--grey");
+						$("#guanzhu").html("取消关注");
+					}else if(check==1){
+						$("#guanzhu").attr("class","Button Button--primary Button--blue");
+						$("#guanzhu").html("关注问题");
+					}
+				});
+				$.getJSON("./QuestionContent?questionID="+questionID,function(data){
+					var username="";
+					var answer="";
+					var answDate="";
+					var aid="";
+					var touxiang="";
+					var up=0;
+					var down=0;
+					for(i=0;i<data.length;i++){
+						$.each(data[i],function(index,value){
+							if(index=="username")username=value;
+							if(index=="answer")answer=value;
+							if(index=="answDate")answDate=value;
+							if(index=="answerID")aid=value;
+							if(index=="up")up=value;
+							if(index=="down")down=value;
+							if(index=="touxiang")touxiang=value;
+						});
+						$("#mainContent").append("<div class=List-item ><div class=\"ContentItem AnswerItem\"id=listitem"+i+"></div></div>");
+						$("#listitem"+i).append("<div class=ContentItem-meta><div class=\"AnswerItem-meta AnswerItem-meta--related\">"+
+						"<div class=AuthorInfo><span class=\"UserLink AuthorInfo-avatarWrapper\"><div class=Popover><img class=\"Avatar AuthorInfo-avatar\" width=38 height=38 src=\""+touxiang+"\"></div></span>"+
+							"<div class=AuthorInfo-content><div class=AuthorInfo-head><span class=\"UserLink AuthorInfo-name\">"+
+							"<div class=Popover>"+username+"</div></span></div></div></div></div></div>");
+						$("#listitem"+i).append("<div class=\"RichContent RichContent--unescapable\" id=richcontent"+i+"><div class=RichContent-inner>"+
+						"<span class=\"RichText CopyrightRichText-richText\">"+answer+"</span></div>"+
+						"<div class=ContentItem-time>发布于 "+answDate+"</div></div>");
+						$("#richcontent"+i).append("<div class=ContentItem-actions><span>"+
+								"<button class=\"Button VoteButton VoteButton--up\" aria-label=赞同  type=button onclick=up(this) data-aid="+aid+" id=up"+i+"><span>"+up+"</span></button>"+
+								"<button class=\"Button VoteButton VoteButton--down\" aria-label=反对 type=button onclick=down(this) data-aid="+aid+" id=down"+i+"><span>  "+down+"</span></button></span>"+
+								"<button class=\"Button ContentItem-action Button--plain\" type=button onclick=collect(this) data-aid="+aid+" id=collect"+i+">收藏</button></div>");
+								$("#up"+i).prepend("<svg viewBox=\"0 0 20 18\" class=\"Icon VoteButton-upIcon Icon--triangle\" width=9 height=16 aria-hidden=true style=\"height: 16px; width: 9px;\"><title></title>"+
+								"<g><path d=\"M0 15.243c0-.326.088-.533.236-.896l7.98-13.204C8.57.57 9.086 0 10 0s1.43.57 1.784 1.143l7.98 13.204c.15.363.236.57.236.896 0 1.386-.875 1.9-1.955 1.9H1.955c-1.08 0-1.955-.517-1.955-1.9z\"></path></g></svg>");
+								$("#down"+i).prepend("<svg viewBox=\"0 0 20 18\" class=\"Icon VoteButton-downIcon Icon--triangle\" width=9 height=16 aria-hidden=true style=\"height: 16px; width: 9px;\"><title></title>"+
+								"<g><path d=\"M0 15.243c0-.326.088-.533.236-.896l7.98-13.204C8.57.57 9.086 0 10 0s1.43.57 1.784 1.143l7.98 13.204c.15.363.236.57.236.896 0 1.386-.875 1.9-1.955 1.9H1.955c-1.08 0-1.955-.517-1.955-1.9z\"></path></g></svg>");
+								$("#collect"+i).prepend("<svg viewBox=\"0 0 20 20\" class=\"Icon Icon--star Icon--left\" width=13 height=16 aria-hidden=true style=\"height: 16px; width: 13px;\"><title></title>"+
+								"<g><path d=\"M3.515 17.64l.918-5.355-3.89-3.792c-.926-.902-.64-1.784.64-1.97L6.56 5.74 8.964.87c.572-1.16 1.5-1.16 2.072 0l2.404 4.87 5.377.783c1.28.186 1.566 1.068.64 1.97l-3.89 3.793.918 5.354c.22 1.274-.532 1.82-1.676 1.218L10 16.33l-4.808 2.528c-1.145.602-1.896.056-1.677-1.218z\"></path></g></svg>");
+					}				
+				});
+
+			});
+			function up(btn){
+				var aid1=$("#"+btn.id).data('aid');
+				$.get("./Up?aid="+aid1,function(data){
+					$("#"+btn.id).children().eq(1).html(data);
+				});	
+			}
+			function down(btn){
+				var aid2=$("#"+btn.id).data('aid');
+				$.get("./Down?aid="+aid2,function(data){
+					$("#"+btn.id).children().eq(1).html("  "+data);
+				});	
+			}
+			function collect(btn){
+				var aid3=$("#"+btn.id).data('aid');
+				$.get("./Collect?aid="+aid3,function(data){
+					$('<div>').appendTo('body').addClass('alert alert-success').html(data).show().delay(1500).fadeOut();			
+				});
+			}
+			function guanzhu(){
+				var text=$("#guanzhu").text();
+				var fol=parseInt($("#follow").text());
+				if(text=="关注问题"){
+					$.get("./WentiGuanzhu?check=0&qid="+getQueryString("questionID"),function(data){
+						$('<div>').appendTo('body').addClass('alert alert-success').html(data).show().delay(1500).fadeOut();
+					});
+					fol=fol+1;
+					$("#follow").html(fol);
+					$("#guanzhu").attr("class","Button Button--primary Button--grey");
+					$("#guanzhu").html("取消关注");
+				}else if(text=="取消关注"){
+					$.get("./WentiGuanzhu?check=1&qid="+getQueryString("questionID"),function(data){
+						$('<div>').appendTo('body').addClass('alert alert-success').html(data).show().delay(1500).fadeOut();
+					});
+					fol=fol-1;
+					$("#follow").html(fol);
+					$("#guanzhu").attr("class","Button Button--primary Button--blue");
+					$("#guanzhu").html("关注问题");
+				}
+			}
+			function jump(){
+				$("html,body").animate({scrollTop:$("#AnswerTable").offset().top},1000);
+			}
+			function submit(){
+				var content=$("#huida").val().replace(/\n/g,"<br/>");
+		
+				$.get("./AnswerSubmit?answer="+encodeURI(content)+"&qid="+getQueryString("questionID"),function(data){
+					$('<div>').appendTo('body').addClass('alert alert-success').html(data).show().delay(1500).fadeOut();
+					window.location.reload();
+				});
+			}
+		</script>
+		<style type="text/css">
+		.RichText{
+		height:200px;
+		}
+			.CloseIcon-icon-2xww {
+				transition: opacity .3s ease-out
+			}
+			
+			.CloseIcon-icon-2xww:hover {
+				opacity: .8
+			}
+		</style>
+		<style type="text/css">
+			.alert {
+			    display: none;
+			    position: fixed;
+			    top: 50%;
+			    left: 50%;
+			    min-width: 150px;
+			    margin-left: -100px;
+			    z-index: 99999;
+			    padding: 15px;
+			    border: 1px solid transparent;
+			    border-radius: 4px;
+			    height:25px;   
+        		line-height:25px; 
+			}
+
+			.alert-success {
+			    color: #3c763d;
+			    background-color: #dff0d8;
+			    border-color: #d6e9c6;
+			}
+			.animations-fadeIn-1aFv {
+				animation: animations-fadeIn-1aFv .3s ease-out both
+			}
+			
+			@keyframes animations-fadeIn-1aFv {
+				0% {
+					opacity: 0
+				}
+				to {
+					opacity: 1
+				}
+			}
+			
+			.animations-fadeOut-3XSQ {
+				animation: animations-fadeOut-3XSQ .3s ease-out both
+			}
+			
+			@keyframes animations-fadeOut-3XSQ {
+				0% {
+					opacity: 1
+				}
+				to {
+					opacity: 0
+				}
+			}
+			
+			.animations-fadeInUp-3KKK {
+				animation: animations-fadeInUp-3KKK .3s cubic-bezier(.25, .1, .35, 1) both
+			}
+			
+			@keyframes animations-fadeInUp-3KKK {
+				0% {
+					opacity: 0;
+					transform: translateY(20px)
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0)
+				}
+			}
+			
+			.animations-fadeOutDown-r_A_ {
+				animation: animations-fadeOutDown-r_A_ .3s cubic-bezier(.25, .1, .35, 1) both
+			}
+			
+			@keyframes animations-fadeOutDown-r_A_ {
+				0% {
+					transform: translateY(0)
+				}
+				to {
+					opacity: 0;
+					transform: translateY(20px)
+				}
+			}
+		</style>
+		<style type="text/css">
+			.Modal-backdrop-2ksh {
+				background-color: rgba(0, 0, 0, .65)
+			}
+			
+			.Modal-backdrop-2ksh,
+			.Modal-modalWrapper-56Mq {
+				position: fixed;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				z-index: 10010
+			}
+			
+			.Modal-modalWrapper-56Mq {
+				display: -ms-flexbox;
+				display: flex;
+				-ms-flex-align: center;
+				align-items: center;
+				-ms-flex-pack: center;
+				justify-content: center
+			}
+			
+			.Modal-modal-wf58 {
+				position: relative;
+				z-index: 10011;
+				background: #fff;
+				border-radius: 2px
+			}
+			
+			.Modal-content-3JxL {
+				width: 588px;
+				max-height: calc(100vh - 24px * 2);
+				overflow-x: hidden;
+				overflow-y: auto;
+				-webkit-overflow-scrolling: touch
+			}
+			
+			.Modal-closeButton-3JkR {
+				position: absolute;
+				top: 4px;
+				right: -44px;
+				padding: 12px;
+				width: 40px;
+				height: 40px;
+				cursor: pointer;
+				box-sizing: border-box;
+				background: none;
+				outline: none;
+				border: none
+			}
+		</style>
+		<style type="text/css">
+			.FeedbackButton-button-3waL {
+				position: fixed;
+				z-index: 10000;
+				bottom: 40px;
+				right: 40px;
+				width: 40px;
+				height: 40px;
+				cursor: pointer;
+				border-radius: 50%;
+				background-color: #fff;
+				border: none;
+				outline: none;
+				box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+				font-weight: 700;
+				line-height: normal
+			}
+			
+			.FeedbackButton-icon-1Rgw {
+				display: inline-block;
+				vertical-align: middle;
+				width: 18px;
+				height: 18px;
+				background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzUiIGhlaWdodD0iMzYiIHZpZXdCb3g9IjAgMCAzNSAzNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+R3JvdXAgNjwvdGl0bGU+PGcgZmlsbD0iIzAwOEZFQiIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTMgMTguM2MwLS40IDAtLjcuNC0xIC4yLS4yLjUtLjMuOC0uMy40IDAgLjcgMCAxIC40LjIuMi4zLjUuMyAxIDAgLjIgMCAuNS0uNC43IDAgLjQtLjQuNS0uOC41LS4zIDAtLjYgMC0uOC0uNC0uMyAwLS40LS40LS40LS43ek0xMCAxMC43di0xYy40LTEgMS41LTIuNyA0LjItMi43IDIgMCAzLjggMS40IDMuOCAzcy0xLjQgMi43LTIgMy4zYy0uOC42LTEgMS0xLjIgMS43LS4yLjYtLjYgMS0xLjMgMS0uMy0uMi0uNi0uMy0uNy0uNXYtLjhjMC0uMiAwLS43LjMtMS4ybDEuNC0xLjVjMS40LTEuMiAxLjYtMiAuOC0yLjgtLjUtLjQtMS42LS41LTIuMiAwLS44LjQtMSAxLTEuMiAxLjMtLjIuNS0uMyAxLTEuMyAxLS4zLS4yLS40LS40LS41LS44eiIvPjxwYXRoIGQ9Ik0yOS44IDEwLjJ2M2MxLjQgMS44IDIuMyA0IDIuMyA2LjMgMCAzLjgtMi4yIDctNS41IDl2My44bC0zLjctMi41LTMgLjNjLTIuOCAwLTQuMy0uOC02LjQtMi4yaC0zLjFDMTMgMzAuNCAxNS42IDMyIDIwIDMyYy44IDAgMS43IDAgMi42LS4ybDYgNHYtNi40YzMuNS0yLjQgNS43LTYgNS43LTEwIDAtMy42LTEuNy03LTQuNS05LjJ6TTE0LjQgMjUuNmM4IDAgMTMuMi02IDEzLjItMTNTMjEgMCAxNC40IDBDNi40IDAgMCA1LjcgMCAxMi43YzAgNCAxLjUgNy41IDQuNCAxMFYyOWw2LjMtMy42IDMuNy4yek0xNC4yIDJjNi41IDAgMTEuNSA1LjMgMTEuNSAxMUMyNS43IDE5IDIxIDI0IDE0LjQgMjRjLTEgMC0zLjYtLjMtNC41LS41TDYgMjUuN3YtNGMtMi43LTIuMi00LTUtNC04LjZDMiA3IDcgMiAxNCAyeiIvPjwvZz48L3N2Zz4=);
+				background-repeat: no-repeat;
+				background-size: contain
+			}
+			
+			.FeedbackButton-button-3waL:hover .FeedbackButton-icon-1Rgw {
+				background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzUiIGhlaWdodD0iMzYiIHZpZXdCb3g9IjAgMCAzNSAzNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+R3JvdXAgMTE8L3RpdGxlPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHBhdGggZD0iTTI5LjQgMTNjMCAyLS4zIDguMi01IDExLjQtNC4zIDMtOSAzLjMtMTEuMyAzLjNoLTNjMi44IDIuNyA2LjYgNC44IDEyLjIgNCAxIDAgNi4zIDQgNi4zIDRWMjljMy41LTIuMyA1LjMtNS4yIDUuNi05LjUuMy0zLjctMS42LTctNC41LTkuNXYzem0tMTUgMTIuNmM4IDAgMTMuMi02IDEzLjItMTNTMjEgMCAxNC40IDBDNi40IDAgMCA1LjcgMCAxMi43YzAgNCAxLjUgNy41IDQuNCAxMFYyOWw2LjMtMy42IDMuNy4zeiIgZmlsbD0iIzAwOEZFQiIvPjxwYXRoIGQ9Ik0xMyAxOC4zYzAtLjQgMC0uNy40LTFzLjUtLjMuOC0uM2MuNCAwIC43IDAgMSAuNC4yLjIuMy41LjMgMSAwIC4yIDAgLjUtLjQuNyAwIC40LS40LjUtLjguNS0uMyAwLS42IDAtLjgtLjQtLjMgMC0uNC0uNC0uNC0uN3ptLTMtNy42di0xYy40LTEgMS40LTIuNyA0LjItMi43IDIgMCAzLjggMS40IDMuOCAzcy0xLjQgMi43LTIgMy4zYy0uOC42LTEgMS0xLjIgMS43LS4yLjYtLjYgMS0xLjMgMS0uMy0uMi0uNi0uMy0uNy0uNXYtLjhjMC0uMiAwLS43LjMtMS4ybDEuNC0xLjVjMS40LTEuMiAxLjYtMiAuOC0yLjgtLjUtLjQtMS42LS41LTIuMiAwLS44LjQtMSAxLTEuMiAxLjMtLjIuNS0uMyAxLTEuMyAxLS4zLS4yLS40LS40LS41LS44eiIgZmlsbD0iI0ZGRiIvPjwvZz48L3N2Zz4=)
+			}
+		</style>
+		<style type="text/css">
+			.DrawingExample-svg-30WA {
+				position: absolute;
+				top: 30px;
+				right: 0;
+				left: 0;
+				margin: auto;
+				transform: rotate(-44deg)
+			}
+			
+			.DrawingExample-ellipse-26bv {
+				stroke-dasharray: 520;
+				transform-origin: center;
+				animation: DrawingExample-drawingExample-3Bm3 .6s linear both
+			}
+			
+			@keyframes DrawingExample-drawingExample-3Bm3 {
+				0% {
+					stroke-dashoffset: 520
+				}
+				50% {
+					stroke-dashoffset: 1000;
+					opacity: 1
+				}
+				to {
+					stroke-dashoffset: 1000;
+					opacity: 0
+				}
+			}
+		</style>
+		<style type="text/css">
+			.Spinner-spinner-2PGn {
+				position: absolute;
+				width: 30px;
+				height: 30px;
+				top: 50%;
+				left: 50%;
+				margin: -15px 0 0 -15px;
+				animation: Spinner-rotate-RMMJ .8s linear infinite
+			}
+			
+			.Spinner-spinner-2PGn .Spinner-circle-teFy {
+				stroke: #4197ff;
+				stroke-dasharray: 187;
+				stroke-dashoffset: 46.75;
+				transform-origin: center
+			}
+			
+			@keyframes Spinner-rotate-RMMJ {
+				0% {
+					transform: rotate(0deg)
+				}
+				to {
+					transform: rotate(1turn)
+				}
+			}
+		</style>
+		<style type="text/css">
+			.FeedbackForm-form-1uUg {
+				padding: 40px 24px 32px;
+				width: 100%;
+				font-size: 14px;
+				line-height: 1.5;
+				font-family: HelveticaNeue-Light, Helvetica, PingFangSC-Light, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+				color: #404040;
+				box-sizing: border-box
+			}
+			
+			.FeedbackForm-header-3hQI {
+				margin-bottom: 26px;
+				text-align: center
+			}
+			
+			.FeedbackForm-title-2uCC {
+				font-size: 24px;
+				font-weight: 500;
+				line-height: 33px;
+				font-family: Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif
+			}
+			
+			.FeedbackForm-inputBox-15yJ {
+				display: block;
+				padding: 12px;
+				width: 100%;
+				height: auto;
+				font-size: 15px;
+				border: 1px solid #e7eaf1;
+				border-radius: 3px;
+				box-sizing: border-box;
+				resize: none;
+				outline: none;
+				color: inherit;
+				transition: box-shadow .15s ease-out;
+				overflow: auto
+			}
+			
+			.FeedbackForm-inputBox-15yJ::-webkit-input-placeholder {
+				color: #9aaabf;
+				transition: color .15s ease-out
+			}
+			
+			.FeedbackForm-inputBox-15yJ::-moz-placeholder {
+				color: #9aaabf;
+				transition: color .15s ease-out
+			}
+			
+			.FeedbackForm-inputBox-15yJ:-ms-input-placeholder {
+				color: #9aaabf;
+				transition: color .15s ease-out
+			}
+			
+			.FeedbackForm-inputBox-15yJ::placeholder {
+				color: #9aaabf;
+				transition: color .15s ease-out
+			}
+			
+			.FeedbackForm-inputBox-15yJ:hover::-webkit-input-placeholder {
+				color: rgba(154, 170, 191, .8)
+			}
+			
+			.FeedbackForm-inputBox-15yJ:hover::-moz-placeholder {
+				color: rgba(154, 170, 191, .8)
+			}
+			
+			.FeedbackForm-inputBox-15yJ:hover:-ms-input-placeholder {
+				color: rgba(154, 170, 191, .8)
+			}
+			
+			.FeedbackForm-inputBox-15yJ:hover::placeholder {
+				color: rgba(154, 170, 191, .8)
+			}
+			
+			.FeedbackForm-inputBox-15yJ:focus {
+				box-shadow: 0 0 5px #e7eaf1
+			}
+			
+			.FeedbackForm-inputBox-15yJ:focus::-webkit-input-placeholder {
+				color: rgba(154, 170, 191, .8)
+			}
+			
+			.FeedbackForm-inputBox-15yJ:focus::-moz-placeholder {
+				color: rgba(154, 170, 191, .8)
+			}
+			
+			.FeedbackForm-inputBox-15yJ:focus:-ms-input-placeholder {
+				color: rgba(154, 170, 191, .8)
+			}
+			
+			.FeedbackForm-inputBox-15yJ:focus::placeholder {
+				color: rgba(154, 170, 191, .8)
+			}
+			
+			.FeedbackForm-inputBox-15yJ.FeedbackForm-isWarning-2ds- {
+				border-color: #f75659
+			}
+			
+			.FeedbackForm-inputBox-15yJ.FeedbackForm-isWarning-2ds-::-webkit-input-placeholder {
+				color: #f75659
+			}
+			
+			.FeedbackForm-inputBox-15yJ.FeedbackForm-isWarning-2ds-::-moz-placeholder {
+				color: #f75659
+			}
+			
+			.FeedbackForm-inputBox-15yJ.FeedbackForm-isWarning-2ds-:-ms-input-placeholder {
+				color: #f75659
+			}
+			
+			.FeedbackForm-inputBox-15yJ.FeedbackForm-isWarning-2ds-::placeholder {
+				color: #f75659
+			}
+			
+			.FeedbackForm-inputBox-15yJ.FeedbackForm-isWarning-2ds-:focus {
+				box-shadow: none
+			}
+			
+			.FeedbackForm-screenShot--Gsn {
+				overflow: hidden;
+				box-sizing: border-box;
+				transition: max-height .3s ease, opacity .3s ease
+			}
+			
+			.FeedbackForm-screenShotLabel-2Sgh {
+				padding-top: 22px;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none
+			}
+			
+			.FeedbackForm-canvasContainer-mrde {
+				margin-top: 8px;
+				position: relative;
+				background-color: #f6f7f9
+			}
+			
+			.FeedbackForm-canvas-tSGI {
+				display: block;
+				max-width: 100%;
+				cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAABGdBTUEAALGPC/xhBQAAARpJREFUOBGdkr1KA0EUhTcxEkSQQIpAihQWPoedD2BnIVsZQiBVEkiR7SwtBDsJqXwBLQwEgoWNjY2FjYUQ38Ei5Oc7sBeGLTKze+Djzsyecxh2N4ryq0zkHpYQQ2H1SW5TNsxukaZzQsewACvTvIBg3eFUaABHMEv3OruBIN3icm8wZl+FZ3iBQ/AqweGW2FrlKlChV0McFsxOvaegm/T2lLzzTC/dqzaO7A1s/8GzE28Dhhj0f1jQnZ+c18CrKxxrcMO2/uK87m3AcAkrsKA7vzlvQJAmuNywrX84bwY1YBrBATyCFWj+QguCJKNCU1DZQ7r/Y55CsK5x2i2eWFcggTPIJd3Eiv5Zd3KlU3OJOQd9lVd4A5Xl1g4YG2GGhwRfegAAAABJRU5ErkJggg==) 0 17, default;
+				cursor: -webkit-image-set(url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAABGdBTUEAALGPC/xhBQAAARpJREFUOBGdkr1KA0EUhTcxEkSQQIpAihQWPoedD2BnIVsZQiBVEkiR7SwtBDsJqXwBLQwEgoWNjY2FjYUQ38Ei5Oc7sBeGLTKze+Djzsyecxh2N4ryq0zkHpYQQ2H1SW5TNsxukaZzQsewACvTvIBg3eFUaABHMEv3OruBIN3icm8wZl+FZ3iBQ/AqweGW2FrlKlChV0McFsxOvaegm/T2lLzzTC/dqzaO7A1s/8GzE28Dhhj0f1jQnZ+c18CrKxxrcMO2/uK87m3AcAkrsKA7vzlvQJAmuNywrX84bwY1YBrBATyCFWj+QguCJKNCU1DZQ7r/Y55CsK5x2i2eWFcggTPIJd3Eiv5Zd3KlU3OJOQd9lVd4A5Xl1g4YG2GGhwRfegAAAABJRU5ErkJggg==) 1x, url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAABGdBTUEAALGPC/xhBQAAAn9JREFUWAnFlz1IV2EUxs2+ixCCrCCrIaiGGnLIRdBacqkhtCEbqqVaoqmacpIma6rFHHITh1pKMKFaInATkb4hKChKIwj7rt8D74XDy3tfKM69Hng4zz3nvc9zfH3/93//DQ31xWqsBsEnMAU6wILFSpwnwB+Db/BDoPZYjuMYsMMU/Af1nron2o7hh5KBNNhP0AtqjV24vQPFzsT5F70jVU7UiPhNcNyY7IC/AfEwxfUsvcVmvRtdhNIQkNFvcAoUsQ3yGhRDxLmpWOiZryUMzxqDrfCXiTXjZo0bvZIwKnbhvHHZBH9q1s7Am03fhV42BsUQcb5knDbAp8EzsNHUXWgfKrF52XW/cVwH1265xgXUyszL6gOuExixc/8xjIZ8C9YbHRd6GpWyHcjV33PfTpcJjMgJuJ4xOeNU7yP37DY6LvQoKnrUpwxzNb12tLpMYES64foyzBmnep+5p83ouNCDqHwHKcNc7Qv3tLtMYEQOwPVClTNO9ea5Z7/RcaH7UJFwyjBX0x/Q5TKBEdFWa8tzxqme3gTdX0/3IqrDmDLM1XTodfhdYw9qcyBnnOrpcdDrOglienDpAZYyzNX0oDwJ3GMUxZxxWe+M+yRBcBX53j8OpS9Z9ziM4tKguoJ8B5Tthq1fDPe4p+co3gbLgrLyLWDNY94X1rqnFmN8F64dUiwBIyAeRNd6Za0sjqFsTXWGdJYU+q00DGz/qhpVxg3EraH4Q7AmmDaSB4Hq10Ot0vQimMVDPaLeFJz1A1DvQsqVxmbU40Hs9ST9tZVOYMT1r+gw1zF9ReEx2BI3qrrWp6jTiH+FPwD6pI2BJ6DW0HkYBzNAQ9wH82DB4i/kUnkzGX+skQAAAABJRU5ErkJggg==) 2x) 0 17, default
+			}
+			
+			.FeedbackForm-canvas-tSGI.FeedbackForm-isCapturing-3UFp {
+				display: none
+			}
+			
+			.FeedbackForm-checkLabelWrapper-3B7w {
+				margin-top: 12px
+			}
+			
+			.FeedbackForm-checkLabel-2VTb {
+				cursor: pointer;
+				color: #9aaabf;
+				transition: color .15s ease-out;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none
+			}
+			
+			.FeedbackForm-checkLabel-2VTb:hover {
+				color: rgba(154, 170, 191, .8)
+			}
+			
+			.FeedbackForm-checkLabel-2VTb input {
+				margin-right: .5em;
+				vertical-align: 1px
+			}
+			
+			.FeedbackForm-actions-dJ87 {
+				margin-top: 40px;
+				text-align: center
+			}
+			
+			.FeedbackForm-submitButton-1oKQ {
+				display: inline-block;
+				min-width: 220px;
+				padding: 8px 1em;
+				background-color: #0f88eb;
+				border: 1px solid #0f88eb;
+				border-radius: 3px;
+				font: inherit;
+				color: #fff;
+				transition: background-color .15s ease-out, opacity .15s ease-out;
+				cursor: pointer;
+				outline: none
+			}
+			
+			.FeedbackForm-submitButton-1oKQ[disabled] {
+				opacity: .8;
+				cursor: default
+			}
+			
+			.FeedbackForm-submitButton-1oKQ:hover {
+				background-color: #0d79d1
+			}
+			
+			.FeedbackForm-submitButton-1oKQ:active {
+				opacity: .8
+			}
+			
+			.FeedbackForm-successMask-34go {
+				display: -ms-flexbox;
+				display: flex;
+				-ms-flex-pack: center;
+				justify-content: center;
+				-ms-flex-align: center;
+				align-items: center;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: #fff
+			}
+			
+			.FeedbackForm-successTitle-1Y6p {
+				font-size: 24px;
+				font-weight: 500;
+				line-height: 33px;
+				font-family: Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+				text-align: center
+			}
+			
+			.FeedbackForm-successSubtitle-A_aP {
+				margin-top: 10px;
+				font-size: 18px;
+				line-height: 33px;
+				text-align: center
+			}
+		</style>
+	</head>
+
+	<body class="Entry-body" data-reactid="18">
+		<div id="root" data-reactid="19">
+			<div data-reactroot="">
+				<!-- react-empty: 2 -->
+				<div class="LoadingBar"></div>
+				<!-- react-empty: 4 -->
+				<div>
+					<header role="banner" class="Sticky AppHeader is-fixed" data-za-module="TopNavBar" style="width: 100%; top: 0px; left: 0px;">
+						<!-- react-empty: 291 -->
+						<div class="AppHeader-inner">
+							<a href="https://www.zhihu.com/" aria-label="知乎">
+								<svg viewBox="0 0 200 91" class="Icon Icon--logo" width="64" height="30" aria-hidden="true" style="fill: rgb(15, 136, 235); height: 30px; width: 64px;">
+									<title></title>
+									<g>
+										<path d="M53.29 80.035l7.32.002 2.41 8.24 13.128-8.24h15.477v-67.98H53.29v67.978zm7.79-60.598h22.756v53.22h-8.73l-8.718 5.473-1.587-5.46-3.72-.012v-53.22zM46.818 43.162h-16.35c.545-8.467.687-16.12.687-22.955h15.987s.615-7.05-2.68-6.97H16.807c1.09-4.1 2.46-8.332 4.1-12.708 0 0-7.523 0-10.085 6.74-1.06 2.78-4.128 13.48-9.592 24.41 1.84-.2 7.927-.37 11.512-6.94.66-1.84.785-2.08 1.605-4.54h9.02c0 3.28-.374 20.9-.526 22.95H6.51c-3.67 0-4.863 7.38-4.863 7.38H22.14C20.765 66.11 13.385 79.24 0 89.62c6.403 1.828 12.784-.29 15.937-3.094 0 0 7.182-6.53 11.12-21.64L43.92 85.18s2.473-8.402-.388-12.496c-2.37-2.788-8.768-10.33-11.496-13.064l-4.57 3.627c1.363-4.368 2.183-8.61 2.46-12.71H49.19s-.027-7.38-2.372-7.38zm128.752-.502c6.51-8.013 14.054-18.302 14.054-18.302s-5.827-4.625-8.556-1.27c-1.874 2.548-11.51 15.063-11.51 15.063l6.012 4.51zm-46.903-18.462c-2.814-2.577-8.096.667-8.096.667s12.35 17.2 12.85 17.953l6.08-4.29s-8.02-11.752-10.83-14.33zM199.99 46.5c-6.18 0-40.908.292-40.953.292v-31.56c1.503 0 3.882-.124 7.14-.376 12.773-.753 21.914-1.25 27.427-1.504 0 0 3.817-8.496-.185-10.45-.96-.37-7.24 1.43-7.24 1.43s-51.63 5.153-72.61 5.64c.5 2.756 2.38 5.336 4.93 6.11 4.16 1.087 7.09.53 15.36.277 7.76-.5 13.65-.76 17.66-.76v31.19h-41.71s.88 6.97 7.97 7.14h33.73v22.16c0 4.364-3.498 6.87-7.65 6.6-4.4.034-8.15-.36-13.027-.566.623 1.24 1.977 4.496 6.035 6.824 3.087 1.502 5.054 2.053 8.13 2.053 9.237 0 14.27-5.4 14.027-14.16V53.93h38.235c3.026 0 2.72-7.432 2.72-7.432z" fill-rule="evenodd"></path>
+									</g>
+								</svg>
+							</a>
+							<nav role="navigation" class="AppHeader-nav">
+								<a class="AppHeader-navItem" href="http://localhost:8080/zhihu/index.html">首页</a>
+								<a class="AppHeader-navItem" href="https://www.zhihu.com/topic">话题</a>
+								<a class="AppHeader-navItem" href="https://www.zhihu.com/topic">发现</a>
+								<a class="AppHeader-navItem" href="http://localhost:8080/zhihu/index-article.html">文章</a>
+							</nav>
+							<div class="SearchBar" role="search">
+								<div class="SearchBar-toolWrapper">
+									<form class="SearchBar-tool">
+										<div>
+											<div class="Popover">
+												<div class="SearchBar-input Input-wrapper Input-wrapper--grey"><input maxlength="100" autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-activedescendant="AutoComplete-93900-53272--1" id="Popover-93906-14653-toggle" aria-haspopup="true" aria-owns="Popover-93906-14653-content" class="Input" placeholder="搜索你感兴趣的内容…" type="text">
+													<div class="Input-after"><button class="Button SearchBar-searchIcon Button--primary" aria-label="搜索" type="button"><svg viewBox="0 0 16 16" class="Icon Icon--search" width="16" height="16" aria-hidden="true" style="height: 16px; width: 16px;"><title></title><g><path d="M12.054 10.864c.887-1.14 1.42-2.57 1.42-4.127C13.474 3.017 10.457 0 6.737 0S0 3.016 0 6.737c0 3.72 3.016 6.737 6.737 6.737 1.556 0 2.985-.533 4.127-1.42l3.103 3.104c.765.46 1.705-.37 1.19-1.19l-3.103-3.104zm-5.317.925c-2.786 0-5.053-2.267-5.053-5.053S3.95 1.684 6.737 1.684 11.79 3.95 11.79 6.737 9.522 11.79 6.736 11.79z"></path></g></svg></button></div>
+												</div>
+												<!-- react-empty: 29 -->
+											</div>
+										</div>
+									</form>
+								</div><button class="Button QuestionAskButton SearchBar-askButton Button--primary Button--blue" type="button"><!-- react-text: 31 -->提问<!-- /react-text --><!-- react-empty: 32 --></button></div>
+							<div class="AppHeader-userInfo">
+								<div class="AppHeader-profile">
+									<div class="Popover AppHeader-menu"><button class="Button AppHeader-profileEntry Button--plain" type="button" id="Popover-94344-31742-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover-94344-31742-content">
+									<img class="Avatar AppHeader-profileAvatar" id="header" height="30" width="30"></button>
+										<!-- react-empty: 310 -->
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="PageHeader">
+							<div data-reactroot="" class="QuestionHeader-content">
+								<div class="QuestionHeader-main">
+									<h1 class="QuestionHeader-title"></h1></div>
+								<div class="QuestionHeader-side">
+									<div class="QuestionButtonGroup"><button class="Button Button--primary" type="button">关注问题</button><button class="Button Button--blue" type="button"><svg viewBox="0 0 12 12" class="Icon Button-icon Icon--modify" width="14" height="16" aria-hidden="true" style="height: 16px; width: 14px;"><title></title><g><path d="M.423 10.32L0 12l1.667-.474 1.55-.44-2.4-2.33-.394 1.564zM10.153.233c-.327-.318-.85-.31-1.17.018l-.793.817 2.49 2.414.792-.814c.318-.328.312-.852-.017-1.17l-1.3-1.263zM3.84 10.536L1.35 8.122l6.265-6.46 2.49 2.414-6.265 6.46z" fill-rule="evenodd"></path></g></svg><!-- react-text: 11 -->写回答<!-- /react-text --></button></div>
+								</div>
+							</div>
+						</div>
+					</header>
+					<div class="Sticky--holder" style="position: relative; top: 0px; right: 0px; bottom: 0px; left: 0px; display: block; float: none; margin: 0px; height: 53px;"></div>
+				</div>
+				<!-- react-empty: 46 -->
+				<main role="main" class="App-main">
+					<div itemscope="" itemtype="http://schema.org/Question">
+						<div data-za-module="QuestionItem" data-za-module-info="{}">
+							<div class="QuestionStatus">
+								<!-- react-empty: 61 -->
+								<!-- react-empty: 62 -->
+								<!-- react-empty: 63 -->
+							</div>
+							<div class="QuestionHeader">
+								<div class="QuestionHeader-content">
+									<div class="QuestionHeader-main">
+										<div class="QuestionHeader-tags">
+											<div class="QuestionHeader-topics">
+												<div class="Tag QuestionTopic">
+													<span class="Tag-content">
+														<div class="Popover">
+															<div id="question-tag"></div>
+															</div></span></div>
+											</div>
+										</div>
+										<h1 class="QuestionHeader-title" id="question-title"></h1>
+										<div class="QuestionHeader-detail">
+											<div class="QuestionRichText QuestionRichText--collapsed">
+												<div ><span id="question-detail"></span></div>
+											</div>
+										</div>
+									</div>
+									<div class="QuestionHeader-side">
+										<div class="QuestionHeader-follow-status">
+											<div class="QuestionFollowStatus">
+												<div class="NumberBoard QuestionFollowStatus-counts">
+													<button class="Button NumberBoard-item Button--plain" type="button">
+													<div class="NumberBoard-name">关注者</div><div class="NumberBoard-value" id="follow"></div></button>
+												</div>
+												<!-- react-empty: 116 -->
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="QuestionHeader-footer">
+									<div class="QuestionHeader-footer-inner">
+										<div class="QuestionHeader-main QuestionHeader-footer-main">
+											<div class="QuestionHeaderActions">
+
+											</div>
+											<div class="QuestionHeader-actions"></div>
+										</div>
+										<div class="QuestionHeader-side">
+											<div class="QuestionButtonGroup">
+											<button class="Button Button--primary Button--blue" onclick="guanzhu()" type="button" id="guanzhu">关注问题</button>
+											<button class="Button Button--blue" type="button" onclick="jump()"><svg viewBox="0 0 12 12" class="Icon Button-icon Icon--modify" width="14" height="16" aria-hidden="true" style="height: 16px; width: 14px;"><title></title><g><path d="M.423 10.32L0 12l1.667-.474 1.55-.44-2.4-2.33-.394 1.564zM10.153.233c-.327-.318-.85-.31-1.17.018l-.793.817 2.49 2.414.792-.814c.318-.328.312-.852-.017-1.17l-1.3-1.263zM3.84 10.536L1.35 8.122l6.265-6.46 2.49 2.414-6.265 6.46z" fill-rule="evenodd"></path></g></svg><!-- react-text: 165 -->写回答<!-- /react-text --></button></div>
+										</div>
+									</div>
+									<!-- react-empty: 166 -->
+									<!-- react-empty: 167 -->
+								</div>
+							</div>
+							<div>
+								<div>
+									<div class="Sticky"></div>
+								</div>
+							</div>
+						</div>
+						<div class="Question-main">
+							<div class="Question-mainColumn">
+								<div>
+									<div id="QuestionAnswers-answers" class="QuestionAnswers-answers">
+										<div class="Card">
+											<div class="List">
+												<div class="List-header">
+													<h4 class="List-headerText"><span id="countAnsw"></span></h4>
+													<div class="List-headerOptions">
+														<div class="Popover"><button class="Button Select-button Select-plainButton Button--plain" role="combobox" aria-expanded="false" type="button" id="Popover-3651-2061-toggle" aria-haspopup="true" aria-owns="Popover-3651-2061-content"><!-- react-text: 865 -->默认排序<!-- /react-text --><svg viewBox="0 0 8 13" class="Icon Select-arrow Icon--select" width="8" height="16" aria-hidden="true" style="height: 16px; width: 8px;"><title></title><g><path d="M4 11.183L1.284 8.218c-.293-.29-.77-.29-1.064 0-.293.29-.293.76 0 1.052l3.25 3.512c.292.29.768.29 1.062 0L7.78 9.27c.293-.29.293-.76 0-1.052-.295-.29-.77-.29-1.064 0L4 11.182zM4 1.818L1.284 4.782c-.293.29-.77.29-1.064 0-.293-.29-.293-.76 0-1.052L3.47.218c.292-.29.768-.29 1.062 0L7.78 3.73c.293.29.293.76 0 1.052-.295.29-.77.29-1.064 0L4 1.82z"></path></g></svg></button>
+															<!-- react-empty: 869 -->
+														</div>
+													</div>
+												</div>
+												<div id="mainContent">
+												</div>
+											</div>
+										</div>
+										<!-- react-empty: 1245 -->
+									</div>
+		
+									<div class="Card QuestionAnswers-answerAdd">
+			<div class="AnswerAdd" id="AnswerTable">
+			
+				<div class="AnswerForm-editor Input-wrapper Input-wrapper--spread Input-wrapper--large Input-wrapper--noPadding is-focus">
+					<div class="Input Editable Editable--focus">
+						<div>
+							<div class="Sticky">
+								<div class="Editable-toolbar">
+									<div class="Editable-controls"><button class="Button Editable-control Button--plain" aria-label="粗体" data-tooltip="粗体"  onclick=bold() data-tooltip-position="bottom" type="button"><svg viewBox="0 0 11 15" class="Icon Icon--bold" width="14" height="14" aria-hidden="true" style="height: 14px; width: 14px;"><title></title><g><path d="M2 12.025V8h4.418c1.19 0 2.415.562 2.415 2.012s-1.608 2.013-2.9 2.013H2zM2 2h4.336c1 0 1.814.888 1.814 2 0 .89-.814 2-1.814 2H2V2zm8.192 1.9c0-2.146-1.744-3.89-3.888-3.89 0 0-3.97-.01-5.137-.01C0 0 0 1.167 0 1.167v11.666C0 14 1.167 14 1.167 14l5.572.01c2.33 0 4.23-1.86 4.23-4.148 0-1.388-.7-2.618-1.77-3.372.614-.688.99-1.596.99-2.59z" fill-rule="evenodd"></path></g></svg></button><button class="Button Editable-control Button--plain" aria-label="斜体" data-tooltip="斜体" data-tooltip-position="bottom" type="button"><svg viewBox="0 0 10 14" class="Icon Icon--italic" width="14" height="14" aria-hidden="true" style="height: 14px; width: 14px;"><title></title><g><path d="M8.75 0h-5.5c-.412 0-.75.336-.75.75 0 .417.336.75.75.75H5l-2 11H1.25c-.412 0-.75.336-.75.75 0 .417.336.75.75.75h5.5c.412 0 .75-.336.75-.75 0-.417-.335-.75-.75-.75H5l2-11h1.75c.412 0 .75-.336.75-.75C9.5.333 9.165 0 8.75 0" fill-rule="evenodd"></path></g></svg></button></div>
+									<div class="Editable-controls"><button class="Button Editable-control Button--plain" aria-label="标题" data-tooltip="标题" data-tooltip-position="bottom" type="button"><svg viewBox="0 0 10 14" class="Icon Icon--header" width="14" height="14" aria-hidden="true" style="height: 14px; width: 14px;"><title></title><g><path d="M0 1.007C0 .45.444 0 1 0c.552 0 1 .45 1 1.007v11.986C2 13.55 1.556 14 1 14c-.552 0-1-.45-1-1.007V1.007zm8 0C8 .45 8.444 0 9 0c.552 0 1 .45 1 1.007v11.986C10 13.55 9.556 14 9 14c-.552 0-1-.45-1-1.007V1.007zM2 6h6v2H2V6z" fill-rule="evenodd"></path></g></svg></button><button class="Button Editable-control Button--plain" aria-label="引用块" data-tooltip="引用块" data-tooltip-position="bottom" type="button"><svg viewBox="0 0 14 11" class="Icon Icon--blockquote" width="14" height="14" aria-hidden="true" style="height: 14px; width: 14px;"><title></title><g><path d="M12.975 5.21c-.503-.454-1.096-.668-1.78-.643l-.25.03h-.19c-.315.013-.49-.078-.526-.274-.04-.206.1-.566.43-1.08.34-.527.94-1.126 1.79-1.797.35-.276.5-.568.45-.877-.04-.2-.13-.35-.29-.46-.16-.11-.34-.14-.55-.11-.516.09-1.17.512-1.97 1.27-.947.89-1.647 1.89-2.1 3.006-.45 1.12-.59 2.168-.42 3.148.08.463.25.91.504 1.336.257.43.56.78.916 1.046.748.58 1.558.79 2.433.64.912-.166 1.602-.61 2.07-1.34.19-.3.322-.64.4-1.02.074-.38.08-.748.02-1.098-.13-.74-.45-1.34-.95-1.79zm-7.51 0c-.503-.454-1.096-.668-1.782-.643l-.248.03h-.19c-.316.013-.492-.078-.526-.274-.04-.206.1-.566.43-1.08.34-.527.94-1.126 1.79-1.797.35-.276.5-.568.45-.877-.03-.2-.13-.35-.28-.46C4.95 0 4.77-.03 4.56 0c-.514.09-1.17.516-1.97 1.273C1.65 2.17.95 3.17.492 4.29.04 5.41-.1 6.458.07 7.438c.083.462.252.91.507 1.335.256.43.56.78.916 1.046.748.58 1.558.79 2.433.63.914-.16 1.604-.61 2.07-1.34.19-.3.323-.64.4-1.02.076-.38.082-.75.02-1.1-.13-.74-.447-1.337-.95-1.79z" fill-rule="evenodd"></path></g></svg></button><button class="Button Editable-control Button--plain" aria-label="代码块" data-tooltip="代码块" data-tooltip-position="bottom" type="button"><svg viewBox="0 0 16 14" class="Icon Icon--code" width="14" height="14" aria-hidden="true" style="height: 14px; width: 14px;"><title></title><g><path d="M15.718 6.56l-1.03-.954-2.476-2.29c-.356-.36-.978-.36-1.337 0-.367.372-.367.976.008 1.353l2.804 2.564-2.813 2.576c-.366.37-.365.976 0 1.346.18.18.417.28.67.28.252 0 .49-.1.66-.275l1.32-1.22 2.2-2.03c.368-.37.368-.974-.006-1.35zM8.256.99c.097-.548.612-.915 1.16-.818.544.096.907.616.81 1.165L8.144 13.142c-.096.548-.612.915-1.16.818-.543-.095-.906-.616-.81-1.164L8.257.992zM5.123 3.316c-.355-.36-.986-.355-1.33-.006l-.686.634-2.833 2.62c-.367.37-.367.975.007 1.352L1.697 9.22l2.093 1.936c.18.18.415.28.67.28.25 0 .487-.1.666-.28.366-.37.367-.973-.006-1.35l-2.81-2.57L5.124 4.66c.367-.37.367-.973 0-1.344z" fill-rule="evenodd"></path></g></svg></button><button class="Button Editable-control Button--plain" aria-label="有序列表" data-tooltip="有序列表" data-tooltip-position="bottom" type="button"><svg viewBox="0 0 14 14" class="Icon Icon--insertOrderedList" width="14" height="14" aria-hidden="true" style="height: 14px; width: 14px;"><title></title><g><path d="M4 1.5c0-.552.456-1 .995-1h8.01c.55 0 .995.444.995 1 0 .552-.456 1-.995 1h-8.01c-.55 0-.995-.444-.995-1zM.884 2.893h.803V0H.403l-.16.804h.642v2.09zm.898 3.83c.362-.362.468-.57.468-.878 0-.488-.482-.945-1.125-.945S0 5.33 0 5.974h.707c0-.225.13-.43.418-.43.26 0 .4.165.396.367 0 .14-.09.26-.46.57L0 7.37v.48h2.25v-.73h-.86l.392-.396zM4 6.5c0-.552.456-1 .995-1h8.01c.55 0 .995.444.995 1 0 .552-.456 1-.995 1h-8.01c-.55 0-.995-.444-.995-1zm0 5c0-.552.456-1 .995-1h8.01c.55 0 .995.444.995 1 0 .552-.456 1-.995 1h-8.01c-.55 0-.995-.444-.995-1zm-1.76.624c0 .14-.024.27-.075.388-.05.12-.123.222-.217.31-.093.086-.205.154-.336.204-.13.05-.275.074-.437.074-.166 0-.32-.027-.462-.08-.142-.053-.265-.126-.367-.217-.103-.09-.185-.197-.246-.318-.062-.12-.095-.248-.1-.38v-.055h.765v.054c0 .1.033.183.1.25.066.068.155.102.267.102.117 0 .207-.03.27-.09.062-.06.093-.152.093-.277 0-.12-.04-.21-.117-.27-.078-.06-.185-.09-.32-.09h-.14v-.52h.144c.117 0 .205-.03.264-.09.058-.06.087-.14.087-.23 0-.087-.03-.157-.087-.21-.06-.05-.136-.08-.233-.08-.107 0-.185.03-.236.08-.05.053-.076.12-.076.2v.053H.09v-.055c.018-.267.116-.48.295-.643.18-.16.437-.24.776-.24.14 0 .27.02.39.062s.23.1.31.174c.09.074.16.16.21.26.05.1.08.208.08.32 0 .258-.116.46-.35.605v.005c.074.03.138.068.194.12.056.05.103.106.14.167.04.06.067.126.087.196.02.07.03.14.03.207z" fill-rule="evenodd"></path></g></svg></button><button class="Button Editable-control Button--plain" aria-label="无序列表" data-tooltip="无序列表" data-tooltip-position="bottom" type="button"><svg viewBox="0 0 14 13" class="Icon Icon--insertUnorderedList" width="14" height="14" aria-hidden="true" style="height: 14px; width: 14px;"><title></title><g><path d="M4 1c0-.552.456-1 .995-1h8.01c.55 0 .995.444.995 1 0 .552-.456 1-.995 1h-8.01C4.445 2 4 1.556 4 1zM1 2c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1zm0 5c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1zm0 5c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1zm3-6c0-.552.456-1 .995-1h8.01c.55 0 .995.444.995 1 0 .552-.456 1-.995 1h-8.01C4.445 7 4 6.556 4 6zm0 5c0-.552.456-1 .995-1h8.01c.55 0 .995.444.995 1 0 .552-.456 1-.995 1h-8.01C4.445 12 4 11.556 4 11z" fill-rule="evenodd"></path></g></svg></button></div>
+									<div class="Editable-controls"><button class="Button Editable-control Button--plain" aria-label="插入链接" data-tooltip="插入链接" data-tooltip-position="bottom" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" viewBox="0 0 16 16" class="Icon Icon--editable/link" aria-hidden="true" style="height: 14px; width: 16px;"><title></title><g><path fill-rule="evenodd" d="M2.77 13.23c-.905-.904-.94-2.333-.08-3.193l3.06-3.06-1.193-1.19-3.06 3.058c-1.487 1.49-1.426 3.954.14 5.52 1.564 1.564 4.03 1.626 5.518.137l3.06-3.06-1.192-1.19-3.06 3.06c-.86.86-2.29.823-3.193-.08zm3.017-8.673l1.19 1.192 3.06-3.06c.86-.86 2.29-.826 3.194.08.906.903.94 2.332.08 3.192l-3.057 3.06 1.19 1.19 3.06-3.058c1.49-1.49 1.427-3.954-.138-5.52C12.8.072 10.335.01 8.845 1.5l-3.06 3.06zm-1.023 6.68c.33.33.862.343 1.176.03l5.34-5.34c.314-.315.3-.847-.03-1.177-.33-.33-.862-.344-1.176-.03l-5.34 5.34c-.314.314-.3.847.03 1.177z"></path></g></svg></button><button class="Button Editable-control Button--plain" aria-label="上传图片" data-tooltip="上传图片" data-tooltip-position="bottom" type="button"><svg viewBox="0 0 20 16" class="Icon Icon--camera" width="16" height="14" aria-hidden="true" style="height: 14px; width: 16px;"><title></title><g><path d="M18.094 2H15s-1-2-2-2H7C6 0 5 2 5 2H2C0 2 0 3.967 0 3.967V14c0 2 2.036 2 2.036 2H17c3 0 3-1.983 3-1.983V4c0-2-1.906-2-1.906-2zM10 12c-1.933 0-3.5-1.567-3.5-3.5S8.067 5 10 5s3.5 1.567 3.5 3.5S11.933 12 10 12zm0 1.5c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm7.5-8c-.552 0-1-.448-1-1s.448-1 1-1 1 .448 1 1-.448 1-1 1z" fill-rule="evenodd"></path></g></svg></button><button class="Button Editable-control Button--plain" aria-label="插入视频" data-tooltip="插入视频" data-tooltip-position="bottom" type="button"><svg viewBox="0 0 18 14" class="Icon Icon--video" width="16" height="14" aria-hidden="true" style="height: 14px; width: 16px;"><title></title><g><path d="M7.546 10c-.466.273-.86.053-.86-.5V4.505c0-.565.385-.778.86-.5L11.824 6.5c.466.273.475.727 0 1.004L7.546 10zM2 0S0 0 0 2v10s0 2 2.002 2H16c2 0 2-2 2-2V2c0-2-2-2-2-2H2z" fill-rule="evenodd"></path></g></svg></button><button class="Button Editable-control Button--plain" aria-label="插入公式" data-tooltip="插入公式" data-tooltip-position="bottom" type="button"><svg width="16" height="14" viewBox="0 0 10 10" class="Icon Icon--formula" aria-hidden="true" style="height: 14px; width: 16px;"><title></title><g><g id="Page-1" stroke="none" stroke-width="1" fill-rule="evenodd">         <g id="Artboard-Copy-7" transform="translate(-7.000000, -7.000000)">             <path d="M17,11 L17,7 L7,7 L11.5,12 L7,17 L17,17 L17,13 C17,16.25 13,16 13,16 L10.5,16 L14,12 L10.5,8 L13,8 C13,8 17,7.688 17,11 L17,11 Z" id="Shape"></path>         </g>     </g></g></svg></button></div>
+									<div class="Editable-controls"><button class="Button Editable-control Button--plain" aria-label="清除格式" data-tooltip="清除格式" data-tooltip-position="bottom" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" viewBox="0 0 15 14" class="Icon Icon--formatClear" aria-hidden="true" style="height: 14px; width: 16px;"><title></title><g><path fill-rule="evenodd" d="M4.864 7.83l1.64 1.642-1.17 2.874c-.262.644-.89 1.062-1.585 1.055-.1 0-.2-.02-.29-.054-.4-.163-.59-.62-.43-1.02L4.864 7.83zM6.5 3.81L7.24 2H4.69l-2-2h10.672c.552 0 1 .448 1 1s-.448 1-1 1H9.55L8.142 5.452 6.5 3.812zM.294 1.846c.39-.39 1.024-.39 1.414 0L11.753 11.89c.39.392.39 1.025 0 1.415-.39.39-1.024.39-1.414 0L.29 3.26c-.39-.39-.39-1.024 0-1.415z"></path></g></svg></button></div>
+								</div>
+							</div>
+						</div>
+						<div class="Dropzone RichText" style="min-height: 118px;">
+	<textarea placeholder="请输入回答..." style="width:90%;height:180px;border:0px;font-family: 微软雅黑;" autocomplete="off" wrap="hard" id="huida"></textarea>
+</div><input multiple="" accept="image/jpg,image/jpeg,image/png,image/gif" style="display: none;" type="file">
+					</div>
+				</div>
+				<div>
+					<div style="width: 692.667px; bottom: 0px; left: 199px;" class="Sticky AnswerForm-footer">
+						<div class="AnswerForm-status"></div>
+						<div class="AnswerForm-footerRight">
+							<button class="Button AnswerForm-submit Button--primary Button--blue" type="button" onclick="submit()">提交回答</button></div>
+					</div>
+					
+				</div>
+				<!-- react-empty: 921 -->
+				<!-- react-empty: 922 -->
+			
+		</div>
+									</div>
+								</div>
+							</div>
+					</div>
+				</div></main>
+				<div class="CornerButtons">
+					<div class="CornerAnimayedFlex"><button class="Button CornerButton Button--plain" data-tooltip="建议反馈" data-tooltip-position="left" aria-label="建议反馈" type="button"><svg width="18" height="16" viewBox="0 0 18 16" xmlns="http://www.w3.org/2000/svg" class="Icon Icon--feedback" aria-hidden="true" style="height: 16px; width: 18px;"><title>建议反馈</title><g><path d="M1.01 2.99L3 1s1-1 2-1h8c1 0 2 1 2 1l2 2s1 1 1 2v9s0 2-2.002 2H2c-2 0-2-2-2-2V5c0-1 1.01-2.01 1.01-2.01zM4.5 1.5h9L16 4H2l2.5-2.5zm2 5.5h5s.5 0 .5.5-.5.5-.5.5h-5S6 8 6 7.5s.5-.5.5-.5z" fill-rule="evenodd"></path></g></svg></button></div>
+					<div class="CornerAnimayedFlex CornerAnimayedFlex--hidden"><button class="Button CornerButton Button--plain" data-tooltip="回到顶部" data-tooltip-position="left" aria-label="回到顶部" type="button"><svg width="16" height="16" viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg" class="Icon Icon--backToTopArrow" aria-hidden="true" style="height: 16px; width: 16px;"><title>回到顶部</title><g><path d="M12.036 15.59c0 .55-.453.995-.997.995H5.032c-.55 0-.997-.445-.997-.996V8.584H1.03c-1.1 0-1.36-.633-.578-1.416L7.33.29c.39-.39 1.026-.385 1.412 0l6.878 6.88c.782.78.523 1.415-.58 1.415h-3.004v7.004z" fill-rule="evenodd"></path></g></svg></button></div>
+				</div>
+			</div>
+		</div>
+		<span><div></div></span>
+		<div>
+			<div data-reactroot="">
+				<div class="Editable-languageSuggestions" style="left: -1179px; top: -999px;">
+					<div>
+						<div class="Popover">
+							<div class="Editable-languageSuggestionsInput Input-wrapper"><input autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-activedescendant="AutoComplete-4551-14271-0" id="Popover-4590-41015-toggle" aria-haspopup="true" aria-owns="Popover-4590-41015-content" class="Input" placeholder="选择语言">
+								<div class="Input-after">
+									<svg viewBox="0 0 8 13" class="Icon Icon--select" width="15" height="15" aria-hidden="true" style="fill: rgb(175, 189, 207); height: 15px; width: 15px;">
+										<title></title>
+										<g>
+											<path d="M4 11.183L1.284 8.218c-.293-.29-.77-.29-1.064 0-.293.29-.293.76 0 1.052l3.25 3.512c.292.29.768.29 1.062 0L7.78 9.27c.293-.29.293-.76 0-1.052-.295-.29-.77-.29-1.064 0L4 11.182zM4 1.818L1.284 4.782c-.293.29-.77.29-1.064 0-.293-.29-.293-.76 0-1.052L3.47.218c.292-.29.768-.29 1.062 0L7.78 3.73c.293.29.293.76 0 1.052-.295.29-.77.29-1.064 0L4 1.82z"></path>
+										</g>
+									</svg>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+
+</body></html>

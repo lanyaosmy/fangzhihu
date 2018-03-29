@@ -1,0 +1,273 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script src="js/jquery-1.12.4.min.js"></script>
+<link href="css/z.7e3884f5.css" rel="stylesheet" />
+<link href="css/style_m.css" rel="stylesheet" data-reactid="17">
+<style>
+.sortspan{
+	  display: block;
+	  width: 230px;
+	  overflow: hidden;
+	  white-space: nowrap;
+	  text-overflow: ellipsis;
+}
+.zm-side-section-inner{
+	margin-top:40px;
+}
+h3{
+	font-size:19px;
+	font-weight:700;
+}
+.titleleft{
+	margin-left:10px;
+}
+.titleleft:hover{
+	color:#0f88eb;
+}
+button .Button{
+	margin-top:26px;
+}
+</style>
+</head>
+<body>
+	<header class="Sticky AppHeader is-fixed" role="banner" style="width: 100%; top: 0px; left: 0px;" data-za-module="TopNavBar">
+						<!-- react-empty: 694 -->
+						<div class="AppHeader-inner">
+							<a aria-label="知乎" href="http://localhost:8080/zhihu/index.html">
+								<img src="pic/logo.png">
+							</a>
+							<nav class="AppHeader-nav" role="navigation">
+								<a class="AppHeader-navItem" href="index.html">首页</a>
+								<a class="AppHeader-navItem" href="faxian.html"><b>发现</b></a>
+								<a class="AppHeader-navItem" href="topicChoose.html">话题</a>
+								<a class="AppHeader-navItem" href="index-article.html">文章</a>
+							</nav>
+							<div class="SearchBar" role="search">
+								<div class="SearchBar-toolWrapper" style="margin-top:9px;">
+									<form class="SearchBar-tool">
+										<div>
+											<div class="Popover">
+												<div class="SearchBar-input Input-wrapper Input-wrapper--grey"><input class="Input" id="Popover-6866-70423-toggle" role="combobox" aria-expanded="false" aria-haspopup="true" aria-activedescendant="AutoComplete-6863-32955--1" aria-owns="Popover-6866-70423-content" aria-autocomplete="list" type="text" maxlength="100" placeholder="搜索你感兴趣的内容…" value="" autocomplete="off">
+													<div class="Input-after"><button class="Button SearchBar-searchIcon Button--primary" aria-label="搜索" type="button"><svg xmlns="http://www.w3.org/2000/svg" class="Icon Icon--search" aria-hidden="true" style="height: 16px; width: 16px;" viewBox="0 0 16 16" width="16" height="16"><title /><g><path d="M 12.054 10.864 c 0.887 -1.14 1.42 -2.57 1.42 -4.127 C 13.474 3.017 10.457 0 6.737 0 S 0 3.016 0 6.737 c 0 3.72 3.016 6.737 6.737 6.737 c 1.556 0 2.985 -0.533 4.127 -1.42 l 3.103 3.104 c 0.765 0.46 1.705 -0.37 1.19 -1.19 l -3.103 -3.104 Z m -5.317 0.925 c -2.786 0 -5.053 -2.267 -5.053 -5.053 S 3.95 1.684 6.737 1.684 S 11.79 3.95 11.79 6.737 S 9.522 11.79 6.736 11.79 Z" /></g></svg></button></div>
+												</div>
+												<!-- react-empty: 29 -->
+											</div>
+										</div>
+									</form>
+								</div><button onclick="toSearch()" class="Button SearchBar-askButton Button--primary Button--blue" style="margin-top:33px; width:70px; height:35px; margin-left:30px;" type="button"><!-- react-text: 31 -->搜索<!-- /react-text --><!-- react-empty: 32 --></button></div>
+							<div class="AppHeader-userInfo">
+								<!-- react-empty: 42 -->
+								<div class="AppHeader-profile">
+									<div class="Popover AppHeader-menu">
+									
+									<a href="g_dongtai.html">
+									<button class="Button AppHeader-profileEntry Button--plain" type="button" id="Popover-7340-29363-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover-7340-29363-content">
+									<img class="Avatar AppHeader-profileAvatar" width="30" height="30" id="header"></button></a>
+										<!-- react-empty: 713 -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</header>
+	<div class="zg-wrap zu-main clearfix " role="main">
+		<div class="zu-main-content">
+			<div class="zu-main-content-inner">
+				<div class="explore-tab" id="js-explore-tab">
+					<a name="daily-hot" class="zg-anchor-hidden"></a> <a
+						name="monthly-hot" class="zg-anchor-hidden"></a>
+					<div class="tab-panel" style="display: block;">
+						<div id="nodelist" data-type="daily">
+							<div id="anode" class="explore-feed feed-item">
+								<h2>
+									<a class="question_link"
+										href="#" target="_blank">
+										 </a>
+								</h2>
+								<div class="zm-item-answer">
+									<div class="zm-item-vote">
+										<a class="zm-item-vote-count js-expand js-vote-count"></a>
+									</div>
+									<div class="answer-head">
+										<div class="zm-item-answer-author-info">
+											<span class="summary-wrapper"> 
+												<span class="author-link-line"> 
+													<a class="author-link" href="#" target="_blank"></a>
+												</span>
+											</span>
+										</div>
+									</div>
+									<div class="zm-item-rich-text expandable js-collapse-body">
+
+									</div>
+									<div class="zm-item-meta answer-actions clearfix js-contentActions">
+										<div class="zm-meta-panel">
+											<a class="follow-link zg-follow meta-item" href="#" id="Q1" onclick="guanzhu(this.id)">关注问题</a> 
+											<span class="zg-bull">•</span>
+											<a name="addcomment" class="meta-item toggle-comment js-toggleCommentBox" href="#"> 
+											38 条评论
+											</a>
+											<span class="zg-bull">•</span>
+											<a class="meta-item copyright"> 作者保留权利 </a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="zu-main-sidebar" data-za-module="RightSideBar">
+			<div class="zm-side-section explore-side-section explore-side-section-roundtable">
+				<div id="huatisort" class="zm-side-section-inner">
+					<div class="section-title">
+						<h3>话题排行</h3>
+					</div>
+					<ul id="topicSortList" class="list hot-roundtables">
+
+						<li class="clearfix">
+							<div class="content">
+								<a href="/roundtable/dengshantubu" target="_blank">挑战山野</a>
+								<div class="meta">
+									<span>160 人关注</span> <span class="zg-bull">•</span> 
+									<span>4个问题</span>
+								</div>
+							</div>
+						</li>
+
+						<li class="clearfix">
+							<div class="content">
+								<a href="/roundtable/shujuwajue" target="_blank">数据挖掘应用</a>
+								<div class="meta">
+									<span>4151 人关注</span> <span class="zg-bull">•</span> <span>10
+										个问题</span>
+								</div>
+							</div>
+						</li>
+
+					</ul>
+				</div>
+				<div id="zansort" class="zm-side-section-inner">
+					<div class="section-title">
+						<h3>回答 - 赞排行</h3>
+					</div>
+					<ul id="zanSortList" class="list hot-roundtables">
+						<li class="clearfix">
+							<div class="content">
+								<a href="/roundtable/dengshantubu" target="_blank">挑战山野</a>
+								<div class="meta">
+									<span class="sortspan" title="3171 人关注主要内容主要内容主要内容">3171 人关注主要内容主要内容主要内容容主要内容主容主要内容主</span>
+								</div>
+							</div>
+						</li>
+						<li class="clearfix">
+							<div class="content">
+
+								<a href="/roundtable/shujuwajue" target="_blank"
+									data-hovercard="r$t$shujuwajue">数据挖掘应用</a>
+								<div class="meta">
+									<span class="sortspan" title="3171 人关注主要内容主要内容主要内容">3171 人关注主要内容主要内容主要内容容主要内容主容主要内容主</span>
+								</div>
+							</div>
+						</li>
+
+						<li class="clearfix">
+							<div class="content">
+
+								<a href="/roundtable/yigan" target="_blank"
+									data-hovercard="r$t$yigan">小心「肝」保卫战</a>
+								<div class="meta">
+									<span class="sortspan" title="3171 人关注主要内容主要内容主要内容">3171 人关注主要内容主要内容主要内容容主要内容主容主要内容主</span>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div id="caisort" class="zm-side-section-inner">
+					<div class="section-title">
+						<h3>回答 - 踩排行</h3>
+					</div>
+					<ul id="caiSortList" class="list hot-roundtables">
+
+						<li class="clearfix">
+							<div class="content">
+								<a href="/roundtable/dengshantubu" target="_blank"
+									data-hovercard="r$t$dengshantubu">挑战山野</a>
+								<div class="meta">
+									<span class="sortspan" title="3171 人关注主要内容主要内容主要内容">3171 人关注主要内容主要内容主要内容容主要内容主容主要内容主</span>
+								</div>
+							</div>
+						</li>
+
+						<li class="clearfix">
+							<div class="content">
+
+								<a href="/roundtable/shujuwajue" target="_blank"
+									data-hovercard="r$t$shujuwajue">数据挖掘应用</a>
+								<div class="meta">
+									<span class="sortspan" title="3171 人关注主要内容主要内容主要内容">3171 人关注主要内容主要内容主要内容容主要内容主容主要内容主</span>
+								</div>
+							</div>
+						</li>
+
+						<li class="clearfix">
+							<div class="content">
+
+								<a href="/roundtable/yigan" target="_blank"
+									data-hovercard="r$t$yigan">小心「肝」保卫战</a>
+								<div class="meta">
+									<span class="sortspan" title="3171 人关注主要内容主要内容主要内容">3171 人关注主要内容主要内容主要内容容主要内容主容主要内容主</span>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+	
+			</div>
+		</div>
+	</div>
+		</div>
+	</div>
+	<script>
+		$(function(){
+			$.getJSON("./GetHead",function(data){
+				var headimg="";
+				$.each(data,function(index,value){
+					if(index=="headimg")headimg=value;
+				});
+				$("#header").attr('src',headimg);
+			});
+			var node = document.getElementById("anode").cloneNode(true);
+			document.getElementById("nodelist").appendChild(node);
+			$.get("jsp/huatiSort.jsp",function(data){
+				$("ul#topicSortList").html(data);
+			});
+			$.get("jsp/zanSort.jsp",function(data){
+				$("ul#zanSortList").html(data);
+			});
+			$.get("jsp/caiSort.jsp",function(data){
+				$("ul#caiSortList").html(data);
+			});
+			$.get("jsp/getFaxianContent.jsp",function(data){
+				$("div#nodelist").html(data);
+			});
+			$.get("jsp/getName.jsp",function(data)
+			{
+				$("span#namespan").text(decodeURI(data));
+			});
+		});
+		
+		function guanzhu(a){	
+			$("a#"+a).text("已关注");
+		}
+		
+		function toSearch(){
+			var string = $("input#Popover-6866-70423-toggle").val();
+			var result = encodeURI(encodeURI(string));
+			window.location.href="search.html?content="+result;
+		}
+	</script>
+</body>
+</html>

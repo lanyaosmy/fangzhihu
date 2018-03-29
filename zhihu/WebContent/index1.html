@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html data-reactroot="" data-reactid="1" data-react-checksum="111978008" data-focus-method="pointer" lang="zh">
+<head data-reactid="2">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title data-reactid="4">首页 - 知乎</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" data-reactid="5">
+		<meta name="renderer" content="webkit" data-reactid="6">
+		<meta name="force-rendering" content="webkit" data-reactid="7">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" data-reactid="8">
+		<meta name="google-site-verification" content="FTeR0c8arOPKh8c5DYh_9uu98_zJbaWw53J-Sch9MTg" data-reactid="9">
+		<script type="text/javascript" src="./js/jquery-3.2.1.js"></script>
+		<link href="./css/main.app.40e8a6bbb95c9451d33f.css" rel="stylesheet" data-reactid="16">
+		<script>
+		$(function(){
+			$.getJSON("./Mainframe",function(data){
+				var topic="";
+				var title="";
+				var username="";
+				var content="";
+				for(i=0;i<data.length;i++){
+					$.each(data[i],function(index,value){
+						if(index=="topic")topic=value;
+						if(index=="title")title=value;
+						if(index=="username")username=value;
+						if(index=="answer")content=value;
+					});
+					alert(i+": "+topic+title+username);
+					$("#mainframe").prepend("<div class=\"Card TopstoryItem\" width=100% id=content"+i+"></div><p>");
+					$("#content"+i).append("<div class=\"Feed-title\" width=500><div class=\"Feed-meta\">"+
+						"<span class=\"Feed-meta-item\">来自话题:<span><a class=\"TopicLink\" href=\"test.html\">"+topic+"</a>"+
+						"</span></span></div></div>");
+					$("#content"+i).append("<div class=AuthorInfo Feed-meta-author AuthorInfo--plain id=nameframe"+i+"><span class=\"UserLink AuthorInfo-avatarWrapper\"><div class=\"Popover\">"+
+							"<div aria-haspopup=true aria-expanded=false aria-owns=Popover-43344-36794-content>"+
+								"<a class=\"UserLink-link\" href=\"test.html\">"+
+								"	<img class=\"Avatar AuthorInfo-avatar\" width=24 height=24 src=\"./img/touxiang1.jpg\">"+
+								"	</a></div></div></span>");
+					
+					$("#nameframe"+i).append("<div class=\"AuthorInfo-content\">"+
+						"<div class=\"AuthorInfo-head\">"+
+						"<span class=\"UserLink AuthorInfo-name\"><div class=\"Popover\">"+
+							"<div aria-haspopup=\"true\" aria-expanded=\"false\" aria-owns=\"Popover-43356-88207-content\">"+
+								" <a class=\"UserLink-link\" href=\"test.html\">"+username+"</a>"+
+						"</div></div></span></div>");
+					$("#content"+i).append("<div class=\"ContentItem AnswerItem\" margin-top=14px><h2 class=\"ContentItem-title\">"+
+							"<div><a target=\"_blank\" href=\"test.html\">"+title+"</a>"+
+							"</div></h2>");
+					$("#content"+i).append("<div class=\"RichContent-inner\" style=\"max-height: 400px;\">"+
+						"<span class=\"RichText CopyrightRichText-richText\" itemprop=\"text\">"+content+"</span></div></div>");
+				}
+			});
+		});
+		</script>
+		<style type="text/css">
+			.CloseIcon-icon-2xww {
+				transition: opacity .3s ease-out
+			}
+			
+			.CloseIcon-icon-2xww:hover {
+				opacity: .8
+			}
+		</style>
+		<style type="text/css">
+			.animations-fadeIn-1aFv {
+				animation: animations-fadeIn-1aFv .3s ease-out both
+			}
+			
+			@keyframes animations-fadeIn-1aFv {
+				0% {
+					opacity: 0
+				}
+				to {
+					opacity: 1
+				}
+			}
+			
+			.animations-fadeOut-3XSQ {
+				animation: animations-fadeOut-3XSQ .3s ease-out both
+			}
+			
+			@keyframes animations-fadeOut-3XSQ {
+				0% {
+					opacity: 1
+				}
+				to {
+					opacity: 0
+				}
+			}
+			
+			.animations-fadeInUp-3KKK {
+				animation: animations-fadeInUp-3KKK .3s cubic-bezier(.25, .1, .35, 1) both
+			}
+			
+			@keyframes animations-fadeInUp-3KKK {
+				0% {
+					opacity: 0;
+					transform: translateY(20px)
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0)
+				}
+			}
+			
+			.animations-fadeOutDown-r_A_ {
+				animation: animations-fadeOutDown-r_A_ .3s cubic-bezier(.25, .1, .35, 1) both
+			}
+			
+			@keyframes animations-fadeOutDown-r_A_ {
+				0% {
+					transform: translateY(0)
+				}
+				to {
+					opacity: 0;
+					transform: translateY(20px)
+				}
+			}
+		</style>
+		<style type="text/css">
+			.Modal-backdrop-2ksh {
+				background-color: rgba(0, 0, 0, .65)
+			}
+			
+			.Modal-backdrop-2ksh,
+			.Modal-modalWrapper-56Mq {
+				position: fixed;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				z-index: 10010
+			}
+			
+			.Modal-modalWrapper-56Mq {
+				display: -ms-flexbox;
+				display: flex;
+				-ms-flex-align: center;
+				align-items: center;
+				-ms-flex-pack: center;
+				justify-content: center
+			}
+			
+			.Modal-modal-wf58 {
+				position: relative;
+				z-index: 10011;
+				background: #fff;
+				border-radius: 2px
+			}
+			
+			.Modal-content-3JxL {
+				width: 588px;
+				max-height: calc(100vh - 24px * 2);
+				overflow-x: hidden;
+				overflow-y: auto;
+				-webkit-overflow-scrolling: touch
+			}
+			
+			.Modal-closeButton-3JkR {
+				position: absolute;
+				top: 4px;
+				right: -44px;
+				padding: 12px;
+				width: 40px;
+				height: 40px;
+				cursor: pointer;
+				box-sizing: border-box;
+				background: none;
+				outline: none;
+				border: none
+			}
+		</style>
+		<style type="text/css">
+			.FeedbackButton-button-3waL {
+				position: fixed;
+				z-index: 10000;
+				bottom: 40px;
+				right: 40px;
+				width: 40px;
+				height: 40px;
+				cursor: pointer;
+				border-radius: 50%;
+				background-color: #fff;
+				border: none;
+				outline: none;
+				box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+				font-weight: 700;
+				line-height: normal
+			}
+			
+			.FeedbackButton-icon-1Rgw {
+				display: inline-block;
+				vertical-align: middle;
+				width: 18px;
+				height: 18px;
+				background-image: 
+				background-repeat: no-repeat;
+				background-size: contain
+			}
+			
+			.FeedbackButton-button-3waL:hover .FeedbackButton-icon-1Rgw {
+				background-image: 
+			}
+		</style>
+		<style type="text/css">
+			.DrawingExample-svg-30WA {
+				position: absolute;
+				top: 30px;
+				right: 0;
+				left: 0;
+				margin: auto;
+				transform: rotate(-44deg)
+			}
+			
+			.DrawingExample-ellipse-26bv {
+				stroke-dasharray: 520;
+				transform-origin: center;
+				animation: DrawingExample-drawingExample-3Bm3 .6s linear both
+			}
+			
+			@keyframes DrawingExample-drawingExample-3Bm3 {
+				0% {
+					stroke-dashoffset: 520
+				}
+				50% {
+					stroke-dashoffset: 1000;
+					opacity: 1
+				}
+				to {
+					stroke-dashoffset: 1000;
+					opacity: 0
+				}
+			}
+		</style>
+		<style type="text/css">
+			.Spinner-spinner-2PGn {
+				position: absolute;
+				width: 30px;
+				height: 30px;
+				top: 50%;
+				left: 50%;
+				margin: -15px 0 0 -15px;
+				animation: Spinner-rotate-RMMJ .8s linear infinite
+			}
+			
+			.Spinner-spinner-2PGn .Spinner-circle-teFy {
+				stroke: #4197ff;
+				stroke-dasharray: 187;
+				stroke-dashoffset: 46.75;
+				transform-origin: center
+			}
+			
+			@keyframes Spinner-rotate-RMMJ {
+				0% {
+					transform: rotate(0deg)
+				}
+				to {
+					transform: rotate(1turn)
+				}
+			}
+		</style>
+		<style type="text/css">
+			.FeedbackForm-form-1uUg {
+				padding: 40px 24px 32px;
+				width: 100%;
+				font-size: 14px;
+				line-height: 1.5;
+				font-family: HelveticaNeue-Light, Helvetica, PingFangSC-Light, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+				color: #404040;
+				box-sizing: border-box
+			}
+			
+			.FeedbackForm-header-3hQI {
+				margin-bottom: 26px;
+				text-align: center
+			}
+			
+			.FeedbackForm-title-2uCC {
+				font-size: 24px;
+				font-weight: 500;
+				line-height: 33px;
+				font-family: Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif
+			}
+			
+			.FeedbackForm-inputBox-15yJ {
+				display: block;
+				padding: 12px;
+				width: 100%;
+				height: auto;
+				font-size: 15px;
+				border: 1px solid #e7eaf1;
+				border-radius: 3px;
+				box-sizing: border-box;
+				resize: none;
+				outline: none;
+				color: inherit;
+				transition: box-shadow .15s ease-out;
+				overflow: auto
+			}
+			
+			.FeedbackForm-inputBox-15yJ::-webkit-input-placeholder {
+				color: #9aaabf;
+				transition: color .15s ease-out
+			}
+			
+			.FeedbackForm-inputBox-15yJ::-moz-placeholder {
+				color: #9aaabf;
+				transition: color .15s ease-out
+			}
+			
+			.FeedbackForm-inputBox-15yJ:-ms-input-placeholder {
+				color: #9aaabf;
+				transition: color .15s ease-out
+			}
+			
+			.FeedbackForm-inputBox-15yJ::placeholder {
+				color: #9aaabf;
+				transition: color .15s ease-out
+			}
+			
+			.FeedbackForm-inputBox-15yJ:hover::-webkit-input-placeholder {
+				color: rgba(154, 170, 191, .8)
+			}
+			
+			.FeedbackForm-inputBox-15yJ:hover::-moz-placeholder {
+				color: rgba(154, 170, 191, .8)
+			}
+			
+			.FeedbackForm-inputBox-15yJ:hover:-ms-input-placeholder {
+				color: rgba(154, 170, 191, .8)
+			}
+			
+			.FeedbackForm-inputBox-15yJ:hover::placeholder {
+				color: rgba(154, 170, 191, .8)
+			}
+			
+			.FeedbackForm-inputBox-15yJ:focus {
+				box-shadow: 0 0 5px #e7eaf1
+			}
+			
+			.FeedbackForm-inputBox-15yJ:focus::-webkit-input-placeholder {
+				color: rgba(154, 170, 191, .8)
+			}
+			
+			.FeedbackForm-inputBox-15yJ:focus::-moz-placeholder {
+				color: rgba(154, 170, 191, .8)
+			}
+			
+			.FeedbackForm-inputBox-15yJ:focus:-ms-input-placeholder {
+				color: rgba(154, 170, 191, .8)
+			}
+			
+			.FeedbackForm-inputBox-15yJ:focus::placeholder {
+				color: rgba(154, 170, 191, .8)
+			}
+			
+			.FeedbackForm-inputBox-15yJ.FeedbackForm-isWarning-2ds- {
+				border-color: #f75659
+			}
+			
+			.FeedbackForm-inputBox-15yJ.FeedbackForm-isWarning-2ds-::-webkit-input-placeholder {
+				color: #f75659
+			}
+			
+			.FeedbackForm-inputBox-15yJ.FeedbackForm-isWarning-2ds-::-moz-placeholder {
+				color: #f75659
+			}
+			
+			.FeedbackForm-inputBox-15yJ.FeedbackForm-isWarning-2ds-:-ms-input-placeholder {
+				color: #f75659
+			}
+			
+			.FeedbackForm-inputBox-15yJ.FeedbackForm-isWarning-2ds-::placeholder {
+				color: #f75659
+			}
+			
+			.FeedbackForm-inputBox-15yJ.FeedbackForm-isWarning-2ds-:focus {
+				box-shadow: none
+			}
+			
+			.FeedbackForm-screenShot--Gsn {
+				overflow: hidden;
+				box-sizing: border-box;
+				transition: max-height .3s ease, opacity .3s ease
+			}
+			
+			.FeedbackForm-screenShotLabel-2Sgh {
+				padding-top: 22px;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none
+			}
+			
+			.FeedbackForm-canvasContainer-mrde {
+				margin-top: 8px;
+				position: relative;
+				background-color: #f6f7f9
+			}
+			
+			.FeedbackForm-canvas-tSGI {
+				display: block;
+				max-width: 100%;
+				cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAABGdBTUEAALGPC/xhBQAAARpJREFUOBGdkr1KA0EUhTcxEkSQQIpAihQWPoedD2BnIVsZQiBVEkiR7SwtBDsJqXwBLQwEgoWNjY2FjYUQ38Ei5Oc7sBeGLTKze+Djzsyecxh2N4ryq0zkHpYQQ2H1SW5TNsxukaZzQsewACvTvIBg3eFUaABHMEv3OruBIN3icm8wZl+FZ3iBQ/AqweGW2FrlKlChV0McFsxOvaegm/T2lLzzTC/dqzaO7A1s/8GzE28Dhhj0f1jQnZ+c18CrKxxrcMO2/uK87m3AcAkrsKA7vzlvQJAmuNywrX84bwY1YBrBATyCFWj+QguCJKNCU1DZQ7r/Y55CsK5x2i2eWFcggTPIJd3Eiv5Zd3KlU3OJOQd9lVd4A5Xl1g4YG2GGhwRfegAAAABJRU5ErkJggg==) 0 17, default;
+				cursor: -webkit-image-set(url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAABGdBTUEAALGPC/xhBQAAARpJREFUOBGdkr1KA0EUhTcxEkSQQIpAihQWPoedD2BnIVsZQiBVEkiR7SwtBDsJqXwBLQwEgoWNjY2FjYUQ38Ei5Oc7sBeGLTKze+Djzsyecxh2N4ryq0zkHpYQQ2H1SW5TNsxukaZzQsewACvTvIBg3eFUaABHMEv3OruBIN3icm8wZl+FZ3iBQ/AqweGW2FrlKlChV0McFsxOvaegm/T2lLzzTC/dqzaO7A1s/8GzE28Dhhj0f1jQnZ+c18CrKxxrcMO2/uK87m3AcAkrsKA7vzlvQJAmuNywrX84bwY1YBrBATyCFWj+QguCJKNCU1DZQ7r/Y55CsK5x2i2eWFcggTPIJd3Eiv5Zd3KlU3OJOQd9lVd4A5Xl1g4YG2GGhwRfegAAAABJRU5ErkJggg==) 1x, url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAABGdBTUEAALGPC/xhBQAAAn9JREFUWAnFlz1IV2EUxs2+ixCCrCCrIaiGGnLIRdBacqkhtCEbqqVaoqmacpIma6rFHHITh1pKMKFaInATkb4hKChKIwj7rt8D74XDy3tfKM69Hng4zz3nvc9zfH3/93//DQ31xWqsBsEnMAU6wILFSpwnwB+Db/BDoPZYjuMYsMMU/Af1nron2o7hh5KBNNhP0AtqjV24vQPFzsT5F70jVU7UiPhNcNyY7IC/AfEwxfUsvcVmvRtdhNIQkNFvcAoUsQ3yGhRDxLmpWOiZryUMzxqDrfCXiTXjZo0bvZIwKnbhvHHZBH9q1s7Am03fhV42BsUQcb5knDbAp8EzsNHUXWgfKrF52XW/cVwH1265xgXUyszL6gOuExixc/8xjIZ8C9YbHRd6GpWyHcjV33PfTpcJjMgJuJ4xOeNU7yP37DY6LvQoKnrUpwxzNb12tLpMYES64foyzBmnep+5p83ouNCDqHwHKcNc7Qv3tLtMYEQOwPVClTNO9ea5Z7/RcaH7UJFwyjBX0x/Q5TKBEdFWa8tzxqme3gTdX0/3IqrDmDLM1XTodfhdYw9qcyBnnOrpcdDrOglienDpAZYyzNX0oDwJ3GMUxZxxWe+M+yRBcBX53j8OpS9Z9ziM4tKguoJ8B5Tthq1fDPe4p+co3gbLgrLyLWDNY94X1rqnFmN8F64dUiwBIyAeRNd6Za0sjqFsTXWGdJYU+q00DGz/qhpVxg3EraH4Q7AmmDaSB4Hq10Ot0vQimMVDPaLeFJz1A1DvQsqVxmbU40Hs9ST9tZVOYMT1r+gw1zF9ReEx2BI3qrrWp6jTiH+FPwD6pI2BJ6DW0HkYBzNAQ9wH82DB4i/kUnkzGX+skQAAAABJRU5ErkJggg==) 2x) 0 17, default
+			}
+			
+			.FeedbackForm-canvas-tSGI.FeedbackForm-isCapturing-3UFp {
+				display: none
+			}
+			
+			.FeedbackForm-checkLabelWrapper-3B7w {
+				margin-top: 12px
+			}
+			
+			.FeedbackForm-checkLabel-2VTb {
+				cursor: pointer;
+				color: #9aaabf;
+				transition: color .15s ease-out;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none
+			}
+			
+			.FeedbackForm-checkLabel-2VTb:hover {
+				color: rgba(154, 170, 191, .8)
+			}
+			
+			.FeedbackForm-checkLabel-2VTb input {
+				margin-right: .5em;
+				vertical-align: 1px
+			}
+			
+			.FeedbackForm-actions-dJ87 {
+				margin-top: 40px;
+				text-align: center
+			}
+			
+			.FeedbackForm-submitButton-1oKQ {
+				display: inline-block;
+				min-width: 220px;
+				padding: 8px 1em;
+				background-color: #0f88eb;
+				border: 1px solid #0f88eb;
+				border-radius: 3px;
+				font: inherit;
+				color: #fff;
+				transition: background-color .15s ease-out, opacity .15s ease-out;
+				cursor: pointer;
+				outline: none
+			}
+			
+			.FeedbackForm-submitButton-1oKQ[disabled] {
+				opacity: .8;
+				cursor: default
+			}
+			
+			.FeedbackForm-submitButton-1oKQ:hover {
+				background-color: #0d79d1
+			}
+			
+			.FeedbackForm-submitButton-1oKQ:active {
+				opacity: .8
+			}
+			
+			.FeedbackForm-successMask-34go {
+				display: -ms-flexbox;
+				display: flex;
+				-ms-flex-pack: center;
+				justify-content: center;
+				-ms-flex-align: center;
+				align-items: center;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: #fff
+			}
+			
+			.FeedbackForm-successTitle-1Y6p {
+				font-size: 24px;
+				font-weight: 500;
+				line-height: 33px;
+				font-family: Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+				text-align: center
+			}
+			
+			.FeedbackForm-successSubtitle-A_aP {
+				margin-top: 10px;
+				font-size: 18px;
+				line-height: 33px;
+				text-align: center
+			}
+		</style>
+	</head>
+
+	<body class="Entry-body" data-reactid="17">
+		<div id="root" data-reactid="18">
+			<div data-reactroot="">
+				<div class="LoadingBar"></div>
+				<div>
+					<header role="banner" class="Sticky AppHeader is-fixed" data-za-module="TopNavBar" style="width: 1349px; top: 0px; left: 0px;">
+						<!-- react-empty: 694 -->
+						<div class="AppHeader-inner">
+							<a href="https://www.zhihu.com/" aria-label="知乎">
+								<svg viewBox="0 0 200 91" class="Icon Icon--logo" width="64" height="30" aria-hidden="true" style="fill: rgb(15, 136, 235); height: 30px; width: 64px;">
+									<title></title>
+									<g>
+										<path d="M53.29 80.035l7.32.002 2.41 8.24 13.128-8.24h15.477v-67.98H53.29v67.978zm7.79-60.598h22.756v53.22h-8.73l-8.718 5.473-1.587-5.46-3.72-.012v-53.22zM46.818 43.162h-16.35c.545-8.467.687-16.12.687-22.955h15.987s.615-7.05-2.68-6.97H16.807c1.09-4.1 2.46-8.332 4.1-12.708 0 0-7.523 0-10.085 6.74-1.06 2.78-4.128 13.48-9.592 24.41 1.84-.2 7.927-.37 11.512-6.94.66-1.84.785-2.08 1.605-4.54h9.02c0 3.28-.374 20.9-.526 22.95H6.51c-3.67 0-4.863 7.38-4.863 7.38H22.14C20.765 66.11 13.385 79.24 0 89.62c6.403 1.828 12.784-.29 15.937-3.094 0 0 7.182-6.53 11.12-21.64L43.92 85.18s2.473-8.402-.388-12.496c-2.37-2.788-8.768-10.33-11.496-13.064l-4.57 3.627c1.363-4.368 2.183-8.61 2.46-12.71H49.19s-.027-7.38-2.372-7.38zm128.752-.502c6.51-8.013 14.054-18.302 14.054-18.302s-5.827-4.625-8.556-1.27c-1.874 2.548-11.51 15.063-11.51 15.063l6.012 4.51zm-46.903-18.462c-2.814-2.577-8.096.667-8.096.667s12.35 17.2 12.85 17.953l6.08-4.29s-8.02-11.752-10.83-14.33zM199.99 46.5c-6.18 0-40.908.292-40.953.292v-31.56c1.503 0 3.882-.124 7.14-.376 12.773-.753 21.914-1.25 27.427-1.504 0 0 3.817-8.496-.185-10.45-.96-.37-7.24 1.43-7.24 1.43s-51.63 5.153-72.61 5.64c.5 2.756 2.38 5.336 4.93 6.11 4.16 1.087 7.09.53 15.36.277 7.76-.5 13.65-.76 17.66-.76v31.19h-41.71s.88 6.97 7.97 7.14h33.73v22.16c0 4.364-3.498 6.87-7.65 6.6-4.4.034-8.15-.36-13.027-.566.623 1.24 1.977 4.496 6.035 6.824 3.087 1.502 5.054 2.053 8.13 2.053 9.237 0 14.27-5.4 14.027-14.16V53.93h38.235c3.026 0 2.72-7.432 2.72-7.432z" fill-rule="evenodd"></path>
+									</g>
+								</svg>
+							</a>
+							<nav role="navigation" class="AppHeader-nav">
+								<a class="AppHeader-navItem is-active" href="https://www.zhihu.com/">首页</a>
+								<a class="AppHeader-navItem" href="https://www.zhihu.com/explore">发现</a>
+								<a class="AppHeader-navItem" href="https://www.zhihu.com/topic">话题</a>
+							</nav>
+							<div class="SearchBar" role="search">
+								<div class="SearchBar-toolWrapper">
+									<form class="SearchBar-tool">
+										<div>
+											<div class="Popover">
+												<div class="SearchBar-input Input-wrapper Input-wrapper--grey"><input maxlength="100" autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-activedescendant="AutoComplete-6863-32955--1" id="Popover-6866-70423-toggle" aria-haspopup="true" aria-owns="Popover-6866-70423-content" class="Input" placeholder="搜索你感兴趣的内容…" type="text">
+													<div class="Input-after"><button class="Button SearchBar-searchIcon Button--primary" aria-label="搜索" type="button"><svg viewBox="0 0 16 16" class="Icon Icon--search" width="16" height="16" aria-hidden="true" style="height: 16px; width: 16px;"><title></title><g><path d="M12.054 10.864c.887-1.14 1.42-2.57 1.42-4.127C13.474 3.017 10.457 0 6.737 0S0 3.016 0 6.737c0 3.72 3.016 6.737 6.737 6.737 1.556 0 2.985-.533 4.127-1.42l3.103 3.104c.765.46 1.705-.37 1.19-1.19l-3.103-3.104zm-5.317.925c-2.786 0-5.053-2.267-5.053-5.053S3.95 1.684 6.737 1.684 11.79 3.95 11.79 6.737 9.522 11.79 6.736 11.79z"></path></g></svg></button></div>
+												</div>
+												<!-- react-empty: 29 -->
+											</div>
+										</div>
+									</form>
+								</div><button class="Button QuestionAskButton SearchBar-askButton Button--primary Button--blue" type="button"><!-- react-text: 31 -->提问<!-- /react-text --><!-- react-empty: 32 --></button></div>
+							<div class="AppHeader-userInfo">
+								<div class="Popover PushNotifications AppHeader-notifications"><button class="Button PushNotifications-icon Button--plain" type="button" id="Popover-7332-41694-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover-7332-41694-content"><svg viewBox="0 0 20 22" class="Icon Icon--news" width="20" height="20" aria-hidden="true" style="height: 20px; width: 20px;"><title></title><g><path d="M2.502 14.08C3.1 10.64 2 3 8.202 1.62 8.307.697 9.08 0 10 0s1.694.697 1.797 1.62C18 3 16.903 10.64 17.497 14.076c.106 1.102.736 1.855 1.7 2.108.527.142.868.66.793 1.206-.075.546-.542.95-1.09.943H1.1C.55 18.34.084 17.936.01 17.39c-.075-.547.266-1.064.794-1.206.963-.253 1.698-1.137 1.698-2.104zM10 22c-1.417.003-2.602-1.086-2.73-2.51-.004-.062.02-.124.063-.17.043-.045.104-.07.166-.07h5c.063 0 .124.025.167.07.044.046.067.108.063.17-.128 1.424-1.313 2.513-2.73 2.51z"></path></g></svg><!-- react-empty: 700 --></button>
+									<!-- react-empty: 701 -->
+								</div>
+								<div>
+									<div class="Popover Messages AppHeader-messages"><button class="Button Messages-icon Button--plain" type="button" id="Popover-7337-30626-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover-7337-30626-content"><svg viewBox="0 0 20 20" class="Icon Icon--message" width="20" height="20" aria-hidden="true" style="height: 20px; width: 20px;"><title></title><g><path d="M9 0C3.394 0 0 4.13 0 8c0 1.654.522 3.763 2.014 5.566.314.292.518.82.454 1.17-.165 1.488-.842 1.905-.842 1.905-.328.332.105.67.588.582 1.112-.2 2.07-.58 3.526-1.122.4-.202.464-.147.78-.078C11.524 17.764 18 14 18 8c0-3.665-3.43-8-9-8z"></path><path d="M19.14 9.628c.758.988.86 2.01.86 3.15 0 1.195-.62 3.11-1.368 3.938-.21.23-.354.467-.308.722.12 1.073.614 1.5.614 1.5.237.24-.188.563-.537.5-.802-.145-1.494-.42-2.545-.81-.29-.146-.336-.106-.563-.057-2.043.712-4.398.476-6.083-.926 5.964-.524 8.726-3.03 9.93-8.016z"></path></g></svg></button>
+										<!-- react-empty: 708 -->
+									</div>
+									<!-- react-empty: 709 -->
+								</div>
+								<!-- react-empty: 42 -->
+								<div class="AppHeader-profile">
+									<div class="Popover AppHeader-menu"><button class="Button AppHeader-profileEntry Button--plain" type="button" id="Popover-7340-29363-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover-7340-29363-content"><img class="Avatar AppHeader-profileAvatar" src="%E9%A6%96%E9%A1%B5%20-%20%E7%9F%A5%E4%B9%8E_files/v2-f17c58601ad60e155630fcc9a7ec06f8_is.jpg" srcset="https://pic1.zhimg.com/v2-f17c58601ad60e155630fcc9a7ec06f8_im.jpg 2x" height="30" width="30"></button>
+										<!-- react-empty: 713 -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</header>
+					<div class="Sticky--holder" style="position: relative; top: 0px; right: 0px; bottom: 0px; left: 0px; display: block; float: none; margin: 0px; height: 53px;"></div>
+				</div>
+				<!-- react-empty: 46 -->
+				<main role="main" class="App-main">
+					<div class="Topstory">
+						<!-- react-empty: 49 -->
+						<!-- react-empty: 50 -->
+						
+						<div class="Topstory-container" id="mainframe">
+							
+							<div class="TopstorySideBar" data-za-module="RightSideBar" data-za-module-info="{}">
+								<div>
+									<div class="Sticky">
+										<div class="Card">
+											<ul class="TopstorySideBar-categoryList">
+												<li class="TopstorySideBar-categoryItem TopstorySideBar-liveItem">
+													<a class="Button Button--plain" href="https://www.zhihu.com/lives" target="_blank" title="Live" type="button"><span class="TopstorySideBar-categoryIcon"><svg width="17" height="23" viewBox="46 20 19 25" version="1.1" xmlns="http://www.w3.org/2000/svg" class="Icon Icon--live" aria-hidden="true" style="height: 23px; width: 17px;"><title></title><g><path d="M56.8810215,30.7568815 L58.7723286,21.7731732 C58.9982334,20.7001257 58.5864825,20.4834196 57.8486846,21.3080173 L47.2229603,33.183826 C46.4842592,34.0094332 46.7865222,34.6768922 47.8960663,34.6768923 L54.1189785,34.6768926 L52.2276714,43.6606009 C52.0017666,44.7336483 52.4135175,44.9503545 53.1513154,44.1257568 L63.7770397,32.2499481 C64.5157408,31.4243409 64.2134778,30.7568819 63.1039337,30.7568818 L56.8810215,30.7568815 Z" stroke="none" fill-rule="evenodd"></path></g></svg></span><span class="TopstorySideBar-categoryLabel">Live</span></a>
+												</li>
+												<li class="TopstorySideBar-categoryItem TopstorySideBar-pubItem">
+													<a class="Button Button--plain" href="https://www.zhihu.com/pub/" target="_blank" title="书店" type="button"><span class="TopstorySideBar-categoryIcon"><svg width="16" height="19" viewBox="1027 99 15 19" version="1.1" xmlns="http://www.w3.org/2000/svg" class="Icon Icon--pub" aria-hidden="true" style="height: 19px; width: 16px;"><title></title><g><path d="M1027.80947,117.581364 C1028.14017,117.825892 1028.54916,117.970588 1028.99188,117.970588 L1040.00812,117.970588 C1041.1066,117.970588 1042,117.078791 1042,115.978704 L1042,104.962472 C1042,103.940693 1041.2284,103.096361 1040.23529,102.983423 L1040.23529,114.083493 C1040.23529,115.186197 1039.33998,116.199626 1038.25494,116.344462 L1030.30389,117.405804 C1030.06799,117.437292 1029.84173,117.425823 1029.63192,117.37748 L1036.12083,115.345921 C1037.18227,115.013604 1038.02941,113.853108 1038.02941,112.748737 L1038.02941,101.209023 C1038.02941,100.111989 1037.17491,99.4769116 1036.12083,99.8069259 L1028.90859,102.064949 C1027.84715,102.397266 1027,103.557762 1027,104.662133 L1027,116.201847 C1027,116.872978 1027.31981,117.371216 1027.80947,117.581364 Z" stroke="none" fill-rule="evenodd"></path></g></svg></span><span class="TopstorySideBar-categoryLabel">书店</span></a>
+												</li>
+												<li class="TopstorySideBar-categoryItem TopstorySideBar-orgItem">
+													<a class="Button Button--plain" href="https://www.zhihu.com/roundtable" target="_blank" title="圆桌" type="button"><span class="TopstorySideBar-categoryIcon"><svg viewBox="0 0 20 19" class="Icon Icon--org" width="19" height="18" aria-hidden="true" style="height: 18px; width: 19px;"><title></title><g><path d="M12.207 12.373c-.758-.434-1.425-.975-1.99-1.615-.045.123-.085.247-.124.37-.17.65-.332 1.706-.095 2.977.293 1.443 1.077 2.738 2.206 3.64.467.277 1.084.446 1.696.446.69 0 1.337-.2 1.873-.58 1.362-.98 1.742-2.82.917-4.26-1.53.138-3.11-.2-4.483-.963zm-1.16-3.817c.134-.027.266-.057.39-.085.98-.26 1.863-.73 2.622-1.41 1.1-.98 1.83-2.31 2.06-3.74.02-1.25-.76-2.51-1.89-3.02-.43-.2-.88-.3-1.34-.3-1.18 0-2.24.62-2.82 1.63.89 1.29 1.38 2.84 1.38 4.4 0 .866-.14 1.73-.41 2.533zm-2.33.402l-.26-.29C7.98 8.17 7.15 7.486 5.937 7.09c-.648-.216-1.322-.325-2.002-.325-.78 0-1.545.142-2.267.423-1.085.616-1.77 1.898-1.656 3.167.18 1.665 1.576 2.924 3.245 2.926.676-1.44 1.737-2.61 3.08-3.4.747-.44 1.545-.75 2.38-.92zM3.983 5.463c1.31 0 2.635.344 3.826.994.76.438 1.44.977 1.98 1.585.03-.112.07-.226.09-.34.25-1.028.274-2.026.077-2.97-.28-1.392-1.067-2.69-2.21-3.652C7.29.815 6.662.65 6.05.65c-.687 0-1.33.2-1.854.58-1.38.994-1.75 2.83-.897 4.264.22-.02.45-.03.68-.03zm12.78.113c-.68 1.45-1.752 2.624-3.11 3.403-.742.44-1.54.75-2.376.92l.24.27c.507.5 1.353 1.18 2.54 1.57.653.22 1.334.32 2.025.32h.002c.77 0 1.526-.14 2.247-.4 1.12-.64 1.79-1.89 1.65-3.16-.15-1.65-1.57-2.938-3.21-2.938zm-7.817 4.672c-.13.027-.26.055-.39.086-.657.196-1.67.614-2.626 1.442-1.098.976-1.83 2.308-2.055 3.745.003 1.26.772 2.49 1.914 3.02.42.2.87.29 1.34.29 1.17 0 2.23-.61 2.82-1.63-.9-1.28-1.38-2.8-1.41-4.41 0-.87.14-1.73.4-2.53z" fill-rule="evenodd"></path></g></svg></span><span class="TopstorySideBar-categoryLabel">圆桌</span></a>
+												</li>
+												<li class="TopstorySideBar-categoryItem TopstorySideBar-editItem">
+													<a class="Button Button--plain" href="https://zhuanlan.zhihu.com/" target="_blank" title="专栏" type="button"><span class="TopstorySideBar-categoryIcon"><svg width="18" height="18" viewBox="137 93 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" class="Icon Icon--edit" aria-hidden="true" style="height: 18px; width: 18px;"><title></title><g><path d="M138.075539,106.965579 C138.274765,106.301475 138.635899,105.697055 139.126601,105.206448 L147.69431,96.6372993 C147.792523,96.5390716 147.925848,96.483871 148.064884,96.483871 C148.20392,96.483871 148.337246,96.5390716 148.435458,96.6372993 L151.362638,99.5639294 C151.567293,99.7686586 151.567293,100.100102 151.362638,100.304831 L142.795296,108.873561 C142.304393,109.364431 141.699005,109.725891 141.033521,109.925468 L137.506087,110.98345 C137.36755,111.024921 137.217388,110.987119 137.115128,110.88503 C137.012868,110.782941 136.975027,110.633054 137.016606,110.494788 L138.075539,106.965579 Z M154.557712,94.8309894 C155.147429,95.4210944 155.147429,96.3765796 154.557712,96.9666846 L152.865169,98.658988 C152.770858,98.7533952 152.642809,98.8064516 152.509273,98.8064516 C152.375738,98.8064516 152.247689,98.7533952 152.153377,98.658988 L149.341054,95.8466644 C149.14438,95.6499126 149.14438,95.331282 149.341054,95.1345303 L151.033647,93.4422269 C151.316628,93.1590691 151.700783,92.9999621 152.101377,93 C152.501972,93.0000379 152.886096,93.1592176 153.169024,93.4424289 L154.557712,94.8309894 Z" stroke="none" fill-rule="nonzero"></path></g></svg></span><span class="TopstorySideBar-categoryLabel">专栏</span></a>
+												</li>
+											</ul>
+										</div>
+										<!-- react-empty: 644 -->
+										<div class="Card">
+											<ul class="TopstorySideBar-navList">
+												<li class="TopstorySideBar-navItem TopstorySideBar-starItem">
+													<a class="Button Button--plain" href="https://www.zhihu.com/collections" target="_blank" type="button">
+														<svg viewBox="0 0 20 20" class="Icon TopstorySideBar-navIcon Icon--star" width="15" height="15" aria-hidden="true" style="height: 15px; width: 15px;">
+															<title></title>
+															<g>
+																<path d="M3.515 17.64l.918-5.355-3.89-3.792c-.926-.902-.64-1.784.64-1.97L6.56 5.74 8.964.87c.572-1.16 1.5-1.16 2.072 0l2.404 4.87 5.377.783c1.28.186 1.566 1.068.64 1.97l-3.89 3.793.918 5.354c.22 1.274-.532 1.82-1.676 1.218L10 16.33l-4.808 2.528c-1.145.602-1.896.056-1.677-1.218z"></path>
+															</g>
+														</svg><button class="TopstorySideBar-navLink" target="_blank">我的收藏</button></a>
+												</li>
+												<li class="TopstorySideBar-navItem TopstorySideBar-questionListItem">
+													<a class="Button Button--plain" href="https://www.zhihu.com/people/yu-wen-wen-91-23/following/questions" target="_blank" type="button">
+														<svg width="15" height="15" viewBox="0 0 16 17" class="Icon TopstorySideBar-navIcon Icon--questionList" aria-hidden="true" style="height: 15px; width: 15px;">
+															<title></title>
+															<g>
+																<path d="M1.74 0h12.52C15.22 0 16 .775 16 1.73v10.54c0 .954-.78 1.73-1.74 1.73h-3.825l-1.658 2.043c-.044.054-.093.103-.147.146-.43.34-1.06.28-1.407-.15L5.565 14H1.74C.777 14 0 13.223 0 12.27V1.73C0 .776.778 0 1.74 0zM8 12c.273 0 .508-.096.705-.287.197-.19.295-.428.295-.712s-.098-.52-.295-.71C8.508 10.1 8.273 10 8 10c-.273 0-.508.098-.705.295C7.098 10.49 7 10.727 7 11c0 .284.098.522.295.713.197.192.432.287.705.287zm1.278-4.924c.492-.457.833-.782 1.023-.975.19-.19.36-.42.5-.68.14-.26.21-.57.21-.93 0-.45-.12-.86-.36-1.24s-.58-.68-1.03-.9c-.45-.23-.96-.34-1.54-.34-.62 0-1.17.135-1.64.4-.46.266-.82.6-1.06 1.006-.244.405-.366.804-.366 1.2 0 .19.08.368.23.53.158.166.347.247.57.247.38 0 .64-.23.775-.7.143-.45.32-.79.527-1.02.21-.23.534-.34.974-.34.375 0 .68.116.92.34.24.23.357.51.357.84 0 .17-.04.33-.115.477-.075.146-.17.28-.285.396-.116.118-.3.294-.557.526-.29.263-.523.492-.695.685-.17.194-.31.42-.41.673-.103.257-.155.56-.155.907 0 .28.07.49.214.63.14.14.316.215.524.215.4 0 .64-.217.715-.65.045-.203.08-.345.1-.426.02-.08.053-.163.093-.244.04-.08.1-.17.18-.27.085-.1.194-.21.33-.34z" fill-rule="evenodd"></path>
+															</g>
+														</svg><button class="TopstorySideBar-navLink" target="_blank">我关注的问题</button><span class="TopstorySideBar-navNumber">17</span></a>
+												</li>
+												<li class="TopstorySideBar-navItem TopstorySideBar-inviteItem">
+													<a class="Button Button--plain" href="https://www.zhihu.com/question/invited" target="_blank" type="button">
+														<svg width="15" height="15" viewBox="906 312 17 16" version="1.1" xmlns="http://www.w3.org/2000/svg" class="Icon TopstorySideBar-navIcon Icon--invite" aria-hidden="true" style="height: 15px; width: 15px;">
+															<title></title>
+															<g>
+																<path d="M918.9997,327.8433 C916.790561,327.8433 914.9997,326.052439 914.9997,323.8433 C914.9997,321.634161 916.790561,319.8433 918.9997,319.8433 C921.208839,319.8433 922.9997,321.634161 922.9997,323.8433 C922.9997,326.052439 921.208839,327.8433 918.9997,327.8433 Z M919.496718,323.340174 C919.496718,323.340174 919.492733,321.543896 919.496718,321.340174 C919.484248,320.677675 918.485145,320.677675 918.497615,321.340174 C918.485145,321.977663 918.497615,323.340174 918.497615,323.340174 C918.497615,323.340174 916.536622,323.339999 916.49941,323.340174 C915.83313,323.3433 915.83313,324.3433 916.49941,324.3433 C917.165689,324.3433 918.497615,324.340174 918.497615,324.340174 L918.497615,326.340174 C918.497615,327.013298 919.499836,327.013298 919.496718,326.340174 C919.4936,325.66705 919.496718,324.340174 919.496718,324.340174 C919.496718,324.340174 920.828644,324.3433 921.498041,324.3433 C922.167438,324.3433 922.167438,323.3433 921.494924,323.340174 L919.496718,323.340174 Z M914.327,320.6348 C913.511,321.5248 913,322.6998 913,324.0008 C913,325.0128 913.306,325.9518 913.825,326.7398 L910.839,326.7398 C906.8,326.7398 906.078,326.6038 906,325.3578 C906,323.2008 908.166,320.5988 910.839,320.5988 L913.961,320.5988 C914.086,320.5988 914.204,320.6258 914.327,320.6348 Z M912.2432,319.37 C910.1742,319.37 908.4972,317.72 908.4972,315.685 C908.4972,313.65 910.1752,312 912.2432,312 C914.3122,312 915.9892,313.65 915.9892,315.685 C915.9892,317.72 914.3122,319.37 912.2432,319.37 Z" stroke="none" fill-rule="evenodd"></path>
+															</g>
+														</svg><button class="TopstorySideBar-navLink" target="_blank">我的邀请</button></a>
+												</li>
+											</ul>
+										</div>
+										<div class="explore-tab" id="js-explore-tab">
+						<a class="zg-anchor-hidden" name="daily-hot"></a>
+						<a class="zg-anchor-hidden" name="monthly-hot"></a>
+						<ul class="tab-navs clearfix">
+							<li class="tab-nav">
+								<a class="anchor" href="https://www.zhihu.com/explore#daily-hot" data-za-c="explore" data-za-a="visit_explore_daily_trendings" data-za-l="explore_daily_trendings">历史最热</a>
+							</li>
+						</ul>
+						<div class="tab-panel" style="display: block;">
+							<div data-type="daily">
+								<div class="explore-feed feed-item" data-offset="1" data-za-module="AnswerItem">
+									<h2><a class="question_link" href="https://www.zhihu.com/question/24909493/answer/201446201" target="_blank" data-id="2145854" data-za-element-name="Title">
+日本近代“下克上”频繁成功的原因是？
+</a></h2>
+								</div>
+								<div class="explore-feed feed-item" data-offset="2" data-za-module="AnswerItem">
+									<h2><a class="question_link" href="https://www.zhihu.com/question/62605791/answer/201165632" target="_blank" data-id="17267453" data-za-element-name="Title">
+为什么张国荣的长相，会给人很可爱的感觉？
+</a></h2>
+								</div>
+								<div class="explore-feed feed-item" data-offset="3" data-za-module="AnswerItem">
+									<h2><a class="question_link" href="https://www.zhihu.com/question/62707731/answer/201315505" target="_blank" data-id="17308377" data-za-element-name="Title">
+得到一种什么材料可控核聚变才能实现？
+</a></h2>
+								</div>
+								<div class="explore-feed feed-item" data-offset="4" data-za-module="AnswerItem">
+									<h2><a class="question_link" href="https://www.zhihu.com/question/62709030/answer/201277167" target="_blank" data-id="17308902" data-za-element-name="Title">
+如何评价《三生三世十里桃花》电影的主题曲？
+</a></h2>
+								</div>
+								<div class="explore-feed feed-item" data-offset="5" data-za-module="AnswerItem">
+									<h2><a class="question_link" href="https://www.zhihu.com/question/62170967/answer/201237959" target="_blank" data-id="17093211" data-za-element-name="Title">
+学婊可以有多婊？
+</a></h2>
+								</div>
+								<div class="explore-feed feed-item" data-offset="6" data-za-module="AnswerItem">
+									<h2><a class="question_link" href="https://www.zhihu.com/question/47718490/answer/201208540" target="_blank" data-id="11302494" data-za-element-name="Title">
+什么样的人才是真正的吃货？
+</a></h2>
+								</div>
+								<div class="explore-feed feed-item" data-offset="7" data-za-module="AnswerItem">
+									<h2><a class="question_link" href="https://www.zhihu.com/question/62371773/answer/201123379" target="_blank" data-id="17173573" data-za-element-name="Title">
+土屋圭市的车技究竟高到什么程度？
+</a></h2>
+								</div>
+								<div class="explore-feed feed-item" data-offset="8" data-za-module="AnswerItem">
+									<h2><a class="question_link" href="https://www.zhihu.com/question/25524218/answer/201129269" target="_blank" data-id="2392308" data-za-element-name="Title">
+电影或电视剧中有哪些常识错误？
+</a></h2>
+								</div>
+								<div class="explore-feed feed-item" data-offset="9" data-za-module="AnswerItem">
+									<h2><a class="question_link" href="https://www.zhihu.com/question/27096289/answer/201490721" target="_blank" data-id="3021431" data-za-element-name="Title">
+如何评价「正义或许会迟到，但绝不会缺席」这句话？
+</a></h2>
+								</div>
+								<div class="explore-feed feed-item" data-offset="10" data-za-module="AnswerItem">
+									<h2><a class="question_link" href="https://www.zhihu.com/question/62680287/answer/201336831" target="_blank" data-id="17297308" data-za-element-name="Title">
+Visual Studio 2015 在 JavaScript 编辑器中，采用什么类型推导算法?
+</a></h2>
+								</div>
+							</div>
+						</div>
+						<div class="tab-panel" style="display: none;">
+							<div data-type="monthly">
+								<div class="explore-feed feed-item" data-offset="1">
+									<h2><a class="question_link" href="https://www.zhihu.com/question/23392648/answer/187048149" target="_blank" data-id="1538436" data-za-element-name="Title">
+在美国有哪些奇特法律要小心注意？
+</a></h2>
+									<div tabindex="-1" class="zm-item-answer " itemscope="" itemtype="http://schema.org/Answer" data-aid="64079834" data-atoken="187048149" data-collapsed="0" data-created="1498037210" data-deleted="0" data-isowner="0" data-helpful="1" data-copyable="1">
+										<link itemprop="url" href="https://www.zhihu.com/question/23392648/answer/187048149">
+										<meta itemprop="answer-id" content="64079834">
+										<meta itemprop="answer-url-token" content="187048149">
+										<a class="zg-anchor-hidden" name="answer-64079834"></a>
+
+										<div class="zm-item-vote">
+											<a class="zm-item-vote-count js-expand js-vote-count" href="javascript:;" data-bind-votecount="">1368</a>
+										</div>
+
+										<div class="zm-votebar">
+											<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="count">1368</span>
+<span class="label sr-only">赞同</span>
+</button>
+											<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label sr-only">反对</span>
+</button>
+										</div>
+
+										<div class="answer-head">
+
+											<div class="zm-item-answer-author-info">
+
+												<span class="summary-wrapper">
+<span class="author-link-line">
+
+<a class="author-link" data-hovercard="p$t$yuan-yi-57" target="_blank" href="https://www.zhihu.com/people/yuan-yi-57">那谁谁</a></span><span title="老人正梦见狮子" class="bio">
+老人正梦见狮子
+</span>
+												</span>
+											</div>
+
+											<div class="zm-item-vote-info" data-votecount="1368">
+
+												<span class="voters text"><a href="https://www.zhihu.com/explore#" class="more text"><span class="js-voteCount">1368</span>&nbsp;人赞同</a>
+												</span>
+
+											</div>
+										</div>
+										<div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="1538436" data-action="/answer/content" data-author-name="那谁谁" data-entry-url="/question/23392648/answer/187048149">
+
+											<textarea class="content" hidden="">&lt;p&gt;图略多，流量党慎
+点。&lt;/p&gt;&lt;p&gt;最近有个美国90后摄影师奥利维娅·洛克做了件有趣的事情，她拍了一套“不法之徒”系列照，最直观地把美国各
+州的怪诞法条呈现出来。&lt;/p&gt;&lt;p&gt;这些奇奇怪怪的法律之所以存在，其实大多有它们的历史背景，只不过到今天不再适用了而已。
+比如亚拉巴马州规定后裤袋里插蛋筒冰淇淋违法，就是针对过去的偷马贼制定的法律，他们通过这种巧妙的方式引诱马匹跟着自己走，从而达到盗窃的目
+的。&lt;/p&gt;&lt;img 
+src="https://pic4.zhimg.com/v2-f3cd7c9535b7e196b58a9c7149a5429f_b.jpg" 
+data-rawwidth="600" data-rawheight="750" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic4.zhimg.com/v2-
+f3cd7c9535b7e196b58a9c7149a5429f_r.jpg"&gt;&lt;p&gt;&lt;b&gt;亚拉巴马
+州：&lt;/b&gt;在后裤袋里插蛋筒冰淇淋违法。&lt;/p&gt;&lt;img 
+src="https://pic4.zhimg.com/v2-62adacc57f4d8d14f7fee5e2730be083_b.jpg" 
+data-rawwidth="600" data-rawheight="750" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic4.zhimg.com
+/v2-62adacc57f4d8d14f7fee5e2730be083_r.jpg"&gt;&lt;p&gt;&lt;b&gt;威斯康星
+州：&lt;/b&gt;公共餐厅上苹果派时不配奶酪违法。&lt;/p&gt;&lt;img 
+src="https://pic3.zhimg.com/v2-21fe0103813a8b77649cd073584dbe32_b.jpg" 
+data-rawwidth="600" data-rawheight="480" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic3.zhimg.com
+/v2-21fe0103813a8b77649cd073584dbe32_r.jpg"&gt;&lt;p&gt;&lt;b&gt;俄亥俄
+州：&lt;/b&gt;在男性肖像面前脱衣服违法。&lt;/p&gt;&lt;img 
+src="https://pic3.zhimg.com/v2-8ff786eaaa7769467eca3ced12d9f2ae_b.jpg" 
+data-rawwidth="600" data-rawheight="750" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic3.zhimg.com
+/v2-8ff786eaaa7769467eca3ced12d9f2ae_r.jpg"&gt;&lt;p&gt;&lt;b&gt;马萨诸塞
+州：&lt;/b&gt;偷拍裙底照违法。（这个真可以有）&lt;/p&gt;&lt;img 
+src="https://pic2.zhimg.com/v2-6c82a3c10a5a1841b3ffc3ac53781ef5_b.jpg" 
+data-rawwidth="600" data-rawheight="750" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic2.zhimg.com
+/v2-6c82a3c10a5a1841b3ffc3ac53781ef5_r.jpg"&gt;&lt;p&gt;&lt;b&gt;路易斯安那
+州：&lt;/b&gt;当众漱口违法。&lt;/p&gt;&lt;img 
+src="https://pic3.zhimg.com/v2-76ed92fc12d16db70d759e07f0472f32_b.jpg" 
+data-rawwidth="600" data-rawheight="750" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic3.zhimg.com
+/v2-76ed92fc12d16db70d759e07f0472f32_r.jpg"&gt;&lt;p&gt;&lt;b&gt;佛蒙特
+州：&lt;/b&gt;除非菜单上有明确要求，否则在餐厅里使用彩色人造黄油违法。&lt;/p&gt;&lt;img 
+src="https://pic3.zhimg.com/v2-e94093db25147e3fa0b049f202693842_b.jpg" 
+data-rawwidth="600" data-rawheight="750" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic3.zhimg.com/v2-
+e94093db25147e3fa0b049f202693842_r.jpg"&gt;&lt;p&gt;&lt;b&gt;明尼苏达
+州：&lt;/b&gt;头上顶着鸟跨越本州分界线违法。&lt;/p&gt;&lt;img 
+src="https://pic1.zhimg.com/v2-ffa5ade4ef93487106de0c96a359b114_b.jpg" 
+data-rawwidth="600" data-rawheight="750" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic1.zhimg.com/v2-
+ffa5ade4ef93487106de0c96a359b114_r.jpg"&gt;&lt;p&gt;&lt;b&gt;阿肯色
+州：&lt;/b&gt;没有许可证的情况下杀死或保有任何生物都是违法。&lt;/p&gt;&lt;img 
+src="https://pic3.zhimg.com/v2-6b66b343290afa08eed4bcf581539136_b.jpg" 
+data-rawwidth="600" data-rawheight="750" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic3.zhimg.com
+/v2-6b66b343290afa08eed4bcf581539136_r.jpg"&gt;&lt;p&gt;&lt;b&gt;肯塔基
+州：&lt;/b&gt;把草坪涂成红色违法。&lt;/p&gt;&lt;img 
+src="https://pic2.zhimg.com/v2-1a240cdb4e45c20c50569b2af5219ebd_b.jpg" 
+data-rawwidth="600" data-rawheight="751" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic2.zhimg.com
+/v2-1a240cdb4e45c20c50569b2af5219ebd_r.jpg"&gt;&lt;p&gt;&lt;b&gt;密歇根
+州：&lt;/b&gt;给麻雀上色冒充鹦鹉出售违法。&lt;/p&gt;&lt;img 
+src="https://pic1.zhimg.com/v2-2c9fb210bf534b815fb12b6922939628_b.jpg" 
+data-rawwidth="600" data-rawheight="480" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic1.zhimg.com
+/v2-2c9fb210bf534b815fb12b6922939628_r.jpg"&gt;&lt;p&gt;&lt;b&gt;田纳西
+州：&lt;/b&gt;出售空心的木材违法。&lt;/p&gt;&lt;img 
+src="https://pic4.zhimg.com/v2-91379d560c73998872267b7591bef73b_b.jpg" 
+data-rawwidth="600" data-rawheight="750" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic4.zhimg.com
+/v2-91379d560c73998872267b7591bef73b_r.jpg"&gt;&lt;p&gt;&lt;b&gt;夏威夷
+州：&lt;/b&gt;耳朵里放硬币违法。&lt;/p&gt;&lt;img 
+src="https://pic3.zhimg.com/v2-de9979d54d6051e91cc3f8ccec9fc302_b.jpg" 
+data-rawwidth="600" data-rawheight="750" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic3.zhimg.com/v2-
+de9979d54d6051e91cc3f8ccec9fc302_r.jpg"&gt;&lt;p&gt;&lt;b&gt;华盛顿
+州：&lt;/b&gt;在美国国旗上绘制波尔卡圆点违法。&lt;/p&gt;&lt;img 
+src="https://pic4.zhimg.com/v2-a48bb5cdd704e499ad8e5e38db28f367_b.jpg" 
+data-rawwidth="600" data-rawheight="750" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic4.zhimg.com/v2-
+a48bb5cdd704e499ad8e5e38db28f367_r.jpg"&gt;&lt;p&gt;&lt;b&gt;肯塔基
+州：&lt;/b&gt;舔蟾蜍违法。&lt;/p&gt;&lt;img 
+src="https://pic1.zhimg.com/v2-994b62f7f57711f56197af323e1bd534_b.jpg" 
+data-rawwidth="600" data-rawheight="750" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic1.zhimg.com
+/v2-994b62f7f57711f56197af323e1bd534_r.jpg"&gt;&lt;p&gt;&lt;b&gt;特拉华
+州：&lt;/b&gt;穿腰部过紧的裤子违法。&lt;/p&gt;&lt;img 
+src="https://pic2.zhimg.com/v2-8b0d807a5c77e88cb31d42143f3ad141_b.jpg" 
+data-rawwidth="600" data-rawheight="480" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic2.zhimg.com
+/v2-8b0d807a5c77e88cb31d42143f3ad141_r.jpg"&gt;&lt;p&gt;&lt;b&gt;新墨西哥
+州：&lt;/b&gt;毁坏岩石违法。&lt;/p&gt;&lt;img 
+src="https://pic4.zhimg.com/v2-df598fa7fc992455b4abe5ab76b80737_b.jpg" 
+data-rawwidth="600" data-rawheight="750" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic4.zhimg.com/v2-
+df598fa7fc992455b4abe5ab76b80737_r.jpg"&gt;&lt;p&gt;&lt;b&gt;内华达
+州：&lt;/b&gt;把美国国旗放在一条肥皂上违法。&lt;/p&gt;&lt;img 
+src="https://pic2.zhimg.com/v2-a4dc83690bba9381db0582b17d475ee5_b.jpg" 
+data-rawwidth="600" data-rawheight="480" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic2.zhimg.com/v2-
+a4dc83690bba9381db0582b17d475ee5_r.jpg"&gt;&lt;p&gt;&lt;b&gt;亚利桑那
+州：&lt;/b&gt;一所房子里有两个以上的假阳具违法。（懵逼脸）&lt;/p&gt;&lt;img 
+src="https://pic3.zhimg.com/v2-6482e71a8addd0f644765cb8d97e44a6_b.jpg" 
+data-rawwidth="600" data-rawheight="480" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic3.zhimg.com
+/v2-6482e71a8addd0f644765cb8d97e44a6_r.jpg"&gt;&lt;p&gt;&lt;b&gt;俄勒冈
+州：&lt;/b&gt;在高速公路上驾车时进行任何身体忍耐力测试违法。&lt;/p&gt;&lt;img 
+src="https://pic3.zhimg.com/v2-92f0de8cb0d86120469fb49dd4434fde_b.jpg" 
+data-rawwidth="600" data-rawheight="750" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic3.zhimg.com
+/v2-92f0de8cb0d86120469fb49dd4434fde_r.jpg"&gt;&lt;p&gt;&lt;b&gt;南达科他
+州：&lt;/b&gt;制造静电违法。&lt;/p&gt;&lt;img 
+src="https://pic2.zhimg.com/v2-045802206a8ca1cfcfb01f381a408079_b.jpg" 
+data-rawwidth="600" data-rawheight="750" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic2.zhimg.com
+/v2-045802206a8ca1cfcfb01f381a408079_r.jpg"&gt;&lt;p&gt;&lt;b&gt;康涅狄格
+州：&lt;/b&gt;制作好的泡菜必须能够反弹起来，才算合法的泡菜。&lt;/p&gt;&lt;img 
+src="https://pic4.zhimg.com/v2-a74dddee8378b7ed9473f3b616e866d3_b.jpg" 
+data-rawwidth="600" data-rawheight="750" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic4.zhimg.com/v2-
+a74dddee8378b7ed9473f3b616e866d3_r.jpg"&gt;&lt;p&gt;&lt;b&gt;怀俄明
+州：&lt;/b&gt;美发师替人修剪阴毛违法。&lt;/p&gt;&lt;img 
+src="https://pic4.zhimg.com/v2-0ece7b4ae2ed2796be2aa11774bc079b_b.jpg" 
+data-rawwidth="600" data-rawheight="480" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic4.zhimg.com
+/v2-0ece7b4ae2ed2796be2aa11774bc079b_r.jpg"&gt;&lt;p&gt;&lt;b&gt;新泽西
+州：&lt;/b&gt;在公共场合大声喝汤违法。&lt;/p&gt;&lt;img 
+src="https://pic1.zhimg.com/v2-1fc6f2dea20ad2c8a81349a5999744d8_b.jpg" 
+data-rawwidth="600" data-rawheight="748" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic1.zhimg.com
+/v2-1fc6f2dea20ad2c8a81349a5999744d8_r.jpg"&gt;&lt;p&gt;&lt;b&gt;堪萨斯
+州：&lt;/b&gt;用茶杯上葡萄酒违法。&lt;/p&gt;&lt;img 
+src="https://pic3.zhimg.com/v2-a91248dea52171735fc763cf2112c58a_b.jpg" 
+data-rawwidth="600" data-rawheight="750" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic3.zhimg.com/v2-
+a91248dea52171735fc763cf2112c58a_r.jpg"&gt;&lt;p&gt;&lt;b&gt;密苏里
+州：&lt;/b&gt;毁坏装牛奶的纸盒违法。&lt;/p&gt;&lt;img 
+src="https://pic3.zhimg.com/v2-aa61e1b3c75d7785756aa100e1b6ca9e_b.jpg" 
+data-rawwidth="600" data-rawheight="750" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic3.zhimg.com/v2-
+aa61e1b3c75d7785756aa100e1b6ca9e_r.jpg"&gt;&lt;p&gt;&lt;b&gt;缅因
+州：&lt;/b&gt;用羽毛掸挠女性的下巴违法。（嗯？）&lt;/p&gt;&lt;img 
+src="https://pic3.zhimg.com/v2-a28fd30e6238b8601494d805169737ea_b.jpg" 
+data-rawwidth="600" data-rawheight="750" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic3.zhimg.com/v2-
+a28fd30e6238b8601494d805169737ea_r.jpg"&gt;&lt;p&gt;&lt;b&gt;弗吉尼亚
+州：&lt;/b&gt;朝海鸥身上吐口水会被罚款。&lt;/p&gt;&lt;img 
+src="https://pic4.zhimg.com/v2-617f3b7cbee40bde6e18142eb8ee704f_b.jpg" 
+data-rawwidth="600" data-rawheight="480" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic4.zhimg.com
+/v2-617f3b7cbee40bde6e18142eb8ee704f_r.jpg"&gt;&lt;p&gt;&lt;b&gt;加利福尼亚
+州：&lt;/b&gt;在游泳池里骑自行车违法。&lt;/p&gt;&lt;img 
+src="https://pic4.zhimg.com/v2-1438a6a08443fc355a72f05d06b584a7_b.jpg" 
+data-rawwidth="600" data-rawheight="750" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic4.zhimg.com
+/v2-1438a6a08443fc355a72f05d06b584a7_r.jpg"&gt;&lt;p&gt;&lt;b&gt;犹他
+州：&lt;/b&gt;拿着装有小提琴的纸袋在街上走违法。&lt;/p&gt;&lt;img 
+src="https://pic3.zhimg.com/v2-9d419a1bd5b09cc21014b500c5af9416_b.jpg" 
+data-rawwidth="600" data-rawheight="750" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic3.zhimg.com
+/v2-9d419a1bd5b09cc21014b500c5af9416_r.jpg"&gt;&lt;p&gt;&lt;b&gt;佛罗里达
+州：&lt;/b&gt;在身上绘制衣物出现在公共场合违法。&lt;/p&gt;&lt;img 
+src="https://pic1.zhimg.com/v2-a9b38c8206024e0c14f9ed27ebaa4e38_b.jpg" 
+data-rawwidth="600" data-rawheight="750" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic1.zhimg.com/v2-
+a9b38c8206024e0c14f9ed27ebaa4e38_r.jpg"&gt;&lt;p&gt;&lt;b&gt;科罗拉多
+州：&lt;/b&gt;自家院子里有杂草违法。&lt;/p&gt;&lt;img 
+src="https://pic4.zhimg.com/v2-12a95179b52460b4f792b95992d3b5ef_b.jpg" 
+data-rawwidth="600" data-rawheight="480" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic4.zhimg.com
+/v2-12a95179b52460b4f792b95992d3b5ef_r.jpg"&gt;&lt;p&gt;&lt;b&gt;俄克拉荷马
+州：&lt;/b&gt;跟汽车做爱违法。（奸车罪？）&lt;/p&gt;&lt;img 
+src="https://pic2.zhimg.com/v2-4b902b098288e0cac8abd2c064e74191_b.jpg" 
+data-rawwidth="600" data-rawheight="480" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic2.zhimg.com
+/v2-4b902b098288e0cac8abd2c064e74191_r.jpg"&gt;&lt;p&gt;&lt;b&gt;特拉华
+州：&lt;/b&gt;把香水当酒卖违法。&lt;/p&gt;&lt;img 
+src="https://pic4.zhimg.com/v2-214c10404cd4ca89b098e8b43010972b_b.jpg" 
+data-rawwidth="600" data-rawheight="750" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic4.zhimg.com
+/v2-214c10404cd4ca89b098e8b43010972b_r.jpg"&gt;&lt;p&gt;&lt;b&gt;内布拉斯加
+州：&lt;/b&gt;父母在没有申请并获得许可的情况下给孩子烫发违法。&lt;/p&gt;&lt;img 
+src="https://pic4.zhimg.com/v2-7cefb7e5d5fae5db83d6efa4e9df724f_b.jpg" 
+data-rawwidth="600" data-rawheight="750" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic4.zhimg.com
+/v2-7cefb7e5d5fae5db83d6efa4e9df724f_r.jpg"&gt;&lt;p&gt;&lt;b&gt;罗得岛
+州：&lt;/b&gt;穿透明的衣物违法。&lt;/p&gt;&lt;img 
+src="https://pic2.zhimg.com/v2-5aa76a63ecba8befaac68dbbe01381ad_b.jpg" 
+data-rawwidth="600" data-rawheight="750" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic2.zhimg.com
+/v2-5aa76a63ecba8befaac68dbbe01381ad_r.jpg"&gt;&lt;p&gt;&lt;b&gt;得克萨斯
+州：&lt;/b&gt;给儿童剪怪异的发型违法。&lt;/p&gt;&lt;img 
+src="https://pic2.zhimg.com/v2-8479160a543fee1ee2a87ccaca0bafd1_b.jpg" 
+data-rawwidth="600" data-rawheight="750" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic2.zhimg.com
+/v2-8479160a543fee1ee2a87ccaca0bafd1_r.jpg"&gt;&lt;p&gt;&lt;b&gt;宾夕法尼亚
+州：&lt;/b&gt;用线栓住美元纸币，有人试图捡起来时就拖动取乐违法。（这法我小时候也犯过）&lt;/p&gt;&lt;img 
+src="https://pic1.zhimg.com/v2-0e08644f92c7294fe37b0f71dd85e45c_b.jpg" 
+data-rawwidth="600" data-rawheight="480" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic1.zhimg.com
+/v2-0e08644f92c7294fe37b0f71dd85e45c_r.jpg"&gt;&lt;p&gt;&lt;b&gt;阿拉斯加
+州：&lt;/b&gt;前排座位有三个人以上时驾驶汽车违法。&lt;/p&gt;&lt;img 
+src="https://pic1.zhimg.com/v2-07a44616d3dc87ed4ec99ae8785d3798_b.jpg" 
+data-rawwidth="600" data-rawheight="480" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic1.zhimg.com
+/v2-07a44616d3dc87ed4ec99ae8785d3798_r.jpg"&gt;&lt;p&gt;&lt;b&gt;密西西比
+州：&lt;/b&gt;该州一度禁止公共电视台播《芝麻街》。&lt;/p&gt;&lt;img 
+src="https://pic2.zhimg.com/v2-152c0c8eb2c1410917e8888a0ba41079_b.jpg" 
+data-rawwidth="600" data-rawheight="750" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic2.zhimg.com
+/v2-152c0c8eb2c1410917e8888a0ba41079_r.jpg"&gt;&lt;p&gt;&lt;b&gt;马里兰
+州：&lt;/b&gt;往树上钉一枚钉子会被罚款50美元。&lt;/p&gt;&lt;img 
+src="https://pic4.zhimg.com/v2-273326d683677476972267bfe12e858b_b.jpg" 
+data-rawwidth="600" data-rawheight="750" class="origin_image 
+zh-lightbox-thumb" width="600" 
+data-original="https://pic4.zhimg.com
+/v2-273326d683677476972267bfe12e858b_r.jpg"&gt;&lt;p&gt;&lt;b&gt;印第安纳
+州：&lt;/b&gt;男性在公共场合勃起违法。（这是什么鬼？）&lt;/p&gt;</textarea>
+
+											<div class="zh-summary summary clearfix">
+												<img src="%E9%A6%96%E9%A1%B5%20-%20%E7%9F%A5%E4%B9%8E_files/v2-f3cd7c9535b7e196b58a9c7149a5429f_200x112.jpg" data-rawwidth="600" data-rawheight="750" class="origin_image inline-img zh-lightbox-thumb" data-original="https://pic4.zhimg.com/v2-f3cd7c9535b7e196b58a9c7149a5429f_r.jpg"> 图略多，流量党慎点。最近有个美国90后摄影师奥利维娅·洛克做了件有趣的事情，她拍了一套“不法之徒”系列照，最直观地把美国各州的怪诞法条呈现出来。这些奇奇怪怪的法律之所以存在，其实大多有它们的历史背景，只不过到今天不再适用了而已。比如亚拉巴马…
+
+												<a href="https://www.zhihu.com/question/23392648/answer/187048149" class="toggle-expand">显示全部</a>
+
+											</div>
+
+											<p class="visible-expanded">
+												<a itemprop="url" class="answer-date-link meta-item" target="_blank" href="https://www.zhihu.com/question/23392648/answer/187048149">发布于 2017-06-21</a>
+											</p>
+
+										</div>
+										<div class="zm-item-meta answer-actions clearfix js-contentActions">
+											<div class="zm-meta-panel">
+
+												<a data-follow="q:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-1538436"><i class="z-icon-follow"></i>关注问题</a>
+
+												<a href="https://www.zhihu.com/explore#" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
+													<i class="z-icon-comment"></i>236 条评论</a>
+
+												<a href="https://www.zhihu.com/explore#" class="meta-item zu-autohide js-thank" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+												<a href="https://www.zhihu.com/explore#" class="meta-item zu-autohide js-share"><i class="z-icon-share"></i>分享</a>
+
+												<a href="https://www.zhihu.com/explore#" class="meta-item zu-autohide js-collect"><i class="z-icon-collect"></i>收藏</a>
+
+												<span class="zg-bull zu-autohide">•</span>
+
+												<a href="https://www.zhihu.com/explore#" class="meta-item zu-autohide js-noHelp">没有帮助</a>
+
+												<span class="zg-bull zu-autohide">•</span>
+												<a href="https://www.zhihu.com/explore#" class="meta-item zu-autohide js-report">举报</a>
+
+												<meta name="copyrightStatus" content="2">
+												<meta name="disableCopyAvatar" content="https://pic3.zhimg.com/dad7403494e624d301dfe105f4ce35da_s.jpg">
+
+												<span class="zg-bull">•</span>
+
+												<a href="https://www.zhihu.com/copyright/apply?answer=187048149" target="_blank" class="meta-item copyright">申请转载</a>
+
+												<button class="meta-item item-collapse js-collapse">
+<i class="z-icon-fold"></i>收起
+</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+										<!-- react-empty: 687 -->
+										<!-- react-empty: 688 -->
+										<footer class="Footer">
+											<span class="Footer-item">共建和谐安全网络环境</span><br>
+											<a class="Footer-item" target="_blank" href="https://www.zhihu.com/contact">联系我们</a><span> © 2017 知乎</span></footer>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</main>
+				<!-- react-empty: 690 -->
+				<!-- react-empty: 691 -->
+				<!-- react-empty: 692 -->
+				<div class="CornerButtons">
+					<div class="CornerAnimayedFlex"><button class="Button CornerButton Button--plain" data-tooltip="建议反馈" data-tooltip-position="left" aria-label="建议反馈" type="button"><svg width="18" height="16" viewBox="0 0 18 16" xmlns="http://www.w3.org/2000/svg" class="Icon Icon--feedback" aria-hidden="true" style="height: 16px; width: 18px;"><title>建议反馈</title><g><path d="M1.01 2.99L3 1s1-1 2-1h8c1 0 2 1 2 1l2 2s1 1 1 2v9s0 2-2.002 2H2c-2 0-2-2-2-2V5c0-1 1.01-2.01 1.01-2.01zM4.5 1.5h9L16 4H2l2.5-2.5zm2 5.5h5s.5 0 .5.5-.5.5-.5.5h-5S6 8 6 7.5s.5-.5.5-.5z" fill-rule="evenodd"></path></g></svg></button></div>
+					<div class="CornerAnimayedFlex CornerAnimayedFlex--hidden"><button class="Button CornerButton Button--plain" data-tooltip="回到顶部" data-tooltip-position="left" aria-label="回到顶部" type="button"><svg width="16" height="16" viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg" class="Icon Icon--backToTopArrow" aria-hidden="true" style="height: 16px; width: 16px;"><title>回到顶部</title><g><path d="M12.036 15.59c0 .55-.453.995-.997.995H5.032c-.55 0-.997-.445-.997-.996V8.584H1.03c-1.1 0-1.36-.633-.578-1.416L7.33.29c.39-.39 1.026-.385 1.412 0l6.878 6.88c.782.78.523 1.415-.58 1.415h-3.004v7.004z" fill-rule="evenodd"></path></g></svg></button></div>
+				</div>
+			</div>
+		</div>
+		<div>
+			<div data-reactroot="" style="display: none;">想来知乎工作？请发送邮件到 jobs@zhihu.com</div>
+		</div><span><div></div></span>
+
+	</body></html>

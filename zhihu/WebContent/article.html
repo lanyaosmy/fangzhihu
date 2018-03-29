@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)https://zhuanlan.zhihu.com/p/27578827 -->
+<html class="no-touch no-touch no-touch" lang="zh-CN"><head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>文章</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<link rel="shortcut icon" href="https://static.zhihu.com/static/favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" href="css/style_wz_a.css">
+		<script type="text/javascript" src="./js/jquery-3.2.1.js"></script>
+		<script>
+		function getQueryString(name) {
+			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+			var r = window.location.search.substr(1).match(reg);
+			if (r != null) return unescape(r[2]); return null;
+		} 
+		$(function(){
+			var pid=getQueryString("pid");
+			$.getJSON("./ArticleContent?pid="+pid,function(data){
+				var date="";
+				var title="";
+				var content="";
+				var author="";
+				var touxiang="";
+
+					$.each(data[0],function(index,value){
+						if(index=="author")author=value;
+						if(index=="title")title=value;
+						if(index=="date")date=value;
+						if(index=="content")content=value;
+						if(index=="touxiang")touxiang=value;
+					});
+				
+				$("#author-img").attr('src',touxiang); 
+				$("#author").html(author);
+				$("#article-title").html(title);
+				$("#article-content").html(content);
+				$("#article-time").html(date);
+			});
+		});
+		</script>
+	</head>
+
+	<body class="">
+
+		<div id="react-root">
+			<div data-reactroot="">
+				<div class="Layout av-cardBackground">
+					<div class="Layout-navbarHolder">
+						
+					</div>
+					<!-- react-empty: 603 -->
+					<div></div>
+					<div class="Layout-main av-card av-paddingBottom av-bodyFont Layout-titleImage--normal" data-za-module="PostItem">
+						<div class="PostIndex-header av-paddingTop av-card">
+							
+							<h1 class="PostIndex-title av-paddingSide av-titleFont" id="article-title"></h1>
+							<div class="PostIndex-author">
+								<img id="author-img" class="Avatar PostIndex-authorAvatar Avatar--xs">
+								<a href="javascript:void(0)" target="_blank" class="PostIndex-authorName" id="author"></a>
+								<div class="HoverTitle Badge-wrapper" data-hover-title="优秀回答者">
+									<a href="javascript:void(0)" target="_blank" class="Badge">
+										<svg viewBox="0 0 20 20" class="Icon Icon--badgeGlorious" width="16" height="16" aria-hidden="true" style="height: 16px; width: 16px;">
+											<g>
+												<g fill="none" fill-rule="evenodd">
+													<path d="M.64 11.39c1.068.895 1.808 2.733 1.66 4.113l.022-.196c-.147 1.384.856 2.4 2.24 2.278l-.198.016c1.387-.12 3.21.656 4.083 1.735l-.125-.154c.876 1.085 2.304 1.093 3.195.028l-.127.152c.895-1.068 2.733-1.808 4.113-1.66l-.198-.022c1.386.147 2.402-.856 2.28-2.238l.016.197c-.12-1.388.656-3.212 1.735-4.084l-.154.125c1.084-.876 1.093-2.304.028-3.195l.152.127c-1.068-.895-1.808-2.732-1.66-4.113l-.022.198c.147-1.386-.856-2.4-2.24-2.28l.198-.016c-1.387.122-3.21-.655-4.083-1.734l.125.153C10.802-.265 9.374-.274 8.483.79L8.61.64c-.895 1.068-2.733 1.808-4.113 1.662l.198.02c-1.386-.147-2.4.857-2.28 2.24L2.4 4.363c.12 1.387-.656 3.21-1.735 4.084l.154-.126C-.265 9.2-.274 10.626.79 11.517L.64 11.39z" fill="#FF9500"></path>
+													<path d="M10.034 12.96L7.38 14.58c-.47.286-.747.09-.618-.45l.72-3.024-2.36-2.024c-.418-.357-.318-.68.235-.725l3.1-.25 1.195-2.87c.21-.508.55-.513.763 0l1.195 2.87 3.1.25c.547.043.657.365.236.725l-2.362 2.024.72 3.025c.13.535-.143.74-.616.45l-2.654-1.62z" fill="#FFF"></path>
+												</g>
+											</g>
+										</svg>
+									</a>
+								</div><span class="Bull"></span>
+								<div class="HoverTitle" data-hover-title="尴尬了">
+								<time id="article-time" datetime="Tue Jun 27 2017 14:37:40 GMT+0800 (中国标准时间)">24 天前</time></div>
+							</div>
+						</div>
+						<div class="RichText PostIndex-content av-paddingSide av-card" id="article-content">
+						</div>
+
+					</div>
+				</div>
+				<!-- react-empty: 581 -->
+				<!-- react-empty: 582 -->
+				<!-- react-empty: 583 -->
+			</div>
+		</div>
+		
+		
+
+		<div>
+			<div data-reactroot="">
+				<div class="Editable-languageSuggestions" style="left: -1179px; top: -999px;">
+					<div>
+						<div class="Popover">
+							<div class="Editable-languageSuggestionsInput Input-wrapper"><input autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-activedescendant="AutoComplete-19673-48884-0" id="Popover-19711-98518-toggle" aria-haspopup="true" aria-owns="Popover-19711-98518-content" class="Input" placeholder="选择语言">
+								<div class="Input-after">
+									<svg viewBox="0 0 8 13" class="Icon Icon--select" width="15" height="15" aria-hidden="true" style="fill: rgb(175, 189, 207); height: 15px; width: 15px;">
+										<title></title>
+										<g>
+											<path d="M4 11.183L1.284 8.218c-.293-.29-.77-.29-1.064 0-.293.29-.293.76 0 1.052l3.25 3.512c.292.29.768.29 1.062 0L7.78 9.27c.293-.29.293-.76 0-1.052-.295-.29-.77-.29-1.064 0L4 11.182zM4 1.818L1.284 4.782c-.293.29-.77.29-1.064 0-.293-.29-.293-.76 0-1.052L3.47.218c.292-.29.768-.29 1.062 0L7.78 3.73c.293.29.293.76 0 1.052-.295.29-.77.29-1.064 0L4 1.82z"></path>
+										</g>
+									</svg>
+								</div>
+							</div>
+							<!-- react-empty: 11 -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+
+</body></html>

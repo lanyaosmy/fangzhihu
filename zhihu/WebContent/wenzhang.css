@@ -1,0 +1,122 @@
+/*#react-root,
+div,
+article,
+footer,
+header,
+main,
+nav,
+section {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-align-items: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -webkit-flex-shrink: 0;
+      -ms-flex-negative: 0;
+          flex-shrink: 0;
+}*/
+/*.Layout {
+  background: #fff;
+  min-height: 660px;
+}*/
+.Layout-navbarHolder {
+    height: 59px;
+}
+.Navbar.ScrollBackFixed-active {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+}
+.Navbar-title {
+  margin: 0 258px;
+  width: 660px;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  white-space: nowrap;
+}
+.WriteIndex-pageTitleWrapper {
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.WriteIndex-pageTitle {
+  font-weight: 700;
+  color: #333;
+  margin-right: 20px;
+}
+
+.WriteIndex-pageSubTitle {
+  color: #b3b3b3;
+}
+
+.WriteIndex-pageTitleError {
+  color: #f57373;
+}
+
+.Navbar-functionality {
+  position: absolute;
+  right: 0;
+  top: 0;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  height: 58px;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-align-self: stretch;
+      -ms-flex-item-align: stretch;
+              -ms-grid-row-align: stretch;
+          align-self: stretch;
+}
+.PublishPanel-wrapper {
+	position: relative;
+	float: right;
+	padding: 0 10px;
+}
+.Popover {
+    position: relative;
+    display: inline-block;
+}
+/*.Layout-main {
+  margin: 47px auto 0;
+  padding: 0 0;
+  width: 660px;
+  z-index: 1;
+}*/
+.WriteCover-wrapper {
+  background: #f7f8f9;
+  line-height: 192px;
+  color: #808080;
+  min-height: 192px;
+  text-align: center;
+}
+.Input-wrapper.Input-wrapper--multiline {
+    height: inherit;
+}
+.WriteIndex-titleInput .Input {
+ height: 44px;
+ min-height: 44px;
+ text-align:left;
+ padding-left:20px;
+ display: block;
+ width: 100%;
+ font-size: 32px;
+ line-height: 1.4;
+ font-weight: 700;
+ outline: none;
+ box-shadow: 2px 2px 5px #d3d6da;
+ margin-left:169px;
+ border:1px solid #bbbbbb;
+ background:#fafafa;
+}

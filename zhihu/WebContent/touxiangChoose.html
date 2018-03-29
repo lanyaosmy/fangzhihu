@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html data-reactroot="" data-reactid="1" data-react-checksum="695936893"
+	data-focus-method="pointer" lang="zh">
+<head data-reactid="2">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8" data-reactid="3">
+<title data-reactid="4">首页 - 知乎</title>
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,maximum-scale=1"
+	data-reactid="5">
+<meta name="renderer" content="webkit" data-reactid="6">
+<meta name="force-rendering" content="webkit" data-reactid="7">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"
+	data-reactid="8">
+<meta name="google-site-verification"
+	content="FTeR0c8arOPKh8c5DYh_9uu98_zJbaWw53J-Sch9MTg" data-reactid="9">
+<link rel="shortcut icon" type="image/x-icon"
+	href="https://static.zhihu.com/static/favicon.ico" data-reactid="10">
+<link rel="dns-prefetch" href="https://static.zhihu.com/"
+	data-reactid="11">
+<link rel="dns-prefetch" href="https://pic1.zhihu.com/"
+	data-reactid="12">
+<link rel="dns-prefetch" href="https://pic2.zhihu.com/"
+	data-reactid="13">
+<link rel="dns-prefetch" href="https://pic3.zhihu.com/"
+	data-reactid="14">
+<link rel="dns-prefetch" href="https://pic4.zhihu.com/"
+	data-reactid="15">
+<link href="css/main.css"
+	rel="stylesheet" data-reactid="16">
+<link href="css/style_m.css"
+	rel="stylesheet">	
+<script src="js/jquery-1.12.4.min.js"></script>
+<script src="js/cookieFunction.js"></script>
+<style>
+.topicli{
+	width:200px;
+	height:200px;
+	border:1px solid #c2c2c2;
+	border-radius:5px;
+	text-align:center;
+	line-height:50px;
+	font-size:16px;
+	cursor:pointer;
+}
+.topicli:hover{
+	background:#ebebeb;
+	border:1px solid #0d79d1;
+}
+.choosen{
+	background:#ebebeb;
+	border:1px solid #0d79d1;
+}
+.listyle{
+	float:left;
+	width:220px;
+	margin-bottom:20px
+}
+.ulstyle{
+	width:100%;
+	height:auto;
+}
+.p1{
+	width:500px;
+	height:16px;
+	margin: 10px auto;
+};
+.TopstoryGuide-subtitle .TopstoryTopics-hint{
+	font-size: 12px;
+}
+</style>
+</head>
+<body>
+<div>
+	<div class="Sticky--holder" style="position: relative; top: 0px; right: 0px; bottom: 0px; left: 0px; display: block; float: none; margin: 0px; height: 53px;"></div>
+</div>
+<div class="TopstoryGuide">
+	<div class="TopstoryWrap">
+		<div class="TopstoryTopics fadeInUp">
+			<div class="TopstoryGuide-header">
+				<h2 class="TopstoryGuide-title">请选择你想要的头像</h2>
+				<p class="TopstoryGuide-subtitle"></p>
+			</div>
+			<div class="TopstoryGuide-container">
+				<ul id="topicList" class="ulstyle">
+					<li class="listyle">
+						<div id="touxiang1" class="topicli"><img src="pic/touxiang1.jpg" onclick="setTou('touxiang1.jpg')"></div>
+					</li>
+					<li class="listyle">
+						<div id="touxiang2" class="topicli"><img src="pic/touxiang2.jpg" onclick="setTou('touxiang2.jpg')"></div>
+					</li>
+					<li class="listyle">
+						<div id="touxiang3" class="topicli"><img src="pic/touxiang3.jpg" onclick="setTou('touxiang3.jpg')"></div>
+					</li>
+					<li class="listyle">
+						<div id="touxiang4" class="topicli"><img src="pic/touxiang4.jpg" onclick="setTou('touxiang4.jpg')"></div>
+					</li>
+					<li class="listyle">
+						<div id="touxiang5" class="topicli"><img src="pic/touxiang5.jpg" onclick="setTou('touxiang5.jpg')"></div>
+					</li>
+					<li class="listyle">
+						<div id="touxiang6" class="topicli"><img src="pic/touxiang6.jpg" onclick="setTou('touxiang6.jpg')"></div>
+					</li>
+					<li class="listyle">
+						<div id="touxiang7" class="topicli"><img src="pic/touxiang7.jpg" onclick="setTou('touxiang7.jpg')"></div>
+					</li>
+					<li class="listyle">
+						<div id="touxiang8" class="topicli"><img src="pic/touxiang8.jpg" onclick="setTou('touxiang8.jpg')"></div>
+					</li>
+					<li class="listyle">
+						<div id="touxiang9" class="topicli"><img src="pic/touxiang9.jpg" onclick="setTou('touxiang9.jpg')"></div>
+					</li>
+					<li class="listyle">
+						<div id="touxiang10" class="topicli"><img src="pic/touxiang10.jpg" onclick="setTou('touxiang10.jpg')"></div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	function choose(a){
+		if(!$("div#"+a).hasClass("choosen"))	
+			$("div#"+a).addClass("choosen");
+		else
+			$("div#"+a).removeClass("choosen");
+	}
+	
+	function setTou(a){
+		$.get("jsp/setTouxiang.jsp?addr="+a+"&userID="+getCookie("userID"),function(data){
+			alert(data);
+			window.location.href="g_dongtai.html";
+		});
+	}
+</script>
+</body>
+</html>

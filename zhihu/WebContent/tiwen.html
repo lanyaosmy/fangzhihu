@@ -1,0 +1,84 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>提问</title>
+		<link rel="stylesheet" href="tiwen.css" type="text/css" />
+	</head>
+
+	<body>
+		<div class="Modal-wrapper">
+			<div class="Modal-backdrop"></div>
+			<div class="Modal Modal--large QuestionAsk-Modal" tabindex="0">
+				<div class="Modal-inner">
+					<h3 class="Modal-title">写下你的问题</h3>
+					<div class="Modal-subtitle">描述精确的问题更易得到解答</div>
+					<div class="Modal-content">
+						<div class="QuestionAsk">
+							<form novalidate="" action="tijiao.jsp">
+								<div class="QuestionAsk-section">
+									<div class="QuestionAsk-title">
+										<div class="Popover">
+											<div class="Input-wrapper Input-wrapper--spread Input-wrapper--multiline Input-wrapper--large">
+												<textarea name="biaoti" required="" rows="2" autocomplete="off" 
+													role="combobox" aria-expanded="false" aria-autocomplete="list" 
+													aria-activedescendant="AutoComplete-71761-58837-0" id="Popover-71761-12695-toggle" 
+													aria-haspopup="true" aria-owns="Popover-71761-12695-content" 
+													class="Input" placeholder="问题标题"></textarea></div>
+													
+													
+											<!-- react-empty: 17 -->
+										</div>
+									</div>
+								</div>
+								<div class="QuestionAsk-section">
+									<div class="TagInput TagInput--empty">
+										<div class="Popover">
+											<div class="Input-wrapper Input-wrapper--spread Input-wrapper--large">
+											<textarea name="huati" required="" rows="1" autocomplete="off" 
+													role="combobox" aria-expanded="false" aria-autocomplete="list" 
+													aria-activedescendant="AutoComplete-71761-58837-0" id="Popover-71761-12695-toggle2" 
+													aria-haspopup="true" aria-owns="Popover-71761-12695-content" 
+													class="Input" placeholder="添加话题"></textarea></div>
+												
+												
+											</div>
+										</div>
+									</div>
+									
+									<div class="QuestionAsk-section QuestionAsk-DetailSection">
+										<div class="QuestionAsk-sectionHeader"><span class="QuestionAsk-label">问题描述（可选）：</span>
+								
+										</div>
+										<div class="Input-wrapper Input-wrapper--spread Input-wrapper--large Input-wrapper--noPadding">
+											<div class="Input Editable">
+												<div class="Dropzone RichText" style="min-height: 20px;">
+									
+																<textarea name="xiangxi" required="" rows="1" autocomplete="off" 
+													role="combobox" aria-expanded="false" aria-autocomplete="list" 
+													aria-activedescendant="AutoComplete-71761-58837-0" id="Popover-71761-12695-toggle3" 
+													aria-haspopup="true" aria-owns="Popover-71761-12695-content" 
+													class="Input" placeholder="问题背景等详细信息"></textarea>
+												
+												
+											</div>
+										</div>
+								 </div>
+								 
+								 <div class="QuestionAsk-buttonGroup">
+								 	<button class="Button Button--primary Button--blue" type="submit" >提交问题</button></div>
+		</form>
+		</div>
+		</div>
+		</div>
+		<button class="Button Modal-closeButton Button--plain" aria-label="关闭" type="button" onclick="window.location.href='index.html'" >
+			<svg viewBox="0 0 14 14" class="Icon Modal-closeIcon Icon--remove" width="16" height="16" aria-hidden="true" style="height: 16px; width: 16px;">
+				<title></title><g><path d="M8.486 7l5.208-5.207c.408-.408.405-1.072-.006-1.483-.413-.413-1.074-.413-1.482-.005L7 5.515 1.793.304C1.385-.103.72-.1.31.31-.103.724-.103 1.385.305 1.793L5.515 7l-5.21 5.207c-.407.408-.404 1.072.007 1.483.413.413 1.074.413 1.482.005L7 8.485l5.207 5.21c.408.407 1.072.404 1.483-.007.413-.413.413-1.074.005-1.482L8.485 7z"></path></g></svg></button></div>
+		</div>
+		
+	</body>
+
+</html>
